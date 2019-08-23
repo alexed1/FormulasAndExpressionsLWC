@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lookup2__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Lookup2 (Lookup2__c)</label>
+    <referenceTo>TestObject__c</referenceTo>
+    <relationshipLabel>TestObject (Lookup2)</relationshipLabel>
+    <relationshipName>TestObject1</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

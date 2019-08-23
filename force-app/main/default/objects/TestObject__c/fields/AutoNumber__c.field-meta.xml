@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AutoNumber__c</fullName>
+    <displayFormat>A{YYYY}-{00000}</displayFormat>
+    <externalId>false</externalId>
+    <label>AutoNumber (AutoNumber__c)</label>
+    <trackTrending>false</trackTrending>
+    <type>AutoNumber</type>
+</CustomField>

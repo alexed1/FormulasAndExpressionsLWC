@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Expiration__c</fullName>
+    <defaultValue>TODAY()+14</defaultValue>
+    <description>Date of package usage expiration</description>
+    <externalId>false</externalId>
+    <label>Expiration</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>
