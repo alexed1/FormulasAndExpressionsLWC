@@ -221,12 +221,16 @@ public without sharing class ApexExpressionParserV2 {
         }
         RegExps.ParserContext context = new RegExps.ParserContext(formula, objectType, objectId, outputType, scale);
         try{
-            
+            System.debug('before processing, context is: ' + context);
             String outputFormula = null;
             ApexExpressionParserV2.getAllFields(context);
+            System.debug('after getallfields, context is: ' + context);
             ApexExpressionParserV2.getAllValues(context); 
+            System.debug('after getallValues, context is: ' + context);
             ApexExpressionParserV2.replaceExpressionValues(context);
+            System.debug('after replaceExpressionValues, context is: ' + context);
             ApexExpressionParserV2.replaceCustomSettings(context);
+            System.debug('after replaceCustomSettings, context is: ' + context);
             
             //this boolean is used to be aware that a modification has been 
             //done in the "current while iteration": if it becomes true, we
@@ -311,7 +315,9 @@ public without sharing class ApexExpressionParserV2 {
                 
                 RegExps.clearParentesis(context,'ALL');
             }
+            System.debug('after evaluate prelim calls, context is: ' + context);
             context.result = RegExps.evaluateResult(context);
+            System.debug('after final evaluation , context is: ' + context);
         }catch(Exception e){
             context.isError = true;
             context.stackTrace = e.getStackTraceString()+' '+e.getMEssage();
@@ -424,6 +430,7 @@ public without sharing class ApexExpressionParserV2 {
         Set<String> fields = context.fields; 
         String objectType = context.objectType;
         ID objectId = context.objectId;
+        System.debug('objectId is' + objectId);
         fields.add('ID');
         Map<String,Object> result = context.fieldValues;
         String query = 'Select ';
