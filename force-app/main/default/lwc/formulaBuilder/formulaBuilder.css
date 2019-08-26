@@ -1,0 +1,20 @@
+.container {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 4px;
+}
+.flexContainer {
+    display: flex;
+    padding-bottom: 1rem;
+}
+lightning-combobox {
+    padding-right: 0.5rem;
+}
+lightning-button {
+    margin-left: 0;
+}
+.resultContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

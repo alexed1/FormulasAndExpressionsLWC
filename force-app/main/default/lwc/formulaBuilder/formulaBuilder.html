@@ -1,0 +1,42 @@
+<template>
+    <div class="container">
+        <div class="flexContainer">
+            <lightning-combobox name="field" 
+                                label="Field"
+                                variant="label-hidden"
+                                value={supportedField}
+                                placeholder="Field"
+                                options={contextVariables}
+                                onchange={selectField}>
+            </lightning-combobox>
+            <lightning-combobox name="function" 
+                                label="Function"
+                                variant="label-hidden"
+                                value={selectedFunction}
+                                placeholder="Function"
+                                options={supportedFunctions}
+                                onchange={selectOperator}>
+            </lightning-combobox>
+            <lightning-combobox name="operator" 
+                                label="Operator"
+                                variant="label-hidden"
+                                value={value}
+                                placeholder="Operator"
+                                options={supportedOperators}
+                                onchange={selectOperator}>
+            </lightning-combobox>
+            <lightning-input name="enter-search"
+                            label="ReccordID"
+                            placeholder="ReccordID"
+                            variant="label-hidden"
+                            value={recordId}>
+            </lightning-input>
+        </div>
+        <lightning-textarea onchange={changeFormula} value={formula} name="formula" variant="label-hidden"></lightning-textarea>
+        <p>Use formula syntax</p>
+        <div class="resultContainer">
+            <lightning-button label="Neutral" title="PARSE" onclick={parsedQuery} class="slds-m-left_x-small"></lightning-button>
+            <p>Result: {parsedFormeula}</p>
+        </div>
+    </div>
+</template>
