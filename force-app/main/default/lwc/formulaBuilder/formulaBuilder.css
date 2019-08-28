@@ -6,6 +6,10 @@
 .flexContainer {
     display: flex;
     padding-bottom: 1rem;
+    align-items: center;
+}
+.flexContainer p {
+    padding-right: 0.5rem;
 }
 lightning-combobox {
     padding-right: 0.5rem;
@@ -15,6 +19,6 @@ lightning-button {
 }
 .resultContainer {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 }
