@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <lightning-spinner alternative-text="Loading" size="large" if:true={showSpinner}></lightning-spinner>
         <div class="flexContainer">
             <p>Insert</p>
             <lightning-combobox name="field" 
@@ -29,6 +30,7 @@
         </div>
         <lightning-textarea onchange={changeFormula} value={formula} name="formula" variant="label-hidden"></lightning-textarea>
         <p>Use formula syntax</p>
+        <p class="errorMessage" if:true={showError}>Error! Please check formula</p>
         <div class="resultContainer">
             <lightning-button label="Convert Formula" title="Convert Formula" onclick={parsedQuery} class="slds-m-left_x-small"></lightning-button>
         </div>

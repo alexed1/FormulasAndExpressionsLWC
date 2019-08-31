@@ -12,11 +12,11 @@ export default class FormulaBuilder extends LightningElement {
             if (variable.Fields.length > 0) {
                 let objectName = variable.Name;
                 variable.Fields.forEach(field => {
-                    let fieldValue = '$' + objectName + '.' + field;
+                    let fieldValue = objectName + '.' + field;
                     fields.push({ label: field, value: fieldValue });
                 })
             } else {
-                let fieldValue = '$' + variable.Name;
+                let fieldValue = variable.Name;
                 fields.push({ label: variable.Name, value: fieldValue });
             }
         })
@@ -24,7 +24,8 @@ export default class FormulaBuilder extends LightningElement {
         this.fields = fields;
 
         this.supportedFunctions.forEach(func => {
-            functions.push({ label: func, value: func });
+            let funcValue = func + '()';
+            functions.push({ label: func, value: funcValue });
         })
 
         this.functions = functions;
@@ -40,20 +41,29 @@ export default class FormulaBuilder extends LightningElement {
     @track fields;
     @track functions;
     @track operators;
+    @track showSpinner = false;
+    @track showError = false;
 
     @track formula = '';
     @track parsedFormula = '';
 
-    @track supportedOperators = ['+', '-', '/', '*', '==', '!=', '>', '<', '>=', '<='];
-    @track supportedFunctions = ['COS', 'SIN'];
+    @track supportedOperators = ['+', '-', '/', '*', '==', '!=', '>', '<', '>=', '<=', '<>'];
+    @track supportedFunctions = [
+        'AND', 'OR', 'NOT','XOR', 'IF', 'CASE', 'LEN',  'SUBSTRING','LEFT','RIGHT',
+        'ISBLANK','ISPICKVAL','CONVERTID', 'ABS','ROUND','CEIL','FLOOR','SQRT','ACOS',
+        'ASIN','ATAN','COS','SIN','TAN','COSH','SINH','TANH','EXP','LOG','LOG10','RINT',
+        'SIGNUM','INTEGER', 'POW','MAX','MIN','MOD', 'TEXT','DATETIME','DECIMAL','BOOLEAN',
+        'DATE', 'DAY','MONTH','YEAR','HOURS','MINUTES','SECONDS', 'ADDDAYS','ADDMONTHS',
+        'ADDYEARS','ADDHOURS','ADDMINUTES','ADDSECONDS'
+    ];
     @track contextVariables = [
         {"Name" : "foo", "Value" : "555", "Fields" : []}, 
         {"Name" : "bar", "Value" : "34", "Fields" : []}, 
-        {"Name" : "Opportunity", "Value" : "0062v00001Fd64cAAB", "Fields" : ["Id", "Name", "CreatedDate", "LastModifiedDate"]},
-        {"Name" : "User", "Value" : "", "Fields" : ["Country", "IsActive"]},
-        {"Name" : "Organization", "Value" : "", "Fields" : ["Name", "Country"]},
-        {"Name" : "Profile", "Value" : "", "Fields" : ["CreatedDate", "Name"]},
-        {"Name" : "Setup", "Value" : "", "Fields" : ["PackageSettings__c.Expiration__c", "HierarchyCS__c.Value__c", "HierarchyCS__c.ValueNumber__c"]}
+        {"Name" : "$Record", "Value" : "0062v00001Fd64cAAB", "Fields" : ["Id", "Name", "CreatedDate", "LastModifiedDate"]},
+        {"Name" : "$User", "Value" : "", "Fields" : ["Country", "IsActive"]},
+        {"Name" : "$Organization", "Value" : "", "Fields" : ["Name", "Country"]},
+        {"Name" : "$Profile", "Value" : "", "Fields" : ["CreatedDate", "Name"]},
+        {"Name" : "$Setup", "Value" : "", "Fields" : ["PackageSettings__c.Expiration__c", "HierarchyCS__c.Value__c", "HierarchyCS__c.ValueNumber__c"]}
     ];
 
     selectOperator(event) {
@@ -75,9 +85,12 @@ export default class FormulaBuilder extends LightningElement {
     }
 
     parsedQuery() {
+        this.showSpinner = true;
         parseFormula({ formula: this.formula, context: JSON.stringify(this.contextVariables) })
             .then(result => {
                 this.parsedFormula = result;
+                this.showSpinner = false;
+                this.showError = result === undefined ? true : false;
             })
     }
 }

@@ -7,10 +7,22 @@ public with sharing class FormulaBuilderController {
 
         for (ContextWraper cont : contextResult) {
             if (!String.isEmpty(cont.value) && cont.fields.size() > 0) {
-                formula = formula.replaceAll('[$]Record', '\\$' + cont.name);
-                formula = formula.replaceAll('[!]Record', '\\!' + cont.name);
+                String keyPrefix = cont.value.substring(0,3);
+                for (Schema.SObjectType obj : Schema.getGlobalDescribe().Values()){
+                    String prefix = obj.getDescribe().getKeyPrefix();
+                    if (prefix == keyPrefix && prefix.indexOf(keyPrefix) != -1){
+                        String objectAPIName = obj.getDescribe().getName();
+                        formula = formula.replaceAll('[$]Record', '\\$' + objectAPIName);
+                        formula = formula.replaceAll('[!]Record', '\\!' + objectAPIName);
+                        cont.name = objectAPIName;
+                        break;
+                    }
+                }
             }
-            if (!String.isEmpty(cont.value)) {
+            if (!String.isEmpty(cont.value) && cont.fields.size() == 0) {
+                formula = formula.replaceAll(cont.name, cont.value);
+            }
+            if (!String.isEmpty(cont.value) && cont.fields.size() > 0) {
                 mapParameters.put(cont.name, cont.value);
             }
         }
@@ -85,7 +97,27 @@ public with sharing class FormulaBuilderController {
             }
         }
 
-        return formula;
+        Set<String> resultTypes = new Set<String>{'BOOLEAN', 'NUMBER', 'DATE', 'DATETIME', 'STRING'};
+
+        for (String resultType : resultTypes) {
+            String result = evaluateFormula(formula, resultType);
+
+            if (!String.isEmpty(result)) {
+                return result;
+            }
+        }
+        
+        formula = formula.replaceAll('["]', '');
+        mPattern = pattern.compile('[A-z0-9]{1,}');
+        mMatcher = mPattern.matcher(formula);
+
+        while (mMatcher.find()) {
+            String item = '"' + mMatcher.group(0) + '"';
+            formula = formula.replaceFirst(mMatcher.group(0), item);
+        }
+        
+        return evaluateFormula(formula, 'STRING');
+
     }
 
     public static String updateFormulaFields (String objectName, String objectId, String formula, Set<String> fields) {
@@ -120,6 +152,22 @@ public with sharing class FormulaBuilderController {
         
 
         return formula;
+    }
+
+    public static String evaluateFormula (String formula, String resultType) {
+        Pattern mPattern = pattern.compile('[0-9.]{3,}');
+        Matcher mMatcher = mPattern.matcher(formula);
+        Integer scale = 0;
+
+        while(mMatcher.find()){
+            List<String> items = mMatcher.group(0).split('[.]');
+            if (items.size() > 1 && items[1].length() > scale) {
+                scale = items[1].length();
+            }
+        }
+
+        RegExps.ParserContext parserContext = ApexExpressionParserV2.evaluate(formula, resultType, scale);
+        return String.valueOf(parserContext.result);
     }
 
     public class ContextWraper {

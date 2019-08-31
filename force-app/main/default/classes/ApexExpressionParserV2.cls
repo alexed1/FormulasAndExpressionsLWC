@@ -210,8 +210,10 @@ public without sharing class ApexExpressionParserV2 {
         }
         return results;
     }
-    
-    
+
+    public static RegExps.ParserContext evaluate(String formula, String outputType, Integer scale){
+        return evaluate(formula, null, null, outputType, scale);
+    }
     
     public static RegExps.ParserContext evaluate(String formula, ID objectId, String objectType, String outputType, Integer scale){
         Date expirationDate = PackageSettings__c.getOrgDefaults().Expiration__c;
@@ -223,10 +225,14 @@ public without sharing class ApexExpressionParserV2 {
         try{
             System.debug('before processing, context is: ' + context);
             String outputFormula = null;
-            ApexExpressionParserV2.getAllFields(context);
-            System.debug('after getallfields, context is: ' + context);
-            ApexExpressionParserV2.getAllValues(context); 
-            System.debug('after getallValues, context is: ' + context);
+
+            if (!String.isEmpty(objectType)) {
+                ApexExpressionParserV2.getAllFields(context);
+                System.debug('after getallfields, context is: ' + context);
+                ApexExpressionParserV2.getAllValues(context); 
+                System.debug('after getallValues, context is: ' + context);
+            }
+            
             ApexExpressionParserV2.replaceExpressionValues(context);
             System.debug('after replaceExpressionValues, context is: ' + context);
             ApexExpressionParserV2.replaceCustomSettings(context);

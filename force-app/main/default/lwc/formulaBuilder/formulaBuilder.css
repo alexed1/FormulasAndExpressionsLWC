@@ -2,6 +2,7 @@
     background-color: white;
     padding: 1rem;
     border-radius: 4px;
+    position: relative;
 }
 .flexContainer {
     display: flex;
@@ -21,4 +22,8 @@ lightning-button {
     display: flex;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+}
+.errorMessage {
+    color: red;
+    font-weight: 600;
 }
