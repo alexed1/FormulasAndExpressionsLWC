@@ -38,20 +38,40 @@ global with sharing class SearchUtils {
 
         return resultMap;
     }
-
+    @AuraEnabled(cacheable=true)
     public static Map<String, List<Member>> searchMemberByObjectFieldType(Id recordId, String fieldType, List<String> allowedFieldApiNames) {
         List<Member> result = new List<Member>();
-//        Schema.SObjectType token = recordId.getSObjectType();
-//        Map<String, Schema.SObjectField> mfields = token.getDescribe().fields.getMap();
-//        for (String fieldName : mfields.keySet()) {
-//            Schema.DescribeFieldResult obj = mfields.get(fieldName).getDescribe();
-//            List<SObjectType> refs = obj.getReferenceTo();
-//            if (refs != null && refs.size() > 0) {
-//                result.add(new Member(refs.toString(), refs.toString()));
-//            }
-//        }
+        if (recordId == null) {
+            return new Map<String, List<Member>>{
+                    fieldType => result
+            };
+        }
+        Schema.SObjectType token = recordId.getSObjectType();
+        Map<String, Schema.SObjectField> mfields = token.getDescribe().fields.getMap();
+
+        for (String fieldName : mfields.keySet()) {
+            //TODO:handle mixed case field names
+            if (allowedFieldApiNames != null && allowedFieldApiNames.size()>0 && !allowedFieldApiNames.contains(fieldName)) {
+                continue;
+            }
+
+            Schema.DescribeFieldResult obj = mfields.get(fieldName).getDescribe();
+            String fieldLabel = obj.getLabel();
+            List<SObjectType> refs = obj.getReferenceTo();
+            if (refs != null && refs.size() > 0) {
+                for (Schema.sObjectType ref : refs) {
+                    String curFieldType = ref.getDescribe().getLabel();
+                    if (fieldType != null && fieldType != curFieldType) {
+                        continue;
+                    }
+                    result.add(new Member(fieldLabel, fieldName));
+                }
+
+            }
+        }
+
         return new Map<String, List<Member>>{
-                'User' => result
+                fieldType => result
         };
     }
     public static Map<String, String> getMembersByTypeAndId(Map<String, Set<String>> typeToIds) {

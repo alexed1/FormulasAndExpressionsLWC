@@ -9,6 +9,22 @@
         <value>Your search found more than 200 results.  Keep typing to make it more specific</value>
     </labels>
     <labels>
+        <fullName>NonePicklistValueLabel</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NonePicklistValueLabel</shortDescription>
+        <value>-- None --</value>
+    </labels>
+    <labels>
+        <fullName>FieldIsNotSupportedMessage</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FieldIsNotSupportedMessage</shortDescription>
+        <value>Following fields are not supported: </value>
+    </labels>
+    <labels>
         <fullName>ButtonIsNotSupportedMessage</fullName>
         <categories>messages</categories>
         <language>en_US</language>
