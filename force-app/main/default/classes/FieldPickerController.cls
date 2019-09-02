@@ -1,7 +1,8 @@
 global with sharing class FieldPickerController {
 
     @AuraEnabled(cacheable=true)
-    public static List<Member> getObjects() {
+    public static List<Member> getObjects(List<String> supportedObjectTypes) {
+
         List<Member> result = new List<Member>();
 //        //User Interface API implementation, requires whitelisting the org.
 //        Http h = new Http();
@@ -22,7 +23,11 @@ global with sharing class FieldPickerController {
         Map<String, Schema.SObjectType> gd = Schema.getGlobalDescribe();
 
         for (Schema.SObjectType thisObj : gd.values()) {
-            result.add(new Member(thisObj.getDescribe().getName(), thisObj.getDescribe().getLabel()));
+            String objectType = thisObj.getDescribe().getName();
+            String objectLabel = thisObj.getDescribe().getLabel();
+            if ((supportedObjectTypes != null && (supportedObjectTypes.contains(objectType.toLowerCase()))|| supportedObjectTypes.size() == 0) || supportedObjectTypes == null) {
+                result.add(new Member(objectType, objectLabel));
+            }
         }
 
         return result;

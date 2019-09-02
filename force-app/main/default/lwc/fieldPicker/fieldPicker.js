@@ -10,8 +10,12 @@ export default class fieldPicker extends LightningElement {
     @api masterLabel;
     @api objectLabel = 'Object';
     @api fieldLabel = 'Field';
-    @api objectType;
+    @api objectType = 'Account';
     @api field;
+
+    @api supportedObjectTypes;
+    @api hideObjectTypeSelect = false;
+    @api supportedFieldRelationTypes;
 
     @track _objectType;
     @track _field;
@@ -33,7 +37,7 @@ export default class fieldPicker extends LightningElement {
             this._field = this.field;
     }
 
-    @wire(getObjects, {})
+    @wire(getObjects, {supportedObjectTypes: '$supportedObjectTypesList'})
     _getObjects({error, data}) {
         if (error) {
             this.errors.push(error.body.message);
@@ -52,7 +56,9 @@ export default class fieldPicker extends LightningElement {
             let fieldResults = [];
             for (let field in this.fields = fields) {
                 if (Object.prototype.hasOwnProperty.call(fields, field)) {
-                    fieldResults.push({label: fields[field].label, value: fields[field].apiName});
+                    if (this.isTypeSupported(fields[field])) {
+                        fieldResults.push({label: fields[field].label, value: fields[field].apiName});
+                    }
                 }
                 if (this._field && !Object.prototype.hasOwnProperty.call(fields, this._field)) {
                     this.errors.push(this.labels.fieldNotSupported + this._field);
@@ -60,6 +66,29 @@ export default class fieldPicker extends LightningElement {
                 }
             }
             this.fields = fieldResults;
+        }
+    }
+
+    isTypeSupported(field) {
+        let result = false;
+        if (!this.supportedFieldRelationTypes) {
+            result = true;
+        }
+        if (!result && field.referenceToInfos.length > 0) {
+            field.referenceToInfos.forEach(curRef => {
+                if (this.supportedFieldRelationTypes.toLowerCase().includes(curRef.apiName.toLowerCase())) {
+                    result = true;
+                }
+            });
+        }
+        return result;
+    }
+
+    get supportedObjectTypesList() {
+        if (this.supportedObjectTypes) {
+            return this.splitValues(this.supportedObjectTypes.toLowerCase());
+        } else {
+            return [];
         }
     }
 
@@ -91,4 +120,12 @@ export default class fieldPicker extends LightningElement {
         });
         dispatchEvent(memberRefreshedEvt);
     }
+
+    splitValues(originalString) {
+        if (originalString) {
+            return originalString.replace(/ /g, '').split(',');
+        } else {
+            return [];
+        }
+    };
 }
