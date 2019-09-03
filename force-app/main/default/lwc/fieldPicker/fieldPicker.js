@@ -10,7 +10,7 @@ export default class fieldPicker extends LightningElement {
     @api masterLabel;
     @api objectLabel = 'Object';
     @api fieldLabel = 'Field';
-    @api objectType = 'Account';
+    @api objectType;
     @api field;
 
     @api supportedObjectTypes;
