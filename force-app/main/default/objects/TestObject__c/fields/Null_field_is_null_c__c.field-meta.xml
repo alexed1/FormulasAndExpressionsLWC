@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Null_field_is_null_c__c</fullName>
-    <defaultValue>false</defaultValue>
-    <externalId>false</externalId>
-    <label>Null_field_is_null__c</label>
-    <trackTrending>false</trackTrending>
-    <type>Checkbox</type>
-</CustomField>
