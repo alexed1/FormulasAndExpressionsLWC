@@ -1,7 +1,11 @@
 {
     "compilerOptions": {
         "baseUrl": ".",
-        "paths": {},
+        "paths": {
+            "c/formulaBuilder": [
+                "formulaBuilder/formulaBuilder.js"
+            ]
+        },
         "experimentalDecorators": true
     },
     "include": [
