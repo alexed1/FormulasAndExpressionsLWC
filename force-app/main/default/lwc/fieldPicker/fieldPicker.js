@@ -57,7 +57,11 @@ export default class fieldPicker extends LightningElement {
             for (let field in this.fields = fields) {
                 if (Object.prototype.hasOwnProperty.call(fields, field)) {
                     if (this.isTypeSupported(fields[field])) {
-                        fieldResults.push({label: fields[field].label, value: fields[field].apiName});
+                        fieldResults.push({
+                            label: fields[field].label,
+                            value: fields[field].apiName,
+                            dataType: fields[field].dataType
+                        });
                     }
                 }
                 if (this._field && !Object.prototype.hasOwnProperty.call(fields, this._field)) {
@@ -116,9 +120,10 @@ export default class fieldPicker extends LightningElement {
             bubbles: true, detail: {
                 objectType: this._objectType,
                 fieldName: this._field,
+                dataType: this.fields.find(curField => curField.value == this._field).dataType
             }
         });
-        dispatchEvent(memberRefreshedEvt);
+        this.dispatchEvent(memberRefreshedEvt);
     }
 
     splitValues(originalString) {

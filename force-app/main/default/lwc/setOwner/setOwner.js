@@ -145,7 +145,7 @@ export default class addNewMembers extends LightningElement {
                 notifyAssignee: (this.selectedType === 'User' ? this.notifyAssignee : false),
             }
         });
-        dispatchEvent(memberRefreshedEvt);
+        this.dispatchEvent(memberRefreshedEvt);
     }
 
     toastTheError(e, errorSource) {

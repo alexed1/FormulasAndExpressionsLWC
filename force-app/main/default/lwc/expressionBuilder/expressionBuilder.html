@@ -1,0 +1,49 @@
+<template>
+    <lightning-card>
+        <lightning-layout multiple-rows="true">
+            <lightning-layout-item size="3" class="slds-p-left--small">
+                <lightning-combobox
+                        name="objectTypeField"
+                        label="When to Execute"
+                        value={whenToExecute}
+                        options={whenToExecuteOptions}
+                        onchange={handleWhenToExecuteChange}
+                ></lightning-combobox>
+            </lightning-layout-item>
+            <lightning-layout-item size="9">
+
+            </lightning-layout-item>
+            <template if:true={showCustomLogicInput}>
+                <lightning-layout-item size="3" class="slds-p-left--small">
+                    <lightning-input
+                            name="custom-condition"
+                            label="Custom Condition"
+                            value={_customCondition}
+                            onchange={handleCustomLogicChange}
+                    ></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="9">
+
+                </lightning-layout-item>
+            </template>
+            <lightning-layout-item size="12">
+                <template for:each={_expressions} for:item="expression" for:index="index">
+                    <c-expression-line key={expression.id}
+                                       expression-index={index}
+                                       expression-id={expression.id}
+                                       object-type={expression.objectType}
+                                       field-name={expression.fieldName}
+                                       operator={expression.operator}
+                                       value={expression.value}
+                                       onexpressionremoved={handleRemoveExpression}
+                                       onfieldselected={handleExpressionChange}></c-expression-line>
+                </template>
+                <div class="slds-p-around--medium">
+                    <lightning-button variant="Brand" label="+ Add Condition" title="Add Condition"
+                                      onclick={handleAddExpression}>
+                    </lightning-button>
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>
