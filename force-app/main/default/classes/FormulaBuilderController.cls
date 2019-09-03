@@ -101,21 +101,20 @@ public with sharing class FormulaBuilderController {
 
         for (String resultType : resultTypes) {
             String result = FormulaEvaluator.evaluateFormula(formula, resultType);
-
             if (!String.isEmpty(result)) {
                 return result;
             }
         }
         
         formula = formula.replaceAll('["]', '');
-        mPattern = pattern.compile('[A-z0-9]{1,}');
+        mPattern = pattern.compile('[A-z0-9 ]{1,}');
         mMatcher = mPattern.matcher(formula);
 
         while (mMatcher.find()) {
-            String item = '"' + mMatcher.group(0) + '"';
+            String item = '"' + mMatcher.group(0).trim() + '"';
             formula = formula.replaceFirst(mMatcher.group(0), item);
         }
-        
+
         return FormulaEvaluator.evaluateFormula(formula, 'STRING');
 
     }
