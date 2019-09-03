@@ -1,29 +1,29 @@
 .container {
-    background-color: white;
-    padding: 1rem;
-    border-radius: 4px;
+    background-color: var(--lwc-brandHeaderContrastInverse);
+    padding: var(--lwc-spacingMedium);
+    border-radius: var(--lwc-borderRadiusMedium);
     position: relative;
 }
 .flexContainer {
     display: flex;
-    padding-bottom: 1rem;
+    padding-bottom: var(--lwc-spacingMedium);
     align-items: center;
 }
 .flexContainer p {
-    padding-right: 0.5rem;
+    padding-right: var(--lwc-spacingXSmall);
 }
 lightning-combobox {
-    padding-right: 0.5rem;
+    padding-right: var(--lwc-spacingXSmall);
 }
 lightning-button {
-    margin-left: 0;
+    margin-left: var(--lwc-spacingNone);
 }
 .resultContainer {
     display: flex;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding-top: var(--lwc-spacingXSmall);
+    padding-bottom: var(--lwc-spacingXSmall);
 }
 .errorMessage {
-    color: red;
-    font-weight: 600;
+    color: var(--lwc-brandHeaderContrastWarm);
+    font-weight: var(--lwc-fontWeightBold);
 }

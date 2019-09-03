@@ -100,7 +100,7 @@ public with sharing class FormulaBuilderController {
         Set<String> resultTypes = new Set<String>{'BOOLEAN', 'NUMBER', 'DATE', 'DATETIME', 'STRING'};
 
         for (String resultType : resultTypes) {
-            String result = evaluateFormula(formula, resultType);
+            String result = FormulaEvaluator.evaluateFormula(formula, resultType);
 
             if (!String.isEmpty(result)) {
                 return result;
@@ -116,7 +116,7 @@ public with sharing class FormulaBuilderController {
             formula = formula.replaceFirst(mMatcher.group(0), item);
         }
         
-        return evaluateFormula(formula, 'STRING');
+        return FormulaEvaluator.evaluateFormula(formula, 'STRING');
 
     }
 
@@ -152,22 +152,6 @@ public with sharing class FormulaBuilderController {
         
 
         return formula;
-    }
-
-    public static String evaluateFormula (String formula, String resultType) {
-        Pattern mPattern = pattern.compile('[0-9.]{3,}');
-        Matcher mMatcher = mPattern.matcher(formula);
-        Integer scale = 0;
-
-        while(mMatcher.find()){
-            List<String> items = mMatcher.group(0).split('[.]');
-            if (items.size() > 1 && items[1].length() > scale) {
-                scale = items[1].length();
-            }
-        }
-
-        RegExps.ParserContext parserContext = ApexExpressionParserV2.evaluate(formula, resultType, scale);
-        return String.valueOf(parserContext.result);
     }
 
     public class ContextWraper {

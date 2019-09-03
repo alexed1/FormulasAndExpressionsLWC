@@ -1,9 +1,14 @@
-import { LightningElement, track } from 'lwc';
+import { LightningElement, track, api } from 'lwc';
 import parseFormula from '@salesforce/apex/FormulaBuilderController.parseFormula';
 
 export default class FormulaBuilder extends LightningElement {
 
+    @api contextVariables = [];
+    @api supportedFunctions = [];
+    @api supportedOperators = [];
+
     connectedCallback() {
+
         let fields = [];
         let functions = [];
         let operators = [];
@@ -46,25 +51,6 @@ export default class FormulaBuilder extends LightningElement {
 
     @track formula = '';
     @track parsedFormula = '';
-
-    @track supportedOperators = ['+', '-', '/', '*', '==', '!=', '>', '<', '>=', '<=', '<>'];
-    @track supportedFunctions = [
-        'AND', 'OR', 'NOT','XOR', 'IF', 'CASE', 'LEN',  'SUBSTRING','LEFT','RIGHT',
-        'ISBLANK','ISPICKVAL','CONVERTID', 'ABS','ROUND','CEIL','FLOOR','SQRT','ACOS',
-        'ASIN','ATAN','COS','SIN','TAN','COSH','SINH','TANH','EXP','LOG','LOG10','RINT',
-        'SIGNUM','INTEGER', 'POW','MAX','MIN','MOD', 'TEXT','DATETIME','DECIMAL','BOOLEAN',
-        'DATE', 'DAY','MONTH','YEAR','HOURS','MINUTES','SECONDS', 'ADDDAYS','ADDMONTHS',
-        'ADDYEARS','ADDHOURS','ADDMINUTES','ADDSECONDS'
-    ];
-    @track contextVariables = [
-        {"Name" : "foo", "Value" : "555", "Fields" : []}, 
-        {"Name" : "bar", "Value" : "34", "Fields" : []}, 
-        {"Name" : "$Record", "Value" : "0062v00001Fd64cAAB", "Fields" : ["Id", "Name", "CreatedDate", "LastModifiedDate"]},
-        {"Name" : "$User", "Value" : "", "Fields" : ["Country", "IsActive"]},
-        {"Name" : "$Organization", "Value" : "", "Fields" : ["Name", "Country"]},
-        {"Name" : "$Profile", "Value" : "", "Fields" : ["CreatedDate", "Name"]},
-        {"Name" : "$Setup", "Value" : "", "Fields" : ["PackageSettings__c.Expiration__c", "HierarchyCS__c.Value__c", "HierarchyCS__c.ValueNumber__c"]}
-    ];
 
     selectOperator(event) {
         if (event.detail.value !== '') {
