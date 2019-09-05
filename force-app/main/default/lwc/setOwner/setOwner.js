@@ -33,9 +33,9 @@ const typeMapping = {
 export default class addNewMembers extends LightningElement {
     @api notifyAssignee = false;
     @api memberId;
-    @api availableObjectTypes = 'User, Queue';
-    @api supportedAddCapabilities = 'Set';
-    @api notifyAssigneeLabel = 'Notify Assignee';
+    @api availableObjectTypes;
+    @api supportedAddCapabilities;
+    @api notifyAssigneeLabel;
 
     @track memberData;
     @track showMemberSelect = false;

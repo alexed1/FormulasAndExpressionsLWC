@@ -32,6 +32,21 @@ global with sharing class FieldPickerController {
 
         return result;
     }
+    @AuraEnabled(cacheable=true)
+    public static List<Member> getPicklistValues(String objectApiName, String fieldName) {
+        Schema.SObjectType objType = Schema.getGlobalDescribe().get(objectApiName);//From the Object Api name retrieving the SObject
+        List<Member> options = new List<Member>();
+        Schema.DescribeSObjectResult objDescribe = objType.getDescribe();
+        Map<String, Schema.SObjectField> fieldMap = objDescribe.fields.getMap();
+        List<Schema.PicklistEntry> values =
+                fieldMap.get(fieldName).getDescribe().getPickListValues();
+        for (Schema.PicklistEntry a : values) {
+            options.add(new Member(a.getValue(), a.getLabel()));
+        }
+        System.debug('options:::'+options);
+        return options;
+    }
+
 
     global class Member {
         @AuraEnabled global String label;

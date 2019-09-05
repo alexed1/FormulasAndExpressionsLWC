@@ -1,7 +1,7 @@
 import {LightningElement, track, api, wire} from 'lwc';
 
 export default class expressionBuilder extends LightningElement {
-    @api objectType = 'Account'; 
+    @api objectType = 'Account';
     @api expressions = [];
     @api customCondition;
 

@@ -12,6 +12,7 @@ export default class fieldPicker extends LightningElement {
     @api fieldLabel = 'Field';
     @api objectType;
     @api field;
+    @api isObjectDisabled;
 
     @api supportedObjectTypes;
     @api hideObjectTypeSelect = false;
