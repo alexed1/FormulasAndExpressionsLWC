@@ -21,7 +21,7 @@
                         <a onclick={toggleFormulaEditor}>{formulaEditorMessage}</a>
                         <template if:true={formulaEditorVisible}>
                             <div>
-                                Formula Editor Here
+                                <c-formula-builder object-name={objectType}></c-formula-builder>
                             </div>
                         </template>
                         <template if:false={formulaEditorVisible}>
