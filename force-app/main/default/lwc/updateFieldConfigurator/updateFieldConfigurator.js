@@ -57,11 +57,6 @@ export default class updateFieldConfigurator extends LightningElement {
         // event.detail.notifyAssignee;
     }
 
-    handlePickListChange(event) {
-        this._value = event.detail.value;
-        // event.detail.selectionType;
-    }
-
     handleTextOptionValueChange(event) {
         this.textOption = event.detail.value;
     }

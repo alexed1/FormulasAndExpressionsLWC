@@ -16,13 +16,14 @@ export default class setPickList extends LightningElement {
     @track _value;
     @track availableValues;
 
+    nullValue = '__null';
     labels = {
         none: NonePicklistValueLabel
     };
 
     connectedCallback() {
         this._selectionType = this.selectionType;
-        this._value = this.value;
+        this._value = (this.value === null ? this.nullValue : this.value);
     }
 
     @wire(getPicklistValues, {objectApiName: '$picklistObjectName', fieldName: '$picklistFieldName'})
@@ -36,23 +37,24 @@ export default class setPickList extends LightningElement {
 
     get picklistOptions() {
         return [
-            {label: this.valueAboveRadioLabel, value: 'valueAboveRadioLabel'},
-            {label: this.valueBelowRadioLabel, value: 'valueBelowRadioLabel'},
-            {label: this.specificValueRadioLabel, value: 'specificValueRadioLabel'}];
+            {label: this.valueAboveRadioLabel, value: '__PicklistPrevious'},
+            {label: this.valueBelowRadioLabel, value: '__PicklistNext'},
+            {label: this.specificValueRadioLabel, value: this.nullValue}];
     }
 
     get isSpecificValue() {
-        return this._selectionType === 'specificValueRadioLabel';
+        return this._selectionType === this.nullValue;
     }
 
     handleOptionChange(event) {
         this._selectionType = event.detail.value;
+        this.handlePicklistValueChange(event);
     }
 
     handlePicklistValueChange(event) {
         const memberRefreshedEvt = new CustomEvent('picklistselected', {
             bubbles: true, detail: {
-                value: event.detail.value,
+                value: (event.detail.value === this.nullValue ? null : event.detail.value),
                 selectionType: this._selectionType
             }
         });
