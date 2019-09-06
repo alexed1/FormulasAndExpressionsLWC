@@ -1,0 +1,54 @@
+<template>
+    <lightning-layout class="slds-p-left--small" multiple-rows="true">
+        <lightning-layout-item size="4" class="slds-p-left--small">
+            <lightning-layout>
+                <lightning-layout-item size="1" class="slds-align-bottom">
+                    <div class="slds-text-heading_large">
+                        {position}
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="11">
+                    <c-field-picker
+                                    hide-object-type-select="true"
+                                    supported-object-types="Account"
+                                    onfieldselected={handleFieldChange}
+                                    field={fieldName}
+                                    object-type={objectType}
+                    ></c-field-picker>
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-layout-item>
+        <lightning-layout-item size="2" class="slds-p-left--small">
+            <lightning-combobox
+                    name="objectTypeField"
+                    label="Operator"
+                    value={operator}
+                    placeholder="Operator"
+                    options={availableOperators}
+                    onchange={handleOperatorChange}
+            ></lightning-combobox>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" class="slds-p-left--small">
+            <lightning-layout>
+                <lightning-layout-item size="11">
+                    <div onkeyup={handleSearchKeyUp}>
+                        <lightning-input
+                                name="field-value"
+                                label="Value"
+                                type="search"
+                                value={value}
+                                onchange={handleValueChange}
+                        ></lightning-input>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="1" class="slds-p-left--xx-small slds-align-bottom">
+                    <div onclick={handleExpressionRemove}>
+                        <lightning-icon icon-name="utility:delete" alternative-text="Delete"></lightning-icon>
+                    </div>
+                </lightning-layout-item>
+            </lightning-layout>
+
+        </lightning-layout-item>
+
+    </lightning-layout>
+</template>
