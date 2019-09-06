@@ -1,4 +1,4 @@
-import { LightningElement, track, api } from 'lwc';
+import {LightningElement, track, api} from 'lwc';
 import getFieldList from '@salesforce/apex/FormulaBuilderController.getFieldList';
 
 export default class FormulaBuilder extends LightningElement {
@@ -10,12 +10,12 @@ export default class FormulaBuilder extends LightningElement {
     @track name;
 
     @api supportedFunctions = [
-        'AND', 'OR', 'NOT','XOR', 'IF', 'CASE', 'LEN',  'SUBSTRING','LEFT','RIGHT',
-        'ISBLANK','ISPICKVAL','CONVERTID', 'ABS','ROUND','CEIL','FLOOR','SQRT','ACOS',
-        'ASIN','ATAN','COS','SIN','TAN','COSH','SINH','TANH','EXP','LOG','LOG10','RINT',
-        'SIGNUM','INTEGER', 'POW','MAX','MIN','MOD', 'TEXT','DATETIME','DECIMAL','BOOLEAN',
-        'DATE', 'DAY','MONTH','YEAR','HOURS','MINUTES','SECONDS', 'ADDDAYS','ADDMONTHS',
-        'ADDYEARS','ADDHOURS','ADDMINUTES','ADDSECONDS'
+        'AND', 'OR', 'NOT', 'XOR', 'IF', 'CASE', 'LEN', 'SUBSTRING', 'LEFT', 'RIGHT',
+        'ISBLANK', 'ISPICKVAL', 'CONVERTID', 'ABS', 'ROUND', 'CEIL', 'FLOOR', 'SQRT', 'ACOS',
+        'ASIN', 'ATAN', 'COS', 'SIN', 'TAN', 'COSH', 'SINH', 'TANH', 'EXP', 'LOG', 'LOG10', 'RINT',
+        'SIGNUM', 'INTEGER', 'POW', 'MAX', 'MIN', 'MOD', 'TEXT', 'DATETIME', 'DECIMAL', 'BOOLEAN',
+        'DATE', 'DAY', 'MONTH', 'YEAR', 'HOURS', 'MINUTES', 'SECONDS', 'ADDDAYS', 'ADDMONTHS',
+        'ADDYEARS', 'ADDHOURS', 'ADDMINUTES', 'ADDSECONDS'
     ];
 
     @api supportedOperators = ['+', '-', '/', '*', '==', '!=', '>', '<', '>=', '<=', '<>'];
@@ -24,17 +24,27 @@ export default class FormulaBuilder extends LightningElement {
     get objectName() {
         return this.name
     }
+
     set objectName(name) {
-        this.name = name
-        getFieldList({ objectName: name })
+        this.name = name;
+        getFieldList({objectName: name})
             .then(result => {
-                let fields = []
+                let fields = [];
                 result.forEach(fieldName => {
                     let fieldValue = name + '.' + fieldName;
-                    fields.push({ label: fieldName, value: fieldValue });
-                })
+                    fields.push({label: fieldName, value: fieldValue});
+                });
                 this.fields = fields
             })
+    }
+
+    formulaChanged(event) {
+        const memberRefreshedEvt = new CustomEvent('formulachanged', {
+            bubbles: true, detail: {
+                value: this.formula
+            }
+        });
+        this.dispatchEvent(memberRefreshedEvt);
     }
 
     connectedCallback() {
@@ -44,19 +54,19 @@ export default class FormulaBuilder extends LightningElement {
 
         this.supportedFunctions.forEach(func => {
             let funcValue = func + '()';
-            functions.push({ label: func, value: funcValue });
-        })
+            functions.push({label: func, value: funcValue});
+        });
 
         this.functions = functions;
-        
+
         this.supportedOperators.forEach(operator => {
-            operators.push({ label: operator, value: operator });
-        })
+            operators.push({label: operator, value: operator});
+        });
 
         this.operators = operators;
-        
+
     }
-    
+
     selectOperator(event) {
         if (event.detail.value !== '') {
             this.formula = this.formula + ' ' + event.detail.value + ' ';

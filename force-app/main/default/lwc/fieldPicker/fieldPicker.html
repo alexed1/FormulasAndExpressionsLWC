@@ -29,6 +29,11 @@
                     options={fields}
                     disabled={isFieldDisabled}
                     onchange={handleFieldChange}></lightning-combobox>
+            <template if:true={isFieldTypeVisible}>
+                <div class="slds-p-around--xx-small">
+                    Field Type: {fieldType}
+                </div>
+            </template>
         </template>
     </div>
 </template>

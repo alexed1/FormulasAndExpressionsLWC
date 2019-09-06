@@ -16,6 +16,7 @@ export default class fieldPicker extends LightningElement {
 
     @api supportedObjectTypes;
     @api hideObjectTypeSelect = false;
+    @api showFieldType = false;
     @api supportedFieldRelationTypes;
 
     @track _objectType;
@@ -61,7 +62,9 @@ export default class fieldPicker extends LightningElement {
                         fieldResults.push({
                             label: fields[field].label,
                             value: fields[field].apiName,
-                            dataType: fields[field].dataType
+                            dataType: fields[field].dataType,
+                            required: fields[field].required,
+                            updateable: fields[field].updateable
                         });
                     }
                 }
@@ -72,6 +75,10 @@ export default class fieldPicker extends LightningElement {
             }
             this.fields = fieldResults;
         }
+    }
+
+    get isFieldTypeVisible() {
+        return (this.fieldType && this.showFieldType);
     }
 
     isTypeSupported(field) {
@@ -109,6 +116,14 @@ export default class fieldPicker extends LightningElement {
         return this._objectType == null || this.isError;
     }
 
+    get fieldType() {
+        if (this._field) {
+            return this.fields.find(e => e.value == this._field).dataType;
+        } else {
+            return null;
+        }
+    }
+
     handleObjectChange(event) {
         this._objectType = event.detail.value;
         this._field = null;
@@ -118,10 +133,13 @@ export default class fieldPicker extends LightningElement {
     handleFieldChange(event) {
         this._field = event.detail.value;
         const memberRefreshedEvt = new CustomEvent('fieldselected', {
-            bubbles: true, detail: {
-                objectType: this._objectType,
-                fieldName: this._field,
-                dataType: this.fields.find(curField => curField.value == this._field).dataType
+            bubbles: true,
+            // detail: this.fields.find(curField => curField.value == this._field)
+            detail: {
+                ...this.fields.find(curField => curField.value == this._field), ...{
+                    objectType: this._objectType,
+                    fieldName: this._field
+                }
             }
         });
         this.dispatchEvent(memberRefreshedEvt);
