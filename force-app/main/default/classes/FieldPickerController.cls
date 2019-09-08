@@ -23,13 +23,15 @@ global with sharing class FieldPickerController {
         Map<String, Schema.SObjectType> gd = Schema.getGlobalDescribe();
 
         for (Schema.SObjectType thisObj : gd.values()) {
-            String objectType = thisObj.getDescribe().getName();
-            String objectLabel = thisObj.getDescribe().getLabel();
-            if (allowedStandardObjects.containsKey(objectType) && (supportedObjectTypes != null && (supportedObjectTypes.contains(objectType.toLowerCase())) || supportedObjectTypes.size() == 0) || supportedObjectTypes == null) {
+            Schema.DescribeSObjectResult objDescribe = thisObj.getDescribe();
+            String objectType = objDescribe.getName();
+            String objectLabel = objDescribe.getLabel();
+            Boolean isCustom = objDescribe.isCustom();
+            if ((isCustom || allowedStandardObjects.containsKey(objectType)) && (supportedObjectTypes != null && (supportedObjectTypes.contains(objectType.toLowerCase())) || supportedObjectTypes.size() == 0) || supportedObjectTypes == null) {
                 result.add(new Member(objectType, objectLabel));
             }
         }
-
+        result.sort();
         return result;
     }
     @AuraEnabled(cacheable=true)
@@ -43,17 +45,24 @@ global with sharing class FieldPickerController {
         for (Schema.PicklistEntry a : values) {
             options.add(new Member(a.getValue(), a.getLabel()));
         }
-        System.debug('options:::'+options);
+        options.sort();
+
         return options;
     }
 
 
-    global class Member {
+    global class Member implements Comparable {
         @AuraEnabled global String label;
         @AuraEnabled global String value;
         public Member(String value, String label) {
             this.label = label;
             this.value = value;
+        }
+        global Integer compareTo(Object compareTo) {
+            Member curMember = (Member) compareTo;
+            if (label == curMember.label) return 0;
+            if (label > curMember.label) return 1;
+            return -1;
         }
     }
 

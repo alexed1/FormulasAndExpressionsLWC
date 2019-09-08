@@ -12,7 +12,7 @@ export default class fieldPicker extends LightningElement {
     @api fieldLabel = 'Field';
     @api objectType;
     @api field;
-    @api isObjectDisabled;
+    @api objectDisabled;
 
     @api supportedObjectTypes;
     @api hideObjectTypeSelect = false;
@@ -64,7 +64,10 @@ export default class fieldPicker extends LightningElement {
                             value: fields[field].apiName,
                             dataType: fields[field].dataType,
                             required: fields[field].required,
-                            updateable: fields[field].updateable
+                            updateable: fields[field].updateable,
+                            referenceTo: (fields[field].referenceToInfos.length > 0 ? fields[field].referenceToInfos.map(curRef => {
+                                return curRef.apiName
+                            }) : [])
                         });
                     }
                 }
@@ -74,6 +77,9 @@ export default class fieldPicker extends LightningElement {
                 }
             }
             this.fields = fieldResults;
+            if (this.fields) {
+                this.dispatchDataChangedEvent({...this.fields.find(curField => curField.value == this._field), ...{isInit: true}});
+            }
         }
     }
 
@@ -127,16 +133,20 @@ export default class fieldPicker extends LightningElement {
     handleObjectChange(event) {
         this._objectType = event.detail.value;
         this._field = null;
+        this.dispatchDataChangedEvent({});
         this.errors = [];
     }
 
     handleFieldChange(event) {
         this._field = event.detail.value;
+        this.dispatchDataChangedEvent(this.fields.find(curField => curField.value == this._field));
+    }
+
+    dispatchDataChangedEvent(detail) {
         const memberRefreshedEvt = new CustomEvent('fieldselected', {
             bubbles: true,
-            // detail: this.fields.find(curField => curField.value == this._field)
             detail: {
-                ...this.fields.find(curField => curField.value == this._field), ...{
+                ...detail, ...{
                     objectType: this._objectType,
                     fieldName: this._field
                 }

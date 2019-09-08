@@ -1,12 +1,16 @@
 import {LightningElement, api, wire, track} from 'lwc';
 
 export default class updateFieldConfigurator extends LightningElement {
-    @api objectType = 'Account';
+    @api objectType ='Account';
     @api fieldName;
     @api value;
 
-    @track selectedField;
     @track _value;
+    @track _objectType;
+    @track _fieldName;
+
+    @track selectedField;
+
     @track textOption;
     @track formulaEditorVisible = false;
     @track formulaEditorMessage = 'Show Formula Editor';
@@ -17,12 +21,15 @@ export default class updateFieldConfigurator extends LightningElement {
         fieldNotUpdatable: 'Select field can not be updated'
     };
 
-    connectedCallback() {
-        //TODO: selectedField - object; fieldName- String
+    customReferenceTypes = ['User'];
 
-        // if (this.fieldName) {
-        //     this.selectedField = this.fieldName;
-        // }
+    connectedCallback() {
+        if (this.fieldName) {
+            this._fieldName = this.fieldName;
+        }
+        if (this.objectType) {
+            this._objectType = this.objectType;
+        }
         if (this.value) {
             this._value = this.value;
         }
@@ -45,7 +52,12 @@ export default class updateFieldConfigurator extends LightningElement {
 
     handleFieldChange(event) {
         this.selectedField = JSON.parse(JSON.stringify(event.detail));
-        this._value = null;
+        if (this._objectType != this.selectedField.objectType) {
+            this._objectType = this.selectedField.objectType;
+        }
+        if (!this.selectedField.isInit) {
+            this._value = null;
+        }
     }
 
     handleValueChange(event) {
@@ -79,11 +91,11 @@ export default class updateFieldConfigurator extends LightningElement {
     }
 
     get fieldProperties() {
-        if (this.selectedField) {
+        if (this.selectedField && this.selectedField.fieldName) {
             return {
                 ...this.selectedField, ...{
-                    isTextField: this.selectedField.dataType === 'String' || this.selectedField.dataType === 'Reference',
-                    isOwnerField: this.selectedField.fieldName === 'OwnerId',
+                    isTextField: this.selectedField.dataType === 'String' || (this.selectedField.dataType === 'Reference' && !this.customReferenceTypes.some(refType => this.selectedField.referenceTo.includes(refType))),
+                    isUserReferenceField: this.selectedField.referenceTo.includes('User'),
                     isBoolean: this.selectedField.dataType === 'Boolean',
                     isPicklist: this.selectedField.dataType === 'Picklist',
                     isDateTime: this.selectedField.dataType === 'DateTime',
@@ -94,8 +106,8 @@ export default class updateFieldConfigurator extends LightningElement {
                     isTextArea: this.selectedField.dataType === 'TextArea',
                     isPhone: this.selectedField.dataType === 'Phone',
                     isUrl: this.selectedField.dataType === 'Url',
-                    isDisabled: !this.selectedField.updateable,
-                    isRequired: this.selectedField.required
+                    isDisabled: this.selectedField.updateable !== true,
+                    isRequired: this.selectedField.required === true
                 }
             }
         }
