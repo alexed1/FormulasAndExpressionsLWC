@@ -2,8 +2,32 @@
     "compilerOptions": {
         "baseUrl": ".",
         "paths": {
+            "c/buttonUtils": [
+                "buttonUtils/buttonUtils.js"
+            ],
+            "c/expressionBuilder": [
+                "expressionBuilder/expressionBuilder.js"
+            ],
+            "c/expressionLine": [
+                "expressionLine/expressionLine.js"
+            ],
+            "c/fieldPicker": [
+                "fieldPicker/fieldPicker.js"
+            ],
             "c/formulaBuilder": [
                 "formulaBuilder/formulaBuilder.js"
+            ],
+            "c/lwcLogger": [
+                "lwcLogger/lwcLogger.js"
+            ],
+            "c/setOwner": [
+                "setOwner/setOwner.js"
+            ],
+            "c/setPickList": [
+                "setPickList/setPickList.js"
+            ],
+            "c/updateFieldConfigurator": [
+                "updateFieldConfigurator/updateFieldConfigurator.js"
             ]
         },
         "experimentalDecorators": true

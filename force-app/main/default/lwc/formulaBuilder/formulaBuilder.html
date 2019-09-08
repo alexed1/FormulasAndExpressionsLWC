@@ -27,7 +27,7 @@
                                 onchange={selectOperator}>
             </lightning-combobox>
         </div>
-        <lightning-textarea onchange={changeFormula} value={formula} name="formula" variant="label-hidden"></lightning-textarea>
+        <lightning-textarea onchange={changeFormula} value={formula} name="formula" variant="label-hidden" onblur={formulaChanged}></lightning-textarea>
         <p>Use formula syntax</p>
     </div>
 </template>

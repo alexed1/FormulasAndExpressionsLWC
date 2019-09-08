@@ -6,5 +6,6 @@
     <masterLabel>updateFieldConfigurator</masterLabel>
     <targets>
         <target>lightning__RecordPage</target>
+        <target>lightning__FlowScreen</target>
     </targets>
 </LightningComponentBundle>

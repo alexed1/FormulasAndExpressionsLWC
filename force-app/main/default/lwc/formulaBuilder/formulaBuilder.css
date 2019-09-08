@@ -1,5 +1,5 @@
-.container {
-    background-color: var(--lwc-brandHeaderContrastInverse);
+ .container {
+    background-color: var(--lwc-colorBackgroundAlt);
     padding: var(--lwc-spacingMedium);
     border-radius: var(--lwc-borderRadiusMedium);
     position: relative;
@@ -16,14 +16,10 @@ lightning-combobox {
     padding-right: var(--lwc-spacingXSmall);
 }
 lightning-button {
-    margin-left: var(--lwc-spacingNone);
+    margin-left: 0;
 }
 .resultContainer {
     display: flex;
     padding-top: var(--lwc-spacingXSmall);
     padding-bottom: var(--lwc-spacingXSmall);
-}
-.errorMessage {
-    color: var(--lwc-brandHeaderContrastWarm);
-    font-weight: var(--lwc-fontWeightBold);
 }
