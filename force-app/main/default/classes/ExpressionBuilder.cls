@@ -1,0 +1,305 @@
+public with sharing class ExpressionBuilder {
+    @AuraEnabled
+    public static String assembleFormulaString (String customLogic, String logicType, String expressionLines) {
+
+        List<ExpressionLineWraper> lines = (List<ExpressionLineWraper>)JSON.deserialize(expressionLines, List<ExpressionLineWraper>.class);
+
+        String result = '';
+        String resultEnd = '';
+
+        if (logicType == 'AND' || logicType == 'OR') {
+            customLogic = simpleFormulaConversion(new List<String>(), logicType, lines.size());
+        }
+
+        if (logicType == 'CUSTOM') {
+
+            Map<String, String> items = new Map<String, String>();
+            Integer index = 1;
+            Boolean needRerun = true;
+
+            while (needRerun) {
+
+                Pattern mPattern = pattern.compile('\\([0-9A-z\\s]*\\)');
+                Matcher mMatcher = mPattern.matcher(customLogic); 
+                needRerun = false;
+
+                while (mMatcher.find()){
+                    needRerun = true;
+                    items.put('F' + index, mMatcher.group(0));
+                    customLogic = customLogic.replaceAll('\\(' + mMatcher.group(0) + '\\)', 'F' + index);
+                    index = index + 1;
+                }
+                
+            }
+
+            customLogic = customLogic.replaceAll(' ', '');
+
+            for (String key : items.keySet()) {
+
+                String value = items.get(key).replaceAll('[\\(\\)\\s]', '').trim();
+                
+                if (value.indexOf('AND') > -1) {
+                    List<String> formulaItems = value.split('AND');
+                    items.put(key, simpleFormulaConversion(formulaItems, 'AND', formulaItems.size()));
+                }
+
+                if (value.indexOf('OR') > -1) {
+                    List<String> formulaItems = value.split('OR');
+                    items.put(key, simpleFormulaConversion(formulaItems, 'OR', formulaItems.size()));
+                }
+
+            }
+
+            for (String key : items.keySet()) {
+                String oldValue = items.get(key);
+                Pattern mPattern = pattern.compile('F[0-9]{1,}');
+                Matcher mMatcher = mPattern.matcher(oldValue);
+
+                while (mMatcher.find()){
+                    String newValue = oldValue.replaceAll(mMatcher.group(0), items.get(mMatcher.group(0)));
+                    items.put(key, newValue);
+                }
+            }
+
+            if (customLogic.indexOf('AND') > -1) {
+                List<String> formulaItems = customLogic.split('AND');
+                customLogic = simpleFormulaConversion(formulaItems, 'AND', formulaItems.size());
+            }
+
+            if (customLogic.indexOf('OR') > -1) {
+                List<String> formulaItems = customLogic.split('OR');
+                customLogic = simpleFormulaConversion(formulaItems, 'OR', formulaItems.size());
+            }
+
+            Pattern mPattern = pattern.compile('F[0-9]{1,}');
+            Matcher mMatcher = mPattern.matcher(customLogic);
+
+            while (mMatcher.find()){
+                customLogic = customLogic.replaceAll(mMatcher.group(0), items.get(mMatcher.group(0)));
+            }
+        }
+
+        Pattern mPattern = pattern.compile('[0-9]{1,}');
+        Matcher mMatcher = mPattern.matcher(customLogic);
+        Set<String> indexs = new Set<String>();
+
+        while (mMatcher.find()){
+            indexs.add(mMatcher.group(0));
+        }
+
+        for (String ind : indexs) {
+            customLogic = customLogic.replaceAll(ind, 'F' + ind);
+        }
+
+        for (Integer i = 0; i < lines.size(); i++) {
+            Integer foemulaIndex = i + 1;
+            mPattern = pattern.compile('F[' + foemulaIndex + ']{1,}');
+            mMatcher = mPattern.matcher(customLogic);
+
+            while (mMatcher.find()) {
+                customLogic = customLogic.replaceAll(mMatcher.group(0), convertExpressionLines(lines[i]));
+            }
+        }
+
+        return customLogic;
+        
+    }
+
+    @AuraEnabled
+    public static String disassemblyFormulaString (String expression) {
+        String parentCondition = expression.indexOf('AND') == 0 ? ' AND ' : ' OR ';
+        expression = expression.replaceAll('\\$Record.', '');
+
+        Pattern mPattern = pattern.compile('[^ANDOR(][\\w\\s!=<>.,"()]{1,}');
+        Matcher mMatcher = mPattern.matcher(expression);
+
+        while (mMatcher.find()){
+            expression = mMatcher.group(0).removeEnd(')');
+        }
+
+        mPattern = pattern.compile('LEFT\\([\\w\\s,]{1,}\\)[\\w\\s]==[\\s\\w]{1,}');
+        mMatcher = mPattern.matcher(expression);
+
+        while (mMatcher.find()){
+            List<String> values = mMatcher.group(0).split(' == ');
+            values[0] = values[0].replaceAll('LEFT\\(', '').split(',')[0];
+            String newValue = values[0] + ' starts_with ' + values[1];
+            expression = expression.replaceAll(mMatcher.group(0).replace('(', '\\(').replace(')', '\\)'), newValue);
+        }
+
+        mPattern = pattern.compile('(BOOLEAN|DECIMAL|DATE|DATETIME|INTEGER|TEXT)\\([\\w"]{1,}\\)');
+        mMatcher = mPattern.matcher(expression);
+
+        while (mMatcher.find()) {
+            String newValue = mMatcher.group(0).replaceAll('[\\w]{1,}\\("', '').replaceAll('"\\)', '');
+            expression = expression.replaceAll(mMatcher.group(0).replace('(', '\\(').replace(')', '\\)'), newValue);
+        }
+
+        expression = expression.replaceAll('==', 'equals');
+        expression = expression.replaceAll('!=', 'not_equal_to');
+        expression = expression.replaceAll('<', 'less_then');
+        expression = expression.replaceAll('>=', 'greater_or_equal');
+        expression = expression.replaceAll('>', 'greater_then');
+        expression = expression.replaceAll('<=', 'less_or_equal');
+
+        Set<String> conditions = new Set<String>(expression.replaceAll('OR\\(', '')
+                                                            .replaceAll('AND\\(', '')
+                                                            .replaceAll('\\)', '')
+                                                            .split('[,\\s]{2,}'));
+
+        Integer index = 1;
+
+        for (String condition : conditions) {
+            expression = expression.replaceAll(condition, String.valueOf(index));
+            index++;
+        }
+
+        Map<String, String> items = new Map<String, String>();
+        index = 1;
+        Boolean needRerun = true;
+        
+        while (needRerun) {
+
+            mPattern = pattern.compile('(OR|AND)\\([\\w\\s,]{1,}\\)');
+            mMatcher = mPattern.matcher(expression);
+            needRerun = false;
+
+            while (mMatcher.find()){
+                needRerun = true;
+                items.put('F' + index, mMatcher.group(0));
+                expression = expression.replaceAll(mMatcher.group(0).replace('(', '\\(').replace(')', '\\)'), 'F' + index);
+                index = index + 1;
+            }
+            
+        }
+
+        expression = expression.replaceAll(', ', parentCondition);
+        
+        for (String key : items.keySet()) {
+            String values = items.get(key);
+            String condition = values.indexOf('AND') == 0 ? ' AND ' : ' OR ';
+            
+            mPattern = pattern.compile('[^ANDOR(][\\w\\s,]{1,}\\)');
+            mMatcher = mPattern.matcher(values);
+
+            while (mMatcher.find()){
+                values = mMatcher.group(0).removeEnd(')');
+            }
+
+            values = '(' + values.replaceAll(', ', condition) + ')';
+            items.put(key, values);
+
+            mPattern = pattern.compile('F[0-9]{1,}');
+            mMatcher = mPattern.matcher(values);
+
+            while (mMatcher.find()){
+                String newValue = values.replaceAll(mMatcher.group(0), items.get(mMatcher.group(0)));
+                items.put(key, newValue);
+            }
+        }
+
+        mPattern = pattern.compile('F[0-9]{1,}');
+        mMatcher = mPattern.matcher(expression);
+
+        while (mMatcher.find()){
+            expression = expression.replaceAll(mMatcher.group(0), items.get(mMatcher.group(0)));
+        }
+
+        return expression;
+    }
+
+    public static String simpleFormulaConversion (List<String> formulaItems, String logicType, Integer size) {
+
+        String result = logicType + '(';
+        String resultEnd = '';
+
+        for (Integer i = 0; i < size; i++) {
+            String itemValue = formulaItems.size() > 0 ? formulaItems[i] : String.valueOf(i + 1);
+            if (i != (size - 1)) {
+                result = result + itemValue + ', ';
+            } else {
+                result = result + itemValue + ')';
+            } 
+        }
+
+        return result + resultEnd;
+    }
+
+    public static String convertExpressionLines (ExpressionLineWraper expressionLine) {
+        String leftItem = '\\$Record.' + expressionLine.fieldName;
+        String rightItem = expressionLine.value;
+        String dataType = expressionLine.dataType.toUpperCase();
+        String result = '';
+
+        if (expressionLine.operator == 'equals') {
+            result = leftItem + ' == ' + convertValueType(rightItem, dataType);
+        }
+
+        if (expressionLine.operator == 'not_equal_to') {
+            result = leftItem + ' != ' + convertValueType(rightItem, dataType);
+        }
+
+        if (expressionLine.operator == 'starts_with') {
+            result = 'LEFT(' + leftItem + ', ' + expressionLine.value.length() + ') == ' + convertValueType(rightItem, dataType);
+        }
+
+        if (expressionLine.operator == 'contains') {
+
+        }
+
+        if (expressionLine.operator == 'does_not_contain') {
+
+        }
+
+        if (expressionLine.operator == 'less_then') {
+            result = leftItem + ' < ' + convertValueType(rightItem, dataType);
+        }
+
+        if (expressionLine.operator == 'greater_or_equal') {
+            result = leftItem + ' >= ' + convertValueType(rightItem, dataType);
+        }
+
+        if (expressionLine.operator == 'greater_then') {
+            result = leftItem + ' > ' + convertValueType(rightItem, dataType);
+        }
+
+        if (expressionLine.operator == 'less_or_equal') {
+            result = leftItem + ' <= ' + convertValueType(rightItem, dataType);
+        }
+
+        if (expressionLine.operator == 'includes') {
+
+        }
+
+        if (expressionLine.operator == 'excludes') {
+
+        }
+
+        return result;
+
+    }
+
+    public static String convertValueType (String fieldValue, String dataType) {
+        if (dataType == 'BOOLEAN') {
+            return 'BOOLEAN("' + fieldValue + '")';
+        } else if (dataType == 'CURRENCY' || dataType == 'PERCENT' || dataType == 'DOUBLE') {
+            return 'DECIMAL("' + fieldValue + '")';
+        } else if (dataType == 'DATE') {
+            return 'DATE("' + fieldValue + '")';
+        } else if (dataType == 'DATETIME') {
+            return 'DATETIME("' + fieldValue + '")';
+        } else if (dataType == 'INTEGER') {
+            return 'INTEGER("' + fieldValue + '")';
+        } else {
+            return 'TEXT("' + fieldValue + '")';
+        }
+    }
+
+    public class ExpressionLineWraper {
+        public String objectType;
+        public String fieldName;
+        public String dataType;
+        public String operator;
+        public String value;
+    }
+}
