@@ -3,6 +3,7 @@ import {LightningElement, api, track, wire} from 'lwc';
 import Search from '@salesforce/label/c.Search';
 import For from '@salesforce/label/c.For';
 import TooManyResultsMessage from '@salesforce/label/c.TooManyResultsMessage';
+import NoSearchResultsMessage from '@salesforce/label/c.NoSearchResultsMessage';
 import Queues from '@salesforce/label/c.Queues';
 import RelatedUsers from '@salesforce/label/c.RelatedUsers';
 import PublicGroups from '@salesforce/label/c.PublicGroups';
@@ -42,12 +43,14 @@ export default class addNewMembers extends LightningElement {
     @track label = {
         Search,
         TooManyResultsMessage,
-        For
+        For,
+        NoSearchResultsMessage
     };
     @track searchString = '';
     @track selectedType;
     @track searchResults = [];
     @track searchDisabled = false;
+    @track isSearchApplied = false;
     source = 'ownerSetter';
 
     @wire(getRecord, {recordId: '$memberId', fields: [USER_NAME_FIELD, GROUP_NAME_FIELD]})
@@ -83,7 +86,7 @@ export default class addNewMembers extends LightningElement {
         return [{
             label: 'Name',
             fieldName: 'label'
-        }].concat(generateCapabilityColumns(this.supportedAddCapabilities));
+        }].concat(generateCapabilityColumns(this.supportedAddCapabilities, true));
     }
 
     get showNotifyAssignee() {
@@ -96,6 +99,14 @@ export default class addNewMembers extends LightningElement {
         } else {
             return null;
         }
+    }
+
+    get isTableVisible() {
+        return (this.searchResults && this.searchResults.length > 0);
+    }
+
+    get isNoSearchResultsMessageVisible() {
+        return (this.searchResults && this.searchResults.length == 0 && this.searchString && this.isSearchApplied)
     }
 
     handleTypeChange(event) {
@@ -114,6 +125,7 @@ export default class addNewMembers extends LightningElement {
             });
         this.searchResults = results[this.selectedType];
 
+        this.isSearchApplied = true;
         this.searchDisabled = false;
     }
 
@@ -128,6 +140,7 @@ export default class addNewMembers extends LightningElement {
                 return;
             }
 
+            this.isSearchApplied = false;
             this.searchString = searchString;
         }
     }
@@ -146,6 +159,7 @@ export default class addNewMembers extends LightningElement {
             }
         });
         this.dispatchEvent(memberRefreshedEvt);
+        this.showMemberSelect = !this.showMemberSelect;
     }
 
     toastTheError(e, errorSource) {

@@ -3,17 +3,17 @@ export {
     splitValues
 };
 
-const generateCapabilityColumns = (labels) => {
+const generateCapabilityColumns = (labels, hideLabels) => {
     let labelsArray = labels.replace(/ /g, '').split(',');
     return labelsArray.map(curLabel => {
-        return getColumnDescriptor(curLabel);
+        return getColumnDescriptor(curLabel, hideLabels);
     });
 };
 
-const getColumnDescriptor = (curButtonLabel) => {
+const getColumnDescriptor = (curButtonLabel, hideLabels) => {
     return {
         type: 'button',
-        label: curButtonLabel,
+        label: hideLabels ? '' : curButtonLabel,
         typeAttributes: {
             label: curButtonLabel,
             name: curButtonLabel, //this is used to determine an apex method to call

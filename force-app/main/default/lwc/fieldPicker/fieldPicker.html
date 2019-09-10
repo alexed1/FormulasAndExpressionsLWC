@@ -5,34 +5,38 @@
                 <h2> {errorMessage} </h2>
             </div>
         </template>
-        <template if:false={isLoadFinished}>
+        <template if:false={isDataLoaded}>
             <div class="spinner-holder">
                 <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
             </div>
         </template>
-        <template if:true={isLoadFinished}>
+        <template if:true={isDataLoaded}>
             <template if:false={hideObjectTypeSelect}>
-                <lightning-combobox
-                        name="objectTypeField"
-                        label={objectLabel}
-                        value={_objectType}
-                        placeholder={labels.none}
-                        options={objectTypes}
-                        disabled={objectDisabled}
-                        onchange={handleObjectChange}></lightning-combobox>
+                <template if:true={isObjectLoadFinished}>
+                    <lightning-combobox
+                            name="objectTypeField"
+                            label={objectLabel}
+                            value={objectType}
+                            placeholder={labels.none}
+                            options={objectTypes}
+                            disabled={objectDisabled}
+                            onchange={handleObjectChange}></lightning-combobox>
+                </template>
             </template>
-            <lightning-combobox
-                    name="fieldField"
-                    label={fieldLabel}
-                    value={_field}
-                    placeholder={labels.none}
-                    options={fields}
-                    disabled={isFieldDisabled}
-                    onchange={handleFieldChange}></lightning-combobox>
-            <template if:true={isFieldTypeVisible}>
-                <div class="slds-p-around--xx-small">
-                    Field Type: {fieldType}
-                </div>
+            <template if:true={isFieldLoadFinished}>
+                <lightning-combobox
+                        name="fieldField"
+                        label={fieldLabel}
+                        value={_field}
+                        placeholder={labels.none}
+                        options={fields}
+                        disabled={isFieldDisabled}
+                        onchange={handleFieldChange}></lightning-combobox>
+                <template if:true={isFieldTypeVisible}>
+                    <div class="slds-p-around--xx-small">
+                        Field Type: {fieldType}
+                    </div>
+                </template>
             </template>
         </template>
     </div>

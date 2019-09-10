@@ -1,7 +1,9 @@
 import {LightningElement, api, wire, track} from 'lwc';
+import {getRecord} from 'lightning/uiRecordApi';
 
 export default class updateFieldConfigurator extends LightningElement {
-    @api objectType ='Account';
+    @api recordId;
+    @api objectType;
     @api fieldName;
     @api value;
 
@@ -14,14 +16,27 @@ export default class updateFieldConfigurator extends LightningElement {
     @track textOption;
     @track formulaEditorVisible = false;
     @track formulaEditorMessage = 'Show Formula Editor';
-
+    @track currentRecord;
     labels = {
         fieldTypeNotSupported: 'Selected field type is not supported',
         fieldValueLabel: 'Set Field Value',
-        fieldNotUpdatable: 'Select field can not be updated'
+        fieldNotUpdatable: 'Select field can not be updated',
+        fieldIsCompoundMessage: 'This is a compound field that can’t be updated directly. Update the individual field components that make up this field'
     };
 
     customReferenceTypes = ['User'];
+
+    @wire(getRecord, {recordId: '$recordId', layoutTypes: 'Compact'})
+    wiredRecord({error, data}) {
+        if (error) {
+            this.toastTheError(error, this.source);
+        } else if (data) {
+            this.currentRecord = data;
+            if (!this.objectType) {
+                this._objectType = data.apiName;
+            }
+        }
+    }
 
     connectedCallback() {
         if (this.fieldName) {
@@ -57,6 +72,15 @@ export default class updateFieldConfigurator extends LightningElement {
         }
         if (!this.selectedField.isInit) {
             this._value = null;
+        }
+        this.setDefaultPicklistValues();
+    }
+
+    setDefaultPicklistValues() {
+        if (this.textOptions && this.textOptions.length == 1) {
+            this.textOption = this.textOptions[0].value;
+        } else {
+            this.textOption = null;
         }
     }
 
@@ -94,23 +118,29 @@ export default class updateFieldConfigurator extends LightningElement {
         if (this.selectedField && this.selectedField.fieldName) {
             return {
                 ...this.selectedField, ...{
-                    isTextField: this.selectedField.dataType === 'String' || (this.selectedField.dataType === 'Reference' && !this.customReferenceTypes.some(refType => this.selectedField.referenceTo.includes(refType))),
-                    isUserReferenceField: this.selectedField.referenceTo.includes('User'),
+                    isTextField: this.isTextType(this.selectedField),
+                    isUserReferenceField: this.selectedField.referenceTo && this.selectedField.referenceTo.includes('User'),
                     isBoolean: this.selectedField.dataType === 'Boolean',
                     isPicklist: this.selectedField.dataType === 'Picklist',
                     isDateTime: this.selectedField.dataType === 'DateTime',
                     isDate: this.selectedField.dataType === 'Date',
-                    isCurrency: this.selectedField.dataType === 'Currency',
-                    isAddress: this.selectedField.dataType === 'Address',
-                    isDouble: this.selectedField.dataType === 'Double' || this.selectedField.dataType === 'Int',
-                    isTextArea: this.selectedField.dataType === 'TextArea',
-                    isPhone: this.selectedField.dataType === 'Phone',
-                    isUrl: this.selectedField.dataType === 'Url',
                     isDisabled: this.selectedField.updateable !== true,
-                    isRequired: this.selectedField.required === true
+                    isRequired: this.selectedField.required === true,
+                    isCompoundField: this.selectedField.compound === true && this.selectedField.value !== 'Name',
                 }
             }
         }
         return null;
+    }
+
+    isTextType(dataType) {
+        return this.selectedField.dataType === 'String' ||
+            this.selectedField.dataType === 'Currency' ||
+            this.selectedField.dataType === 'Double' ||
+            this.selectedField.dataType === 'Int' ||
+            this.selectedField.dataType === 'Phone' ||
+            this.selectedField.dataType === 'Url' ||
+            this.selectedField.dataType === 'TextArea' ||
+            (this.selectedField.referenceTo && this.selectedField.dataType === 'Reference' && !this.customReferenceTypes.some(refType => this.selectedField.referenceTo.includes(refType)));
     }
 }

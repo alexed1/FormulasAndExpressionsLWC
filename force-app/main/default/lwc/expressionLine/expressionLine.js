@@ -57,7 +57,9 @@ export default class expressionLine extends LightningElement {
             {value: 'contains', label: 'Contains'},
             {value: 'does_not_contain', label: 'Does Not Contain'},
             {value: 'less_then', label: 'Less Then'},
+            {value: 'greater_then', label: 'Greater Then'},
             {value: 'greater_or_equal', label: 'Greater Or Equal'},
+            {value: 'less_or_equal', label: 'Less Or Equal'},
             {value: 'includes', label: 'Includes'},
             {value: 'excludes', label: 'Excludes'}
             ];

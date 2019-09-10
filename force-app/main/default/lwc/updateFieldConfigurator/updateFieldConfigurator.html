@@ -1,20 +1,28 @@
 <template>
     <lightning-card title='Field Update Edit'>
         <div class="slds-p-around--small">
-            <c-field-picker
-                    field-label='Field to Update'
-                    object-label='Object'
-                    object-type={_objectType}
-                    field={_fieldName}
-                    onfieldselected={handleFieldChange}
-                    show-field-type
-                    object-disabled
-            ></c-field-picker>
+                <c-field-picker
+                        field-label='Field to Update'
+                        object-label='Object'
+                        object-type={_objectType}
+                        field={_fieldName}
+                        onfieldselected={handleFieldChange}
+                        object-disabled
+                        show-field-type
+                        hide-read-only-fields
+                ></c-field-picker>
             <template if:true={fieldProperties}>
-                <template if:true={fieldProperties.isDisabled}>
+                <template if:true={fieldProperties.isCompoundField}>
                     <div class="slds-text-color_destructive">
-                        <h2>{labels.fieldNotUpdatable}</h2>
+                        <h2>{labels.fieldIsCompoundMessage}</h2>
                     </div>
+                </template>
+                <template if:false={fieldProperties.isCompoundField}>
+                    <template if:true={fieldProperties.isDisabled}>
+                        <div class="slds-text-color_destructive">
+                            <h2>{labels.fieldNotUpdatable}</h2>
+                        </div>
+                    </template>
                 </template>
                 <template if:false={fieldProperties.isDisabled}>
                     <template if:true={fieldProperties.isTextField}>
@@ -45,7 +53,7 @@
                     <template if:true={fieldProperties.isUserReferenceField}>
                         <c-set-owner
                                 available-object-types='User, Queue'
-                                supported-add-capabilities='Set'
+                                supported-add-capabilities='Select'
                                 notify-assignee-label='Notify Assignee'
                                 member-id={_value}
                                 onmembersrefreshed={handleOwnerChange}
@@ -75,48 +83,6 @@
                     <template if:true={fieldProperties.isDate}>
                         <lightning-input type="date" name="datetime" label="Select Date" value={_value}
                                          onchange={handleValueChange}></lightning-input>
-                    </template>
-                    <template if:true={fieldProperties.isCurrency}>
-                        <lightning-input type="number"
-                                         name="numbercurrency"
-                                         label={labels.fieldValueLabel}
-                                         value={_value}
-                                         formatter="currency"
-                                         onchange={handleValueChange}>
-                        </lightning-input>
-                    </template>
-                    <template if:true={fieldProperties.isAddress}>
-                        {labels.fieldTypeNotSupported}
-                    </template>
-                    <template if:true={fieldProperties.isDouble}>
-                        <lightning-input type="number"
-                                         name="numberdecimal"
-                                         label={labels.fieldValueLabel}
-                                         value={_value}
-                                         formatter="decimal"
-                                         onchange={handleValueChange}>
-                        </lightning-input>
-                    </template>
-                    <template if:true={fieldProperties.isTextArea}>
-                        <lightning-textarea name="textarea"
-                                            label={labels.fieldValueLabel}
-                                            value={_value}
-                                            onchange={handleValueChange}>
-                        </lightning-textarea>
-                    </template>
-                    <template if:true={fieldProperties.isPhone}>
-                        <lightning-input type="tel"
-                                         name="phone"
-                                         label={labels.fieldValueLabel}
-                                         value={_value}
-                                         onchange={handleValueChange}>
-                        </lightning-input>
-                    </template>
-                    <template if:true={fieldProperties.isUrl}>
-                        <lightning-input type="url"
-                                         name="inputurl"
-                                         label={labels.fieldValueLabel}
-                                         value={_value}></lightning-input>
                     </template>
                 </template>
             </template>

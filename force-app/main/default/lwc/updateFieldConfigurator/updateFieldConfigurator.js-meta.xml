@@ -7,5 +7,6 @@
     <targets>
         <target>lightning__RecordPage</target>
         <target>lightning__FlowScreen</target>
+        <target>lightning__HomePage</target>
     </targets>
 </LightningComponentBundle>

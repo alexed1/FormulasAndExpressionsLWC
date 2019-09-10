@@ -13,18 +13,18 @@ export default class fieldPicker extends LightningElement {
     @api objectType;
     @api field;
     @api objectDisabled;
-
+    @api hideReadOnlyFields;
     @api supportedObjectTypes;
     @api hideObjectTypeSelect = false;
     @api showFieldType = false;
     @api supportedFieldRelationTypes;
 
-    @track _objectType;
     @track _field;
     @track objectTypes;
     @track fields;
     @track errors = [];
-    @track isLoadFinished = false;
+    @track isObjectLoadFinished = false;
+    @track isFieldLoadFinished = false;
 
     labels = {
         none: NonePicklistValueLabel,
@@ -32,25 +32,29 @@ export default class fieldPicker extends LightningElement {
     };
 
     connectedCallback() {
-        if (this.objectType)
-            this._objectType = this.objectType;
 
-        if (this.objectType && this.field)
+        if (this.objectType && this.field) {
             this._field = this.field;
+        }
+        if (!this.objectType) {
+            this.isFieldLoadFinished = true;
+        }
     }
 
     @wire(getObjects, {supportedObjectTypes: '$supportedObjectTypesList'})
     _getObjects({error, data}) {
+        this.isObjectLoadFinished = false;
         if (error) {
             this.errors.push(error.body.message);
         } else if (data) {
-            this.isLoadFinished = true;
             this.objectTypes = data;
+            this.isObjectLoadFinished = true;
         }
     }
 
-    @wire(getObjectInfo, {objectApiName: '$_objectType'})
+    @wire(getObjectInfo, {objectApiName: '$objectType'})
     _getObjectInfo({error, data}) {
+        this.isFieldLoadFinished = false;
         if (error) {
             this.errors.push(error.body[0].message);
         } else if (data) {
@@ -60,11 +64,12 @@ export default class fieldPicker extends LightningElement {
                 if (Object.prototype.hasOwnProperty.call(fields, field)) {
                     if (this.isTypeSupported(fields[field])) {
                         fieldResults.push({
-                            label: fields[field].label,
+                            label: this.adjustLabel(fields[field].label),
                             value: fields[field].apiName,
                             dataType: fields[field].dataType,
                             required: fields[field].required,
                             updateable: fields[field].updateable,
+                            compound: fields[field].compound,
                             referenceTo: (fields[field].referenceToInfos.length > 0 ? fields[field].referenceToInfos.map(curRef => {
                                 return curRef.apiName
                             }) : [])
@@ -76,11 +81,31 @@ export default class fieldPicker extends LightningElement {
                     this._field = null;
                 }
             }
+            fieldResults.sort((a, b) => (a.label > b.label) ? 1 : ((b.label > a.label) ? -1 : 0));
             this.fields = fieldResults;
             if (this.fields) {
-                this.dispatchDataChangedEvent({...this.fields.find(curField => curField.value == this._field), ...{isInit: true}});
+                this.dispatchDataChangedEvent({
+                    ...this.fields.find(curField => curField.value == this._field), ...{
+                        objectType: this.objectType,
+                        isInit: true
+                    }
+                });
             }
+            this.isFieldLoadFinished = true;
         }
+
+    }
+
+    adjustLabel(label) {
+        if (!label) {
+            return '';
+        } else {
+            return label.includes(' ID') ? label.replace(' ID', '') : label;
+        }
+    }
+
+    get isDataLoaded() {
+        return this.isObjectLoadFinished && this.isFieldLoadFinished;
     }
 
     get isFieldTypeVisible() {
@@ -89,6 +114,10 @@ export default class fieldPicker extends LightningElement {
 
     isTypeSupported(field) {
         let result = false;
+
+        if (!field.updateable && this.hideReadOnlyFields) {
+            return false;
+        }
         if (!this.supportedFieldRelationTypes) {
             result = true;
         }
@@ -119,27 +148,36 @@ export default class fieldPicker extends LightningElement {
     }
 
     get isFieldDisabled() {
-        return this._objectType == null || this.isError;
+        return this.objectType == null || this.isError;
     }
 
     get fieldType() {
-        if (this._field) {
-            return this.fields.find(e => e.value == this._field).dataType;
+        if (this._field && this.fields) {
+            let curField = this.fields.find(e => e.value == this._field);
+            if (curField) {
+                return this.transformTypeLabel(curField.dataType);
+            } else {
+                return null;
+            }
         } else {
             return null;
         }
     }
 
+    transformTypeLabel(fieldLabel) {
+        return (fieldLabel === 'Reference' ? 'Lookup' : fieldLabel);
+    }
+
     handleObjectChange(event) {
-        this._objectType = event.detail.value;
+
         this._field = null;
-        this.dispatchDataChangedEvent({});
+        this.dispatchDataChangedEvent({objectType: event.detail.value});
         this.errors = [];
     }
 
     handleFieldChange(event) {
         this._field = event.detail.value;
-        this.dispatchDataChangedEvent(this.fields.find(curField => curField.value == this._field));
+        this.dispatchDataChangedEvent({...{objectType: this.objectType}, ...this.fields.find(curField => curField.value == this._field)});
     }
 
     dispatchDataChangedEvent(detail) {
@@ -147,7 +185,6 @@ export default class fieldPicker extends LightningElement {
             bubbles: true,
             detail: {
                 ...detail, ...{
-                    objectType: this._objectType,
                     fieldName: this._field
                 }
             }

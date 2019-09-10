@@ -6,7 +6,15 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>TooManyResultsMessage</shortDescription>
-        <value>Your search found more than 200 results.  Keep typing to make it more specific</value>
+        <value>Your search found more than 200 results. Keep typing to make it more specific</value>
+    </labels>
+    <labels>
+        <fullName>NoSearchResultsMessage</fullName>
+        <categories>messages</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>NoSearchResultsMessage</shortDescription>
+        <value>No results found.</value>
     </labels>
     <labels>
         <fullName>NonePicklistValueLabel</fullName>
@@ -22,7 +30,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>FieldIsNotSupportedMessage</shortDescription>
-        <value>Following fields are not supported: </value>
+        <value>Following fields are not supported:</value>
     </labels>
     <labels>
         <fullName>ButtonIsNotSupportedMessage</fullName>
@@ -30,7 +38,7 @@
         <language>en_US</language>
         <protected>false</protected>
         <shortDescription>ButtonIsNotSupportedMessage</shortDescription>
-        <value>Following buttons are note supported: </value>
+        <value>Following buttons are note supported:</value>
     </labels>
     <labels>
         <fullName>SupportedButtonsEmptyMessage</fullName>
