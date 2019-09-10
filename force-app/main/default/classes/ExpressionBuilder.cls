@@ -106,7 +106,7 @@ public with sharing class ExpressionBuilder {
     }
 
     @AuraEnabled
-    public static List<Object> disassemblyFormulaString (String expression) {
+    public static Map<String, Object> disassemblyFormulaString (String expression) {
 
         expression = expression.replaceAll('[\\s]', '');
         String parentCondition = expression.indexOf('AND') == 0 ? ' AND ' : ' OR ';
@@ -239,21 +239,21 @@ public with sharing class ExpressionBuilder {
             expression = expression.replaceAll(mMatcher.group(0), items.get(mMatcher.group(0)));
         }
 
-        List<Object> result = new List<Object>();
+        Map<String, Object> result = new Map<String, Object>();
 
         if (expression.indexOf('(') == -1) {
             if (expression.indexOf('AND') > -1) {
-                result.add('AND');
+                result.put('logicType', 'AND');
             } else {
-                result.add('OR');
+                result.put('logicType', 'OR');
             }
-            result.add('');
+            result.put('customLogic', '');
         } else {
-            result.add('CUSTOM');
-            result.add(expression);
+            result.put('logicType', 'CUSTOM');
+            result.put('customLogic', expression);
         }
 
-        result.add(convertSetToExpressionLineWraper(conditions));
+        result.put('expressionLines', convertSetToExpressionLineWraper(conditions));
 
         return result;
     }

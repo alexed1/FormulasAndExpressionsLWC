@@ -20,11 +20,11 @@ public with sharing class ExpressionBuilderTest {
 
         System.assertEquals(expectResult, assembleResult);
 
-        List<Object> disassemblyResult = ExpressionBuilder.disassemblyFormulaString(assembleResult);
-        List<ExpressionBuilder.ExpressionLineWraper> data = (List<ExpressionBuilder.ExpressionLineWraper>)disassemblyResult[2];
+        Map<String, Object> disassemblyResult = ExpressionBuilder.disassemblyFormulaString(assembleResult);
+        List<ExpressionBuilder.ExpressionLineWraper> data = (List<ExpressionBuilder.ExpressionLineWraper>)disassemblyResult.get('expressionLines');
 
-        System.assertEquals('CUSTOM', String.valueOf(disassemblyResult[0]));
-        System.assertEquals(expression, String.valueOf(disassemblyResult[1]));
+        System.assertEquals('CUSTOM', String.valueOf(disassemblyResult.get('logicType')));
+        System.assertEquals(expression, String.valueOf(disassemblyResult.get('customLogic')));
         System.assertEquals(8, data.size());
 
 
@@ -36,10 +36,10 @@ public with sharing class ExpressionBuilderTest {
         System.assertEquals(expectResult, assembleResult);
 
         disassemblyResult = ExpressionBuilder.disassemblyFormulaString(assembleResult);
-        data = (List<ExpressionBuilder.ExpressionLineWraper>)disassemblyResult[2];
+        data = (List<ExpressionBuilder.ExpressionLineWraper>)disassemblyResult.get('expressionLines');
 
-        System.assertEquals('AND', String.valueOf(disassemblyResult[0]));
-        System.assertEquals('', String.valueOf(disassemblyResult[1]));
+        System.assertEquals('AND', String.valueOf(disassemblyResult.get('logicType')));
+        System.assertEquals('', String.valueOf(disassemblyResult.get('customLogic')));
         System.assertEquals(8, data.size());
 
         assembleResult = ExpressionBuilder.assembleFormulaString('', 'OR', testData);
@@ -50,10 +50,10 @@ public with sharing class ExpressionBuilderTest {
         System.assertEquals(expectResult, assembleResult);
 
         disassemblyResult = ExpressionBuilder.disassemblyFormulaString(assembleResult);
-        data = (List<ExpressionBuilder.ExpressionLineWraper>)disassemblyResult[2];
+        data = (List<ExpressionBuilder.ExpressionLineWraper>)disassemblyResult.get('expressionLines');
 
-        System.assertEquals('OR', String.valueOf(disassemblyResult[0]));
-        System.assertEquals('', String.valueOf(disassemblyResult[1]));
+        System.assertEquals('OR', String.valueOf(disassemblyResult.get('logicType')));
+        System.assertEquals('', String.valueOf(disassemblyResult.get('customLogic')));
         System.assertEquals(8, data.size());
     }
 }
