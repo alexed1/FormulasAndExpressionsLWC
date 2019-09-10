@@ -106,25 +106,57 @@ public with sharing class ExpressionBuilder {
     }
 
     @AuraEnabled
-    public static String disassemblyFormulaString (String expression) {
-        String parentCondition = expression.indexOf('AND') == 0 ? ' AND ' : ' OR ';
-        expression = expression.replaceAll('\\$Record.', '');
+    public static List<Object> disassemblyFormulaString (String expression) {
 
-        Pattern mPattern = pattern.compile('[^ANDOR(][\\w\\s!=<>.,"()]{1,}');
+        expression = expression.replaceAll('[\\s]', '');
+        String parentCondition = expression.indexOf('AND') == 0 ? ' AND ' : ' OR ';
+
+        Pattern mPattern = pattern.compile('[^ANDOR(][\\w!=<>.,"()$]{1,}');
         Matcher mMatcher = mPattern.matcher(expression);
 
         while (mMatcher.find()){
             expression = mMatcher.group(0).removeEnd(')');
         }
 
-        mPattern = pattern.compile('LEFT\\([\\w\\s,]{1,}\\)[\\w\\s]==[\\s\\w]{1,}');
+        mPattern = pattern.compile('LEFT\\(\\$[\\w,.]{1,}\\)==[\\w()"]{1,}');
         mMatcher = mPattern.matcher(expression);
 
         while (mMatcher.find()){
-            List<String> values = mMatcher.group(0).split(' == ');
+            List<String> values = mMatcher.group(0).split('==');
             values[0] = values[0].replaceAll('LEFT\\(', '').split(',')[0];
-            String newValue = values[0] + ' starts_with ' + values[1];
-            expression = expression.replaceAll(mMatcher.group(0).replace('(', '\\(').replace(')', '\\)'), newValue);
+            String newValue = values[0].replaceAll('\\$', '\\\\\\$') + ' starts_with ' + values[1];
+            expression = expression.replaceAll(mMatcher.group(0).replace('(', '\\(').replace(')', '\\)').replaceAll('\\$', '\\\\\\$'), newValue);
+        }
+
+        mPattern = pattern.compile('[!]{0,1}(CONTAINS|INCLUDES)\\(\\$[\\w,.]{1,}[\\w("]{1,}[)]{2}');
+        mMatcher = mPattern.matcher(expression);
+
+        while (mMatcher.find()){
+            List<String> values = mMatcher.group(0).split(',');
+            String operator = '';
+
+            if (mMatcher.group(0).indexOf('CONTAINS') > -1) {
+                operator = ' contains ';
+                values[0] = values[0].replaceAll('CONTAINS\\(', '');
+            }
+
+            if (mMatcher.group(0).indexOf('!CONTAINS') > -1) {
+                operator = ' does_not_contain ';
+                values[0] = values[0].replaceAll('\\!CONTAINS\\(', '');
+            }
+
+            if (mMatcher.group(0).indexOf('INCLUDES') > -1) {
+                operator = ' includes ';
+                values[0] = values[0].replaceAll('INCLUDES\\(', '');
+            }
+
+            if (mMatcher.group(0).indexOf('!INCLUDES') > -1) {
+                operator = ' excludes ';
+                values[0] = values[0].replaceAll('\\!INCLUDES\\(', '');
+            }
+
+            String newValue = values[0].replaceAll('\\$', '\\\\\\$') + operator + values[1].removeEnd(')');
+            expression = expression.replaceAll(mMatcher.group(0).replace('(', '\\(').replace(')', '\\)').replaceAll('\\$', '\\\\\\$'), newValue);
         }
 
         mPattern = pattern.compile('(BOOLEAN|DECIMAL|DATE|DATETIME|INTEGER|TEXT)\\([\\w"]{1,}\\)');
@@ -135,24 +167,26 @@ public with sharing class ExpressionBuilder {
             expression = expression.replaceAll(mMatcher.group(0).replace('(', '\\(').replace(')', '\\)'), newValue);
         }
 
-        expression = expression.replaceAll('==', 'equals');
-        expression = expression.replaceAll('!=', 'not_equal_to');
-        expression = expression.replaceAll('<', 'less_then');
-        expression = expression.replaceAll('>=', 'greater_or_equal');
-        expression = expression.replaceAll('>', 'greater_then');
-        expression = expression.replaceAll('<=', 'less_or_equal');
+        expression = expression.replaceAll('==', ' equals ');
+        expression = expression.replaceAll('!=', ' not_equal_to ');
+        expression = expression.replaceAll('<', ' less_then ');
+        expression = expression.replaceAll('>=', ' greater_or_equal ');
+        expression = expression.replaceAll('>', ' greater_then ');
+        expression = expression.replaceAll('<=', ' less_or_equal ');
 
         Set<String> conditions = new Set<String>(expression.replaceAll('OR\\(', '')
                                                             .replaceAll('AND\\(', '')
                                                             .replaceAll('\\)', '')
-                                                            .split('[,\\s]{2,}'));
+                                                            .split(','));
 
         Integer index = 1;
-
+        
         for (String condition : conditions) {
-            expression = expression.replaceAll(condition, String.valueOf(index));
+            expression = expression.replaceAll(condition.replaceAll('\\$', '\\\\\\$'), String.valueOf(index));
             index++;
         }
+
+        expression = expression.replaceAll(',', ', ');
 
         Map<String, String> items = new Map<String, String>();
         index = 1;
@@ -205,7 +239,23 @@ public with sharing class ExpressionBuilder {
             expression = expression.replaceAll(mMatcher.group(0), items.get(mMatcher.group(0)));
         }
 
-        return expression;
+        List<Object> result = new List<Object>();
+
+        if (expression.indexOf('(') == -1) {
+            if (expression.indexOf('AND') > -1) {
+                result.add('AND');
+            } else {
+                result.add('OR');
+            }
+            result.add('');
+        } else {
+            result.add('CUSTOM');
+            result.add(expression);
+        }
+
+        result.add(convertSetToExpressionLineWraper(conditions));
+
+        return result;
     }
 
     public static String simpleFormulaConversion (List<String> formulaItems, String logicType, Integer size) {
@@ -226,7 +276,7 @@ public with sharing class ExpressionBuilder {
     }
 
     public static String convertExpressionLines (ExpressionLineWraper expressionLine) {
-        String leftItem = '\\$Record.' + expressionLine.fieldName;
+        String leftItem = '\\$' + expressionLine.objectType + '.' + expressionLine.fieldName;
         String rightItem = expressionLine.value;
         String dataType = expressionLine.dataType.toUpperCase();
         String result = '';
@@ -244,11 +294,11 @@ public with sharing class ExpressionBuilder {
         }
 
         if (expressionLine.operator == 'contains') {
-
+            result = 'CONTAINS(' + leftItem + ', ' + convertValueType(rightItem, dataType) + ')';
         }
 
         if (expressionLine.operator == 'does_not_contain') {
-
+            result = '!CONTAINS(' + leftItem + ', ' + convertValueType(rightItem, dataType) + ')';
         }
 
         if (expressionLine.operator == 'less_then') {
@@ -268,15 +318,27 @@ public with sharing class ExpressionBuilder {
         }
 
         if (expressionLine.operator == 'includes') {
-
+            result = 'INCLUDES(' + leftItem + ', ' + convertValueType(rightItem, dataType) + ')';
         }
 
         if (expressionLine.operator == 'excludes') {
-
+            result = '!INCLUDES(' + leftItem + ', ' + convertValueType(rightItem, dataType) + ')';
         }
 
         return result;
 
+    }
+
+    public static List<ExpressionLineWraper> convertSetToExpressionLineWraper (Set<String> lines) {
+        List<ExpressionLineWraper> result = new List<ExpressionLineWraper>();
+
+        for (String line : lines) {
+            List<String> lineParameters = line.split(' ');
+            List<String> fieldInfo = lineParameters[0].replaceAll('[$]', '').split('\\.');
+            result.add(new ExpressionLineWraper(fieldInfo[0], fieldInfo[1], '', lineParameters[1], lineParameters[2]));
+        }
+
+        return result;
     }
 
     public static String convertValueType (String fieldValue, String dataType) {
@@ -301,5 +363,13 @@ public with sharing class ExpressionBuilder {
         public String dataType;
         public String operator;
         public String value;
+
+        public ExpressionLineWraper (String objectType, String fieldName, String dataType, String operator, String value) {
+            this.objectType = objectType;
+            this.fieldName = fieldName;
+            this.dataType = dataType;
+            this.operator = operator;
+            this.value = value;
+        }
     }
 }
