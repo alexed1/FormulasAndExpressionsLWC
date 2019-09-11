@@ -1,9 +1,3 @@
- .container {
-    background-color: var(--lwc-colorBackgroundAlt);
-    padding: var(--lwc-spacingMedium);
-    border-radius: var(--lwc-borderRadiusMedium);
-    position: relative;
-}
 .flexContainer {
     display: flex;
     padding-bottom: var(--lwc-spacingMedium);
@@ -22,4 +16,10 @@ lightning-button {
     display: flex;
     padding-top: var(--lwc-spacingXSmall);
     padding-bottom: var(--lwc-spacingXSmall);
+}
+.formulaSyntax {
+    font-size: 0.625rem;
+}
+.blueText {
+    color: var(--lwc-colorTextLink);
 }

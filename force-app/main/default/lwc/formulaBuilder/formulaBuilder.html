@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="slds-form-element">
         <div class="flexContainer">
             <p>Insert</p>
             <lightning-combobox name="field" 
@@ -28,6 +28,11 @@
             </lightning-combobox>
         </div>
         <lightning-textarea onchange={changeFormula} value={formula} name="formula" variant="label-hidden" onblur={formulaChanged}></lightning-textarea>
-        <p>Use formula syntax</p>
+        <span class="formulaSyntax">{label.useFormulaSyntaxPartOne}
+            <span class="blueText">("the_text")</span>{label.useFormulaSyntaxPartTwo}
+            <span class="blueText">(25)</span>{label.useFormulaSyntaxPartThree}
+            <span class="blueText">(0.10)</span>{label.useFormulaSyntaxPartFour}
+            <span class="blueText">(Today() + 7)</span>
+        </span>
     </div>
 </template>

@@ -253,4 +253,36 @@
         <shortDescription>RelatedUsers</shortDescription>
         <value>Related Users</value>
     </labels>
+    <labels>
+        <fullName>UseFormulaSyntaxPartOne</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UseFormulaSyntaxPartOne</shortDescription>
+        <value>Use formula syntax: Enclose text and picklist value API names in double quotes : </value>
+    </labels>
+    <labels>
+        <fullName>UseFormulaSyntaxPartTwo</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UseFormulaSyntaxPartTwo</shortDescription>
+        <value>, include numbers without quotes : </value>
+    </labels>
+    <labels>
+        <fullName>UseFormulaSyntaxPartThree</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UseFormulaSyntaxPartThree</shortDescription>
+        <value>, show percentages as decimals: </value>
+    </labels>
+    <labels>
+        <fullName>UseFormulaSyntaxPartFour</fullName>
+        <categories>labels</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UseFormulaSyntaxPartFour</shortDescription>
+        <value>, and express date calculations in the standard format: </value>
+    </labels>
 </CustomLabels>
