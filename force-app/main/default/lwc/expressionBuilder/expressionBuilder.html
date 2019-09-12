@@ -1,49 +1,55 @@
 <template>
-    <lightning-card>
-        <lightning-layout multiple-rows="true">
-            <lightning-layout-item size="3" class="slds-p-left--small">
+    <div class="slds-box slds-theme_default">
+        <div class="slds-grid slds-wrap">
+            <lightning-layout-item size="6">
                 <lightning-combobox
-                        name="objectTypeField"
-                        label="When to Execute"
-                        value={whenToExecute}
-                        options={whenToExecuteOptions}
-                        onchange={handleWhenToExecuteChange}
-                ></lightning-combobox>
+                    name="objectTypeField"
+                    label="When to Execute"
+                    value={logicType}
+                    options={logicTypes}
+                    onchange={handleWhenToExecuteChange}
+                    class="slds-m-right_x-small">
+                </lightning-combobox>
             </lightning-layout-item>
-            <lightning-layout-item size="9">
-
-            </lightning-layout-item>
-            <template if:true={showCustomLogicInput}>
-                <lightning-layout-item size="3" class="slds-p-left--small">
+            <lightning-layout-item size="6" if:true={showCustomLogicInput}>
+                <div class="slds-m-left_x-small">
+                    <label class="slds-form-element__label slds-no-flex">Custom Condition</label>
+                    <lightning-helptext icon-name="utility:info" content={conditionLogicHelpText}></lightning-helptext>
                     <lightning-input
-                            name="custom-condition"
-                            label="Custom Condition"
-                            value={_customCondition}
-                            onchange={handleCustomLogicChange}
-                    ></lightning-input>
-                </lightning-layout-item>
-                <lightning-layout-item size="9">
-
-                </lightning-layout-item>
-            </template>
-            <lightning-layout-item size="12">
-                <template for:each={_expressions} for:item="expression" for:index="index">
-                    <c-expression-line key={expression.id}
-                                       expression-index={index}
-                                       expression-id={expression.id}
-                                       object-type={expression.objectType}
-                                       field-name={expression.fieldName}
-                                       operator={expression.operator}
-                                       value={expression.value}
-                                       onexpressionremoved={handleRemoveExpression}
-                                       onfieldselected={handleExpressionChange}></c-expression-line>
-                </template>
-                <div class="slds-p-around--medium">
-                    <lightning-button variant="Brand" label="+ Add Condition" title="Add Condition"
-                                      onclick={handleAddExpression}>
-                    </lightning-button>
+                        name="custom-condition"
+                        label="Custom Condition"
+                        variant="label-hidden"
+                        value={customLogic}
+                        onchange={handleCustomLogicChange}>
+                    </lightning-input>
                 </div>
             </lightning-layout-item>
-        </lightning-layout>
-    </lightning-card>
+            <lightning-layout-item size="12" class="slds-m-top_x-small">
+                <template for:each={expressionLines} for:item="expression" for:index="index">
+                    <c-expression-line 
+                        key={expression.id}
+                        expression-index={index}
+                        expression-id={expression.id}
+                        object-type={expression.objectType}
+                        field-name={expression.fieldName}
+                        operator={expression.operator}
+                        value={expression.parameter}
+                        onexpressionremoved={handleRemoveExpression}
+                        onfieldselected={handleExpressionChange}>
+                    </c-expression-line>
+                </template>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" class="slds-m-top_x-small">
+                <lightning-button 
+                    label={addButtonLabel} 
+                    title={addButtonLabel} 
+                    icon-name="utility:add" 
+                    onclick={handleAddExpression}>
+                </lightning-button>   
+            </lightning-layout-item>
+            <lightning-layout-item size="12" class="slds-m-top_x-small">
+                <p>{convertedExpression}</p>
+            </lightning-layout-item>
+        </div>
+    </div>
 </template>

@@ -38,7 +38,7 @@ export default class FormulaBuilder extends LightningElement {
             })
     }
 
-    formulaChanged(event) {
+    formulaChanged() {
         const memberRefreshedEvt = new CustomEvent('formulachanged', {
             bubbles: true, detail: {
                 value: this.formula

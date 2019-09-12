@@ -78,7 +78,7 @@ export default class fieldPicker extends LightningElement {
             }
             this.fields = fieldResults;
             if (this.fields) {
-                this.dispatchDataChangedEvent({...this.fields.find(curField => curField.value == this._field), ...{isInit: true}});
+                this.dispatchDataChangedEvent({...this.fields.find(curField => curField.value === this._field), ...{isInit: true}});
             }
         }
     }
@@ -124,7 +124,7 @@ export default class fieldPicker extends LightningElement {
 
     get fieldType() {
         if (this._field) {
-            return this.fields.find(e => e.value == this._field).dataType;
+            return this.fields.find(e => e.value === this._field).dataType;
         } else {
             return null;
         }
@@ -139,7 +139,7 @@ export default class fieldPicker extends LightningElement {
 
     handleFieldChange(event) {
         this._field = event.detail.value;
-        this.dispatchDataChangedEvent(this.fields.find(curField => curField.value == this._field));
+        this.dispatchDataChangedEvent(this.fields.find(curField => curField.value === this._field));
     }
 
     dispatchDataChangedEvent(detail) {

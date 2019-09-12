@@ -97,7 +97,9 @@ public with sharing class ExpressionBuilder {
             mMatcher = mPattern.matcher(customLogic);
 
             while (mMatcher.find()) {
-                customLogic = customLogic.replaceAll(mMatcher.group(0), convertExpressionLines(lines[i]));
+                if (!String.isEmpty(lines[i].dataType) && !String.isEmpty(lines[i].parameter) && !String.isEmpty(lines[i].operator)) {
+                    customLogic = customLogic.replaceAll(mMatcher.group(0), convertExpressionLines(lines[i]));
+                }
             }
         }
 
@@ -107,6 +109,12 @@ public with sharing class ExpressionBuilder {
 
     @AuraEnabled
     public static Map<String, Object> disassemblyFormulaString (String expression) {
+
+        Map<String, Object> result = new Map<String, Object>();
+
+        if (String.isEmpty(expression)) {
+            return result;
+        }
 
         expression = expression.replaceAll('[\\s]', '');
         String parentCondition = expression.indexOf('AND') == 0 ? ' AND ' : ' OR ';
@@ -159,7 +167,7 @@ public with sharing class ExpressionBuilder {
             expression = expression.replaceAll(mMatcher.group(0).replace('(', '\\(').replace(')', '\\)').replaceAll('\\$', '\\\\\\$'), newValue);
         }
 
-        mPattern = pattern.compile('(BOOLEAN|DECIMAL|DATE|DATETIME|INTEGER|TEXT)\\([\\w"]{1,}\\)');
+        mPattern = pattern.compile('(BOOLEAN|DECIMAL|DATE|DATETIME|INTEGER|TEXT)\\([\\w".,-/+]{1,}\\)');
         mMatcher = mPattern.matcher(expression);
 
         while (mMatcher.find()) {
@@ -178,7 +186,7 @@ public with sharing class ExpressionBuilder {
                                                             .replaceAll('AND\\(', '')
                                                             .replaceAll('\\)', '')
                                                             .split(','));
-
+            
         Integer index = 1;
         
         for (String condition : conditions) {
@@ -239,8 +247,6 @@ public with sharing class ExpressionBuilder {
             expression = expression.replaceAll(mMatcher.group(0), items.get(mMatcher.group(0)));
         }
 
-        Map<String, Object> result = new Map<String, Object>();
-
         if (expression.indexOf('(') == -1) {
             if (expression.indexOf('AND') > -1) {
                 result.put('logicType', 'AND');
@@ -254,7 +260,7 @@ public with sharing class ExpressionBuilder {
         }
 
         result.put('expressionLines', convertSetToExpressionLineWraper(conditions));
-
+        
         return result;
     }
 
@@ -277,7 +283,7 @@ public with sharing class ExpressionBuilder {
 
     public static String convertExpressionLines (ExpressionLineWraper expressionLine) {
         String leftItem = '\\$' + expressionLine.objectType + '.' + expressionLine.fieldName;
-        String rightItem = expressionLine.value;
+        String rightItem = expressionLine.parameter;
         String dataType = expressionLine.dataType.toUpperCase();
         String result = '';
 
@@ -290,7 +296,7 @@ public with sharing class ExpressionBuilder {
         }
 
         if (expressionLine.operator == 'starts_with') {
-            result = 'LEFT(' + leftItem + ', ' + expressionLine.value.length() + ') == ' + convertValueType(rightItem, dataType);
+            result = 'LEFT(' + leftItem + ', ' + expressionLine.parameter.length() + ') == ' + convertValueType(rightItem, dataType);
         }
 
         if (expressionLine.operator == 'contains') {
@@ -334,8 +340,10 @@ public with sharing class ExpressionBuilder {
 
         for (String line : lines) {
             List<String> lineParameters = line.split(' ');
-            List<String> fieldInfo = lineParameters[0].replaceAll('[$]', '').split('\\.');
-            result.add(new ExpressionLineWraper(fieldInfo[0], fieldInfo[1], '', lineParameters[1], lineParameters[2]));
+            if (lineParameters.size() == 3) {
+                List<String> fieldInfo = lineParameters[0].replaceAll('[$]', '').split('\\.');
+                result.add(new ExpressionLineWraper(fieldInfo[0], fieldInfo[1], '', lineParameters[1], lineParameters[2]));
+            }
         }
 
         return result;
@@ -358,18 +366,23 @@ public with sharing class ExpressionBuilder {
     }
 
     public class ExpressionLineWraper {
+        @AuraEnabled
         public String objectType;
+        @AuraEnabled
         public String fieldName;
+        @AuraEnabled
         public String dataType;
+        @AuraEnabled
         public String operator;
-        public String value;
+        @AuraEnabled
+        public String parameter;
 
-        public ExpressionLineWraper (String objectType, String fieldName, String dataType, String operator, String value) {
+        public ExpressionLineWraper (String objectType, String fieldName, String dataType, String operator, String parameter) {
             this.objectType = objectType;
             this.fieldName = fieldName;
             this.dataType = dataType;
             this.operator = operator;
-            this.value = value;
+            this.parameter = parameter;
         }
     }
 }

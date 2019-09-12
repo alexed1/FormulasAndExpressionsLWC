@@ -1,4 +1,4 @@
-import {LightningElement, track, api} from 'lwc';
+import {LightningElement, api} from 'lwc';
 
 export default class expressionLine extends LightningElement {
     @api fieldName;
@@ -8,7 +8,7 @@ export default class expressionLine extends LightningElement {
     @api expressionId;
     @api expressionIndex;
 
-    handleSearchKeyUp(event) {
+    handleSearchKeyUp() {
 
     }
 
@@ -30,7 +30,7 @@ export default class expressionLine extends LightningElement {
     handleValueChange(event) {
         this.dispatchChangeEvent({
             id: this.expressionId,
-            value: event.detail.value
+            parameter: event.detail.value
         });
     }
 
@@ -42,7 +42,7 @@ export default class expressionLine extends LightningElement {
         this.dispatchEvent(memberRefreshedEvt);
     }
 
-    handleExpressionRemove(event) {
+    handleExpressionRemove() {
         const expressionRemovedEvent = new CustomEvent('expressionremoved', {
             bubbles: true, detail: this.expressionId
         });
@@ -60,7 +60,7 @@ export default class expressionLine extends LightningElement {
             {value: 'greater_or_equal', label: 'Greater Or Equal'},
             {value: 'includes', label: 'Includes'},
             {value: 'excludes', label: 'Excludes'}
-            ];
+        ];
     }
 
     get position() {
