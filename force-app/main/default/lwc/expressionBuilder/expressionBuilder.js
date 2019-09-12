@@ -47,11 +47,7 @@ export default class expressionBuilder extends LightningElement {
     }
 
     handleAddExpression() {
-        if (!this.expressionLines) {
-            this.expressionLines = [];
-        } else {
-            this.expressionLines.push({id: this.lastExpressionIndex++, objectType: this.objectType});
-        }
+        this.expressionLines.push({id: this.lastExpressionIndex++, objectType: this.objectType});
     }
 
     get showCustomLogicInput() {
