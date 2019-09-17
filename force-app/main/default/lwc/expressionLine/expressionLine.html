@@ -10,7 +10,7 @@
                 <lightning-layout-item size="11">
                     <c-field-picker
                             hide-object-type-select="true"
-                            supported-object-types="Account"
+                            supported-object-types={objectType}
                             onfieldselected={handleFieldChange}
                             field={fieldName}
                             object-type={objectType}
@@ -26,6 +26,7 @@
                     placeholder="Operator"
                     options={availableOperators}
                     onchange={handleOperatorChange}
+                    disabled={disabledFilter}
             ></lightning-combobox>
         </lightning-layout-item>
         <lightning-layout-item size="6" class="slds-p-left--small">
@@ -38,6 +39,7 @@
                                 type="search"
                                 value={value}
                                 onchange={handleValueChange}
+                                disabled={disabledFilter}
                         ></lightning-input>
                     </div>
                 </lightning-layout-item>

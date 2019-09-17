@@ -91,9 +91,16 @@ public with sharing class ExpressionBuilder {
             customLogic = customLogic.replaceAll(ind, 'F' + ind);
         }
 
-        for (Integer i = 0; i < lines.size(); i++) {
-            Integer foemulaIndex = i + 1;
-            mPattern = pattern.compile('F[' + foemulaIndex + ']{1,}');
+        Integer iterrationSize = lines.size();
+
+        if (lines.size() > 9 && !String.isEmpty(lines[9].dataType) && !String.isEmpty(lines[9].parameter) && !String.isEmpty(lines[9].operator)) {
+            customLogic = customLogic.replaceAll('(FF10)', convertExpressionLines(lines[9]));
+            iterrationSize = iterrationSize - 1;
+        }
+
+        for (Integer i = 0; i < iterrationSize; i++) {
+            Integer formulaIndex = i + 1;
+            mPattern = pattern.compile('F[' + formulaIndex + ']{1,}');
             mMatcher = mPattern.matcher(customLogic);
 
             while (mMatcher.find()) {
@@ -126,12 +133,12 @@ public with sharing class ExpressionBuilder {
             expression = mMatcher.group(0).removeEnd(')');
         }
 
-        mPattern = pattern.compile('LEFT\\(\\$[\\w,.]{1,}\\)==[\\w()"]{1,}');
+        mPattern = pattern.compile('(LEFT|RIGHT)\\(\\$[\\w,.]{1,}\\)==[\\w()"]{1,}');
         mMatcher = mPattern.matcher(expression);
 
         while (mMatcher.find()){
             List<String> values = mMatcher.group(0).split('==');
-            values[0] = values[0].replaceAll('LEFT\\(', '').split(',')[0];
+            values[0] = values[0].replaceAll('LEFT\\(', '').replaceAll('RIGHT\\(', '').split(',')[0];
             String newValue = values[0].replaceAll('\\$', '\\\\\\$') + ' starts_with ' + values[1];
             expression = expression.replaceAll(mMatcher.group(0).replace('(', '\\(').replace(')', '\\)').replaceAll('\\$', '\\\\\\$'), newValue);
         }
@@ -299,6 +306,10 @@ public with sharing class ExpressionBuilder {
             result = 'LEFT(' + leftItem + ', ' + expressionLine.parameter.length() + ') == ' + convertValueType(rightItem, dataType);
         }
 
+        if (expressionLine.operator == 'end_with') {
+            result = 'RIGHT(' + leftItem + ', ' + expressionLine.parameter.length() + ') == ' + convertValueType(rightItem, dataType);
+        }
+
         if (expressionLine.operator == 'contains') {
             result = 'CONTAINS(' + leftItem + ', ' + convertValueType(rightItem, dataType) + ')';
         }
@@ -307,16 +318,16 @@ public with sharing class ExpressionBuilder {
             result = '!CONTAINS(' + leftItem + ', ' + convertValueType(rightItem, dataType) + ')';
         }
 
-        if (expressionLine.operator == 'less_then') {
-            result = leftItem + ' < ' + convertValueType(rightItem, dataType);
-        }
-
         if (expressionLine.operator == 'greater_or_equal') {
             result = leftItem + ' >= ' + convertValueType(rightItem, dataType);
         }
 
         if (expressionLine.operator == 'greater_then') {
             result = leftItem + ' > ' + convertValueType(rightItem, dataType);
+        }
+
+        if (expressionLine.operator == 'less_then') {
+            result = leftItem + ' < ' + convertValueType(rightItem, dataType);
         }
 
         if (expressionLine.operator == 'less_or_equal') {

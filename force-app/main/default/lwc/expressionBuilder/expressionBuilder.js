@@ -94,4 +94,8 @@ export default class expressionBuilder extends LightningElement {
             this.convertedExpression = ''
         }
     }
+
+    get disabledAddButton() {
+        return this.expressionLines.length > 9;
+    }
 }

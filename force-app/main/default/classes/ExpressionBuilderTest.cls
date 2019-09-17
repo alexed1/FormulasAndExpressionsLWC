@@ -3,14 +3,14 @@ public with sharing class ExpressionBuilderTest {
     @IsTest
     static void assembleAndDisassemblyFormulaStringTest() {
         String expression = '1 AND (2 OR 3) AND 4 AND (5 OR 6 OR (7 AND 8)) AND (1 OR 2)';
-        String testData = '[{"objectType":"Account","fieldName":"AccountNumber","dataType":"String","operator":"starts_with","value":"1"}, ' + 
-        '{"objectType":"Account","fieldName":"AccountSource","dataType":"String","operator":"not_equal_to","value":"A"}, ' + 
-        '{"objectType":"Account","fieldName":"AnnualRevenue","dataType":"Currency","operator":"less_then","value":"2"}, ' + 
-        '{"objectType":"Account","fieldName":"Id","dataType":"String","operator":"equals","value":"3"}, ' + 
-        '{"objectType":"User","fieldName":"AccountNumber","dataType":"String","operator":"contains","value":"1"},' + 
-        '{"objectType":"Organization","fieldName":"AccountSource","dataType":"String","operator":"does_not_contain","value":"A"}, ' + 
-        '{"objectType":"Account","fieldName":"AnnualRevenue","dataType":"Currency","operator":"includes","value":"2"},' + 
-        '{"objectType":"Account","fieldName":"Id","dataType":"String","operator":"excludes","value":"3"}]';
+        String testData = '[{"objectType":"Account","fieldName":"AccountNumber","dataType":"String","operator":"starts_with","parameter":"1"}, ' + 
+        '{"objectType":"Account","fieldName":"AccountSource","dataType":"String","operator":"not_equal_to","parameter":"A"}, ' + 
+        '{"objectType":"Account","fieldName":"AnnualRevenue","dataType":"Currency","operator":"less_then","parameter":"2"}, ' + 
+        '{"objectType":"Account","fieldName":"Id","dataType":"String","operator":"equals","parameter":"3"}, ' + 
+        '{"objectType":"User","fieldName":"AccountNumber","dataType":"String","operator":"contains","parameter":"1"},' + 
+        '{"objectType":"Organization","fieldName":"AccountSource","dataType":"String","operator":"does_not_contain","parameter":"A"}, ' + 
+        '{"objectType":"Account","fieldName":"AnnualRevenue","dataType":"Currency","operator":"includes","parameter":"2"},' + 
+        '{"objectType":"Account","fieldName":"Id","dataType":"String","operator":"excludes","parameter":"3"}]';
 
         String assembleResult = ExpressionBuilder.assembleFormulaString(expression, 'CUSTOM', testData);
         String expectResult = 'AND(LEFT($Account.AccountNumber, 1) == TEXT("1"), OR($Account.AccountSource != TEXT("A"), ' + 

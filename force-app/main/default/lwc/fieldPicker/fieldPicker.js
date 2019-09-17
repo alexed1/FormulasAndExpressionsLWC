@@ -24,7 +24,6 @@ export default class fieldPicker extends LightningElement {
     @track objectTypes;
     @track fields;
     @track errors = [];
-    @track isLoadFinished = false;
 
     labels = {
         none: NonePicklistValueLabel,
@@ -32,11 +31,13 @@ export default class fieldPicker extends LightningElement {
     };
 
     connectedCallback() {
-        if (this.objectType)
+        if (this.objectType) {
             this._objectType = this.objectType;
-
-        if (this.objectType && this.field)
+        }
+            
+        if (this.objectType && this.field) {
             this._field = this.field;
+        }
     }
 
     @wire(getObjects, {supportedObjectTypes: '$supportedObjectTypesList'})
@@ -44,7 +45,6 @@ export default class fieldPicker extends LightningElement {
         if (error) {
             this.errors.push(error.body.message);
         } else if (data) {
-            this.isLoadFinished = true;
             this.objectTypes = data;
         }
     }
