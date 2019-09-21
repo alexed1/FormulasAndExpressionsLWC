@@ -4,9 +4,13 @@ import assembleFormulaString from '@salesforce/apex/ExpressionBuilder.assembleFo
 import disassemblyFormulaString from '@salesforce/apex/ExpressionBuilder.disassemblyFormulaString';
 
 export default class expressionBuilder extends LightningElement {
-    @api objectType = 'Account';
+
     @api expressions;
     @api addButtonLabel = 'Add Condition';
+    @api localVariables;
+    @api contextRecordObjectName = 'Account';
+    @api systemVariables;
+    @api availableRHSMergeFields;
 
     @track expressionLines = [];
     @track customLogic = '';
@@ -22,6 +26,7 @@ export default class expressionBuilder extends LightningElement {
     conditionLogicHelpText = conditionLogicHelpText;
 
     connectedCallback() {
+
         disassemblyFormulaString({expression: this.expressions}).then(result => {
             if (result.logicType !== undefined) {
                 this.logicType = result.logicType;
@@ -47,7 +52,13 @@ export default class expressionBuilder extends LightningElement {
     }
 
     handleAddExpression() {
-        this.expressionLines.push({id: this.lastExpressionIndex++, objectType: this.objectType});
+        this.expressionLines.push({
+            id: this.lastExpressionIndex++, 
+            objectType: this.contextRecordObjectName,
+            localVariables: this.localVariables !== undefined ? JSON.parse(this.localVariables) : [],
+            systemVariables: this.systemVariables !== undefined ? JSON.parse(this.systemVariables) : [],
+            availableRHSMergeFields: this.availableRHSMergeFields !== undefined ? JSON.parse(this.availableRHSMergeFields) : []
+        });
     }
 
     get showCustomLogicInput() {

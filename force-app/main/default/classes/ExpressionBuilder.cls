@@ -289,7 +289,8 @@ public with sharing class ExpressionBuilder {
     }
 
     public static String convertExpressionLines (ExpressionLineWraper expressionLine) {
-        String leftItem = '\\$' + expressionLine.objectType + '.' + expressionLine.fieldName;
+        String leftItem = expressionLine.objectType != '' ? '\\$' + expressionLine.objectType + '.' : '';
+        leftItem = leftItem + expressionLine.fieldName;
         String rightItem = expressionLine.parameter;
         String dataType = expressionLine.dataType.toUpperCase();
         String result = '';

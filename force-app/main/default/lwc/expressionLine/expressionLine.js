@@ -7,16 +7,26 @@ export default class expressionLine extends LightningElement {
     @api value;
     @api expressionId;
     @api expressionIndex;
+    @api localVariables;
+    @api systemVariables;
+    @api availableMergeFields = [];
 
     @track disabledFilter = true;
     @track availableOperators = [];
+    @track filterValue = '';
 
-    handleSearchKeyUp() {
-
+    initialized = false;
+ 
+    renderedCallback() {
+        if (this.initialized) {
+            return;
+        }
+        this.initialized = true;
+        let listId = this.template.querySelector('datalist').id;
+        this.template.querySelector("input").setAttribute("list", listId);
     }
 
     handleFieldChange(event) {
-        console.log(JSON.parse(JSON.stringify(event.detail)).dataType);
         if (event.detail.dataType !== undefined) {
             let dataType = event.detail.dataType;
             
@@ -80,7 +90,7 @@ export default class expressionLine extends LightningElement {
     handleValueChange(event) {
         this.dispatchChangeEvent({
             id: this.expressionId,
-            parameter: event.detail.value
+            parameter: event.target.value
         });
     }
 
@@ -102,4 +112,5 @@ export default class expressionLine extends LightningElement {
     get position() {
         return this.expressionIndex + 1;
     }
+
 }
