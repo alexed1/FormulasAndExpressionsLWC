@@ -1,4 +1,4 @@
-import {LightningElement, track, api} from 'lwc';
+import {LightningElement, api, track} from 'lwc';
 
 export default class expressionLine extends LightningElement {
     @api fieldName;
@@ -7,12 +7,72 @@ export default class expressionLine extends LightningElement {
     @api value;
     @api expressionId;
     @api expressionIndex;
+    @api localVariables;
+    @api systemVariables;
+    @api availableMergeFields = [];
 
-    handleSearchKeyUp(event) {
+    @track disabledFilter = true;
+    @track availableOperators = [];
+    @track filterValue = '';
 
+    initialized = false;
+ 
+    renderedCallback() {
+        if (this.initialized) {
+            return;
+        }
+        this.initialized = true;
+        let listId = this.template.querySelector('datalist').id;
+        this.template.querySelector("input").setAttribute("list", listId);
     }
 
     handleFieldChange(event) {
+        if (event.detail.dataType !== undefined) {
+            let dataType = event.detail.dataType;
+            
+            if (dataType === 'Boolean') {
+                this.availableOperators = [
+                    {value: 'equals', label: 'Equals'},
+                    {value: 'not_equal_to', label: 'Not Equal To'},
+                ];
+            } else if (
+                dataType === 'Integer' || dataType === 'Currency' || 
+                dataType === 'Percent' || dataType === 'Double' || 
+                dataType === 'Date' || dataType === 'DateTime' || dataType === 'Time') {
+                this.availableOperators = [
+                    {value: 'equals', label: 'Equals'},
+                    {value: 'not_equal_to', label: 'Not Equal To'},
+                    {value: 'greater_then', label: 'Greater than'},
+                    {value: 'greater_or_equal', label: 'Greater Or Equal'},
+                    {value: 'less_then', label: 'Less Than'},
+                    {value: 'less_or_equal', label: 'Less Or Equal'}
+                ];
+            } else if (
+                dataType === 'String' || dataType === 'Email' || 
+                dataType === 'Phone' || dataType === 'TextArea' || dataType === 'Url') {
+                this.availableOperators = [
+                    {value: 'equals', label: 'Equals'},
+                    {value: 'not_equal_to', label: 'Not Equal To'},
+                    {value: 'contains', label: 'Contains'},
+                    {value: 'starts_with', label: 'Starts with'},
+                    {value: 'end_with', label: 'End with'}
+                ];
+            } else {
+                this.availableOperators = [
+                    {value: 'equals', label: 'Equals'},
+                    {value: 'not_equal_to', label: 'Not Equal To'},
+                    {value: 'greater_then', label: 'Greater than'},
+                    {value: 'greater_or_equal', label: 'Greater Or Equal'},
+                    {value: 'less_then', label: 'Less Than'},
+                    {value: 'less_or_equal', label: 'Less Or Equal'},
+                    {value: 'contains', label: 'Contains'},
+                    {value: 'starts_with', label: 'Starts with'},
+                    {value: 'end_with', label: 'End with'}
+                ];
+            }
+
+            this.disabledFilter = false;
+        }
         this.dispatchChangeEvent({
             ...event.detail, ...{
                 id: this.expressionId
@@ -30,7 +90,7 @@ export default class expressionLine extends LightningElement {
     handleValueChange(event) {
         this.dispatchChangeEvent({
             id: this.expressionId,
-            value: event.detail.value
+            parameter: event.target.value
         });
     }
 
@@ -42,28 +102,15 @@ export default class expressionLine extends LightningElement {
         this.dispatchEvent(memberRefreshedEvt);
     }
 
-    handleExpressionRemove(event) {
+    handleExpressionRemove() {
         const expressionRemovedEvent = new CustomEvent('expressionremoved', {
             bubbles: true, detail: this.expressionId
         });
         this.dispatchEvent(expressionRemovedEvent);
     }
 
-    get availableOperators() {
-        return [
-            {value: 'equals', label: 'Equals'},
-            {value: 'not_equal_to', label: 'Not Equal To'},
-            {value: 'starts_with', label: 'Starts with'},
-            {value: 'contains', label: 'Contains'},
-            {value: 'does_not_contain', label: 'Does Not Contain'},
-            {value: 'less_then', label: 'Less Then'},
-            {value: 'greater_or_equal', label: 'Greater Or Equal'},
-            {value: 'includes', label: 'Includes'},
-            {value: 'excludes', label: 'Excludes'}
-            ];
-    }
-
     get position() {
         return this.expressionIndex + 1;
     }
+
 }

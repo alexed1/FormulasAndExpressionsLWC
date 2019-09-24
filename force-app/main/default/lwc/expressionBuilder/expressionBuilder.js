@@ -1,62 +1,112 @@
-import {LightningElement, track, api, wire} from 'lwc';
+import {LightningElement, track, api} from 'lwc';
+import conditionLogicHelpText from '@salesforce/label/c.ConditionLogicHelpText';
+import assembleFormulaString from '@salesforce/apex/ExpressionBuilder.assembleFormulaString';
+import disassemblyFormulaString from '@salesforce/apex/ExpressionBuilder.disassemblyFormulaString';
 
 export default class expressionBuilder extends LightningElement {
-    @api objectType = 'Account';
-    @api expressions = [];
-    @api customCondition;
 
-    @track  _expressions;
-    @track _customCondition;
-    @track whenToExecute = 'all';
+    @api expressions;
+    @api addButtonLabel = 'Add Condition';
+    @api localVariables;
+    @api contextRecordObjectName = 'Account';
+    @api systemVariables;
+    @api availableRHSMergeFields;
+
+    @track expressionLines = [];
+    @track customLogic = '';
+    @track logicType = 'AND';
+    @track convertedExpression;
 
     lastExpressionIndex = 0;
-    whenToExecuteOptions = [
-        {value: 'all', label: 'All Conditions Are Met'},
-        {value: 'any', label: 'Any Condition Is Met'},
-        {value: 'custom', label: 'Custom Condition Logic Is Met'}
+    logicTypes = [
+        {value: 'AND', label: 'All Conditions Are Met'},
+        {value: 'OR', label: 'Any Condition Is Met'},
+        {value: 'CUSTOM', label: 'Custom Condition Logic Is Met'}
     ];
+    conditionLogicHelpText = conditionLogicHelpText;
 
     connectedCallback() {
-        this._expressions = this.expressions.map(curExp => {
-            return {...curExp, ...{id: this.lastExpressionIndex++}};
-        });
-        this._customCondition = this.customCondition;
-        if (this.customCondition) {
-            this.whenToExecute = 'custom';
-        }
+
+        disassemblyFormulaString({expression: this.expressions}).then(result => {
+            if (result.logicType !== undefined) {
+                this.logicType = result.logicType;
+            }
+            if (result.customLogic !== undefined) {
+                this.customLogic = result.customLogic;
+            }
+            if (result.expressionLines !== undefined) {
+                let expressionLines = [];
+                result.expressionLines.forEach((line, index) => {
+                    expressionLines.push({
+                        fieldName: line.fieldName,
+                        id: index,
+                        objectType: line.objectType,
+                        operator: line.operator,
+                        parameter: line.parameter
+                    });
+                    this.lastExpressionIndex = index + 1
+                })
+                this.expressionLines = expressionLines;
+            }
+        })
     }
 
-    handleAddExpression(event) {
-        if (!this._expressions) {
-            this._expressions = [];
-        } else {
-            this._expressions.push({id: this.lastExpressionIndex++, objectType: this.objectType});
-        }
+    handleAddExpression() {
+        this.expressionLines.push({
+            id: this.lastExpressionIndex++, 
+            objectType: this.contextRecordObjectName,
+            localVariables: this.localVariables !== undefined ? JSON.parse(this.localVariables) : [],
+            systemVariables: this.systemVariables !== undefined ? JSON.parse(this.systemVariables) : [],
+            availableRHSMergeFields: this.availableRHSMergeFields !== undefined ? JSON.parse(this.availableRHSMergeFields) : []
+        });
     }
 
     get showCustomLogicInput() {
-        return this.whenToExecute === 'custom';
+        return this.logicType === 'CUSTOM';
     }
 
     handleCustomLogicChange(event) {
-        this.customCondition = event.detail.value;
+        this.customLogic = event.detail.value;
+        this.assembleFormula();
     }
 
     handleWhenToExecuteChange(event) {
-        this.whenToExecute = event.detail.value;
+        this.logicType = event.detail.value;
+        this.assembleFormula();
     }
 
     handleExpressionChange(event) {
-        let expressionToModify = this._expressions.find(curExp => curExp.id == event.detail.id);
+        let expressionToModify = this.expressionLines.find(curExp => curExp.id === event.detail.id);
 
-        for (var detailKey in event.detail) {
+        for (let detailKey in event.detail) {
             if (Object.prototype.hasOwnProperty.call(event.detail, detailKey)) {
                 expressionToModify[detailKey] = event.detail[detailKey];
             }
         }
+
+        this.assembleFormula();
     }
 
     handleRemoveExpression(event) {
-        this._expressions = this._expressions.filter(curExp => curExp.id != event.detail);
+        this.expressionLines = this.expressionLines.filter(curExp => curExp.id !== event.detail);
+        this.assembleFormula();
+    }
+
+    assembleFormula() {
+        if ((this.logicType === 'CUSTOM' && this.customLogic.length > 0) || this.logicType !== 'CUSTOM') {
+            assembleFormulaString({
+                customLogic: this.customLogic.toUpperCase(), 
+                logicType: this.logicType, 
+                expressionLines: JSON.stringify(this.expressionLines)
+            }).then(result => {
+                this.convertedExpression = result
+            })
+        } else {
+            this.convertedExpression = ''
+        }
+    }
+
+    get disabledAddButton() {
+        return this.expressionLines.length > 9;
     }
 }

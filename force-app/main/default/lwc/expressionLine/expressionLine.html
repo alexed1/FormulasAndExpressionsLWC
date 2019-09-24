@@ -1,19 +1,21 @@
 <template>
-    <lightning-layout class="slds-p-left--small" multiple-rows="true">
+    <lightning-layout multiple-rows="true">
         <lightning-layout-item size="4" class="slds-p-left--small">
             <lightning-layout>
-                <lightning-layout-item size="1" class="slds-align-bottom">
-                    <div class="slds-text-heading_large">
+                <lightning-layout-item size="1" class="slds-align-bottom slds-p-bottom_xx-small">
+                    <div class="slds-text-heading_small">
                         {position}
                     </div>
                 </lightning-layout-item>
                 <lightning-layout-item size="11">
                     <c-field-picker
-                                    hide-object-type-select="true"
-                                    supported-object-types="Account"
-                                    onfieldselected={handleFieldChange}
-                                    field={fieldName}
-                                    object-type={objectType}
+                            hide-object-type-select="true"
+                            supported-object-types={objectType}
+                            onfieldselected={handleFieldChange}
+                            field={fieldName}
+                            object-type={objectType}
+                            local-variables={localVariables}
+                            system-variables={systemVariables}
                     ></c-field-picker>
                 </lightning-layout-item>
             </lightning-layout>
@@ -26,29 +28,38 @@
                     placeholder="Operator"
                     options={availableOperators}
                     onchange={handleOperatorChange}
+                    disabled={disabledFilter}
             ></lightning-combobox>
         </lightning-layout-item>
         <lightning-layout-item size="6" class="slds-p-left--small">
             <lightning-layout>
                 <lightning-layout-item size="11">
-                    <div onkeyup={handleSearchKeyUp}>
-                        <lightning-input
-                                name="field-value"
-                                label="Value"
-                                type="search"
-                                value={value}
-                                onchange={handleValueChange}
-                        ></lightning-input>
+                    <label class="slds-form-element__label" for="input">Value</label>
+                    <div class="slds-form-element__control">
+                        <input id="input" 
+                            name="input" 
+                            list="valueList" 
+                            class="slds-input" 
+                            type="text"
+                            disabled={disabledFilter}
+                            oninput={handleValueChange}
+                        />
+                        <datalist id="valueList" class="">
+                            <template for:each={availableMergeFields} for:item='item'>
+                                <option key={item.key} value={item.APIName}>{item.Label}</option>
+                            </template>
+                        </datalist>
                     </div>
                 </lightning-layout-item>
                 <lightning-layout-item size="1" class="slds-p-left--xx-small slds-align-bottom">
-                    <div onclick={handleExpressionRemove}>
-                        <lightning-icon icon-name="utility:delete" alternative-text="Delete"></lightning-icon>
-                    </div>
-                </lightning-layout-item>
+                        <lightning-button-icon 
+                            icon-name="utility:delete"
+                            alternative-text="Delete"   
+                            onclick={handleExpressionRemove}
+                            class="slds-m-left_xx-small">
+                        </lightning-button-icon>
+                    </lightning-layout-item>
             </lightning-layout>
-
         </lightning-layout-item>
-
     </lightning-layout>
 </template>

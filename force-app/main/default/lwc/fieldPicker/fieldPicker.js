@@ -13,6 +13,8 @@ export default class fieldPicker extends LightningElement {
     @api objectType;
     @api field;
     @api objectDisabled;
+    @api localVariables;
+    @api systemVariables;
 
     @api supportedObjectTypes;
     @api hideObjectTypeSelect = false;
@@ -23,8 +25,8 @@ export default class fieldPicker extends LightningElement {
     @track _field;
     @track objectTypes;
     @track fields;
+    @track userFields;
     @track errors = [];
-    @track isLoadFinished = false;
 
     labels = {
         none: NonePicklistValueLabel,
@@ -32,11 +34,26 @@ export default class fieldPicker extends LightningElement {
     };
 
     connectedCallback() {
-        if (this.objectType)
+        if (this.objectType) {
             this._objectType = this.objectType;
-
-        if (this.objectType && this.field)
+        }
+            
+        if (this.objectType && this.field) {
             this._field = this.field;
+        }
+
+        let fields = [];
+
+        this.localVariables.forEach(item => {
+            fields.push({
+                label: item.Label,
+                dataType: item.Type,
+                value: item.APIName,
+                objectType: ''
+            });
+        })
+
+        this.fields = fields;
     }
 
     @wire(getObjects, {supportedObjectTypes: '$supportedObjectTypesList'})
@@ -44,7 +61,6 @@ export default class fieldPicker extends LightningElement {
         if (error) {
             this.errors.push(error.body.message);
         } else if (data) {
-            this.isLoadFinished = true;
             this.objectTypes = data;
         }
     }
@@ -54,32 +70,66 @@ export default class fieldPicker extends LightningElement {
         if (error) {
             this.errors.push(error.body[0].message);
         } else if (data) {
-            let fields = data.fields;
+            let fields = Object.values(data.fields);
             let fieldResults = [];
-            for (let field in this.fields = fields) {
-                if (Object.prototype.hasOwnProperty.call(fields, field)) {
-                    if (this.isTypeSupported(fields[field])) {
-                        fieldResults.push({
-                            label: fields[field].label,
-                            value: fields[field].apiName,
-                            dataType: fields[field].dataType,
-                            required: fields[field].required,
-                            updateable: fields[field].updateable,
-                            referenceTo: (fields[field].referenceToInfos.length > 0 ? fields[field].referenceToInfos.map(curRef => {
-                                return curRef.apiName
-                            }) : [])
-                        });
-                    }
+
+            fields.forEach(field => {
+                if (this.isTypeSupported(field)) {
+                    fieldResults.push({
+                        label: field.label,
+                        value: field.apiName,
+                        dataType: field.dataType,
+                        required: field.required,
+                        updateable: field.updateable,
+                        objectType: this._objectType,
+                        referenceTo: (field.referenceToInfos.length > 0 ? field.referenceToInfos.map(curRef => {
+                            return curRef.apiName
+                        }) : [])
+                    });
                 }
                 if (this._field && !Object.prototype.hasOwnProperty.call(fields, this._field)) {
                     this.errors.push(this.labels.fieldNotSupported + this._field);
                     this._field = null;
                 }
-            }
-            this.fields = fieldResults;
+            })
+
+            this.fields = this.fields.concat(fieldResults).concat(this.userFields);
+
             if (this.fields) {
-                this.dispatchDataChangedEvent({...this.fields.find(curField => curField.value == this._field), ...{isInit: true}});
+                this.dispatchDataChangedEvent({...this.fields.find(curField => curField.value === this._field), ...{isInit: true}});
             }
+        }
+    }
+
+    @wire(getObjectInfo, {objectApiName: 'User'})
+    _getUserInfo({error, data}) {
+        if (error) {
+            this.errors.push(error.body[0].message);
+        } else if (data) {
+            let fields = Object.values(data.fields);
+            let fieldResults = [];
+
+            fields.forEach(field => {
+                if (this.isTypeSupported(field)) {
+                    fieldResults.push({
+                        label: field.label,
+                        value: field.apiName,
+                        dataType: field.dataType,
+                        required: field.required,
+                        updateable: field.updateable,
+                        objectType: 'User',
+                        referenceTo: (field.referenceToInfos.length > 0 ? field.referenceToInfos.map(curRef => {
+                            return curRef.apiName
+                        }) : [])
+                    });
+                }
+                if (this._field && !Object.prototype.hasOwnProperty.call(fields, this._field)) {
+                    this.errors.push(this.labels.fieldNotSupported + this._field);
+                    this._field = null;
+                }
+            })
+
+            this.userFields = fieldResults;
         }
     }
 
@@ -103,11 +153,7 @@ export default class fieldPicker extends LightningElement {
     }
 
     get supportedObjectTypesList() {
-        if (this.supportedObjectTypes) {
-            return this.splitValues(this.supportedObjectTypes.toLowerCase());
-        } else {
-            return [];
-        }
+        return this.supportedObjectTypes ? this.splitValues(this.supportedObjectTypes.toLowerCase()) : [];
     }
 
     get isError() {
@@ -123,11 +169,7 @@ export default class fieldPicker extends LightningElement {
     }
 
     get fieldType() {
-        if (this._field) {
-            return this.fields.find(e => e.value == this._field).dataType;
-        } else {
-            return null;
-        }
+        return this._field ? this.fields.find(e => e.value === this._field).dataType : null;
     }
 
     handleObjectChange(event) {
@@ -139,7 +181,7 @@ export default class fieldPicker extends LightningElement {
 
     handleFieldChange(event) {
         this._field = event.detail.value;
-        this.dispatchDataChangedEvent(this.fields.find(curField => curField.value == this._field));
+        this.dispatchDataChangedEvent(this.fields.find(curField => curField.value === this._field));
     }
 
     dispatchDataChangedEvent(detail) {
@@ -147,7 +189,6 @@ export default class fieldPicker extends LightningElement {
             bubbles: true,
             detail: {
                 ...detail, ...{
-                    objectType: this._objectType,
                     fieldName: this._field
                 }
             }
@@ -156,10 +197,6 @@ export default class fieldPicker extends LightningElement {
     }
 
     splitValues(originalString) {
-        if (originalString) {
-            return originalString.replace(/ /g, '').split(',');
-        } else {
-            return [];
-        }
-    };
+        return originalString ? originalString.replace(/ /g, '').split(',') : [];
+    }
 }
