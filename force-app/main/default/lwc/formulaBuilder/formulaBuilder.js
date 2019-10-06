@@ -3,11 +3,11 @@ import getFieldList from '@salesforce/apex/FormulaBuilderController.getFieldList
 
 export default class FormulaBuilder extends LightningElement {
 
-    @track fields;
-    @track functions;
-    @track operators;
-    @track formula = '';
-    @track name;
+    @api fields;
+    @api functions;
+    @api operators;
+    @api formula = '';
+    @api name;
 
     @api supportedFunctions = [
         'AND', 'OR', 'NOT', 'XOR', 'IF', 'CASE', 'LEN', 'SUBSTRING', 'LEFT', 'RIGHT',

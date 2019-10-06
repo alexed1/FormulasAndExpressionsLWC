@@ -8,4 +8,12 @@
         <target>lightning__RecordPage</target>
         <target>lightning__FlowScreen</target>
     </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+                <property name="objectType"  default="Account" type="String" ></property>
+                <property name="fieldName"  type="String"></property>
+                <property name="value"     type="String"></property>         
+         </targetConfig>
+    </targetConfigs>
+
 </LightningComponentBundle>

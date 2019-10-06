@@ -1,5 +1,5 @@
 import {LightningElement, track, api} from 'lwc';
-import conditionLogicHelpText from '@salesforce/label/c.ConditionLogicHelpText';
+//import conditionLogicHelpText from '@salesforce/label/c.ConditionLogicHelpText';
 import assembleFormulaString from '@salesforce/apex/ExpressionBuilder.assembleFormulaString';
 import disassemblyFormulaString from '@salesforce/apex/ExpressionBuilder.disassemblyFormulaString';
 
@@ -23,7 +23,7 @@ export default class expressionBuilder extends LightningElement {
         {value: 'OR', label: 'Any Condition Is Met'},
         {value: 'CUSTOM', label: 'Custom Condition Logic Is Met'}
     ];
-    conditionLogicHelpText = conditionLogicHelpText;
+    conditionLogicHelpText = 'placeholder for conditionLogicHelpTest' //conditionLogicHelpText;
 
     connectedCallback() {
 
