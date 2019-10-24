@@ -16,6 +16,18 @@ global with sharing class SearchUtils {
             'Queue' => 'WHERE Type = \'Queue\' AND Name LIKE (searchString)'
     };
 
+    static final List<String> OTHER_TYPES = new List<String>{
+            'RelatedUsers', 'Owner', 'Creator'
+    };
+
+    public static final Map<String, String> TYPE_TO_ID_FIELD = new Map<String, String>{
+            'User' => 'UserName',
+            'Group' => 'DeveloperName',
+            'Queue' => 'DeveloperName',
+            'Role' => 'DeveloperName',
+            'Role_subordinates' => 'DeveloperName'
+    };
+
 
     @AuraEnabled(cacheable=true)
     public static Map<String, List<Member>> searchMemberByType(List<String> memberTypes, String searchString) {
@@ -26,67 +38,69 @@ global with sharing class SearchUtils {
             if (!memberTypes.contains(curType)) {
                 continue;
             }
-            String queryString = 'SELECT Id, Name FROM ' + TYPE_TO_SOBJECT.get(curType) + ' ' + TYPE_TO_QUERY_CRITERIA.get(curType).replace('(searchString)', '\'%' + String.escapeSingleQuotes(searchString) + '%\'');
+
+            String queryString = 'SELECT ' + getQueriedFields(curType) + ' FROM ' + TYPE_TO_SOBJECT.get(curType) + ' ' + TYPE_TO_QUERY_CRITERIA.get(curType).replace('(searchString)', '\'%' + String.escapeSingleQuotes(searchString) + '%\'');
 
             List<SObject> types = Database.query(queryString);
             List<Member> members = new List<Member>();
             for (SObject t : types) {
-                members.add(new Member((String) t.get('Name'), (String) t.get('Id')));
+                members.add(new Member((String) t.get('Name'), (String) t.get(getIdField(curType))));
             }
             resultMap.put(curType, members);
         }
 
         return resultMap;
     }
-    @AuraEnabled(cacheable=true)
-    public static Map<String, List<Member>> searchMemberByObjectFieldType(Id recordId, String fieldType, List<String> allowedFieldApiNames) {
-        List<Member> result = new List<Member>();
-        if (recordId == null) {
-            return new Map<String, List<Member>>{
-                    fieldType => result
-            };
-        }
-        Schema.SObjectType token = recordId.getSObjectType();
-        Map<String, Schema.SObjectField> mfields = token.getDescribe().fields.getMap();
+    public static Map<String, SObject> getMembersByTypeAndId(Map<String, Set<String>> typeToIds) {
 
-        for (String fieldName : mfields.keySet()) {
-            //TODO:handle mixed case field names
-            if (allowedFieldApiNames != null && allowedFieldApiNames.size()>0 && !allowedFieldApiNames.contains(fieldName)) {
-                continue;
-            }
-
-            Schema.DescribeFieldResult obj = mfields.get(fieldName).getDescribe();
-            String fieldLabel = obj.getLabel();
-            List<SObjectType> refs = obj.getReferenceTo();
-            if (refs != null && refs.size() > 0) {
-                for (Schema.sObjectType ref : refs) {
-                    String curFieldType = ref.getDescribe().getLabel();
-                    if (fieldType != null && fieldType != curFieldType) {
-                        continue;
-                    }
-                    result.add(new Member(fieldLabel, fieldName));
-                }
-
-            }
-        }
-
-        return new Map<String, List<Member>>{
-                fieldType => result
-        };
-    }
-    public static Map<String, String> getMembersByTypeAndId(Map<String, Set<String>> typeToIds) {
-
-        Map<String, String> results = new Map<String, String>();
+        Map<String, SObject> results = new Map<String, SObject>();
         for (String sObjectTypeName : typeToIds.keySet()) {
-            Set<String> objectIds = typeToIds.get(sObjectTypeName);
-            String queryString = 'SELECT Id, Name FROM ' + TYPE_TO_SOBJECT.get(sObjectTypeName) + ' WHERE Id IN: objectIds';
+            if (OTHER_TYPES.contains(sObjectTypeName)) {
+                for (String curMember : typeToIds.get(sObjectTypeName)) {
+                    results.put(curMember, new Account(Name = curMember));
+                }
+            } else {
+                Set<String> objectIds = typeToIds.get(sObjectTypeName);
 
-            List<SObject> members = Database.query(queryString);
-            for (SObject curMember : members) {
-                results.put((String) curMember.get('Id'), (String) curMember.get('Name'));
+                String idField = getIdField(sObjectTypeName);
+                String queryString = 'SELECT ' + getQueriedFields(sObjectTypeName) + ' FROM ' + TYPE_TO_SOBJECT.get(sObjectTypeName) + ' WHERE ' + idField + ' IN: objectIds';
+                List<SObject> members = Database.query(queryString);
+                for (SObject curMember : members) {
+                    results.put((String) curMember.get(idField), curMember);
+                }
             }
         }
         return results;
+    }
+
+    private static String getIdField(String objectType) {
+        return TYPE_TO_ID_FIELD.containsKey(objectType) ? TYPE_TO_ID_FIELD.get(objectType) : 'Id';
+    }
+
+    private static String getQueriedFields(String objectType) {
+        String requiredFields = 'Id, Name';
+        if (TYPE_TO_ID_FIELD.containsKey(objectType)) {
+            requiredFields += ', ' + TYPE_TO_ID_FIELD.get(objectType);
+        }
+        return requiredFields;
+    }
+
+    @AuraEnabled(cacheable=true)
+    public static Map<String, List<Member>> describeSObjects(List<String> types) {
+
+        Map<String, List<SearchUtils.Member>> objectToFieldDescribe = new Map<String, List<SearchUtils.Member>>();
+        Schema.DescribeSobjectResult[] results = Schema.describeSObjects(types);
+
+        for (Schema.DescribeSobjectResult res : results) {
+            objectToFieldDescribe.put(res.getLabel(), new List<SearchUtils.Member>());
+            Map<String, SObjectField> fieldMap = res.fields.getMap();
+            for (String fieldApiName : fieldMap.keySet()) {
+                Schema.DescribeFieldResult fieldDescribe = fieldMap.get(fieldApiName).getDescribe();
+                objectToFieldDescribe.get(res.getLabel()).add(new Member(fieldDescribe.getLabel(), fieldDescribe.getName()));
+            }
+        }
+
+        return objectToFieldDescribe;
     }
 
     global class Member {

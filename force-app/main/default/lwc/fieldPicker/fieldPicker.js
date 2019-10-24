@@ -37,21 +37,24 @@ export default class fieldPicker extends LightningElement {
         if (this.objectType) {
             this._objectType = this.objectType;
         }
-            
+
         if (this.objectType && this.field) {
             this._field = this.field;
         }
 
         let fields = [];
 
-        this.localVariables.forEach(item => {
-            fields.push({
-                label: item.Label,
-                dataType: item.Type,
-                value: item.APIName,
-                objectType: ''
+        if (this.localVariables) {
+            this.localVariables.forEach(item => {
+                fields.push({
+                    label: item.Label,
+                    dataType: item.Type,
+                    value: item.APIName,
+                    objectType: ''
+                });
             });
-        })
+        }
+
 
         this.fields = fields;
     }
@@ -87,13 +90,18 @@ export default class fieldPicker extends LightningElement {
                         }) : [])
                     });
                 }
-                if (this._field && !Object.prototype.hasOwnProperty.call(fields, this._field)) {
-                    this.errors.push(this.labels.fieldNotSupported + this._field);
-                    this._field = null;
-                }
-            })
+                // if (this._field && !Object.prototype.hasOwnProperty.call(fields, this._field)) {
+                //     this.errors.push(this.labels.fieldNotSupported + this._field);
+                //     this._field = null;
+                // }
+            });
 
-            this.fields = this.fields.concat(fieldResults).concat(this.userFields);
+            if (fieldResults) {
+                this.fields = this.fields.concat(fieldResults);
+            }
+            if (this.userFields) {
+                this.fields = this.fields.concat(this.userFields);
+            }
 
             if (this.fields) {
                 this.dispatchDataChangedEvent({...this.fields.find(curField => curField.value === this._field), ...{isInit: true}});
@@ -123,11 +131,11 @@ export default class fieldPicker extends LightningElement {
                         }) : [])
                     });
                 }
-                if (this._field && !Object.prototype.hasOwnProperty.call(fields, this._field)) {
-                    this.errors.push(this.labels.fieldNotSupported + this._field);
-                    this._field = null;
-                }
-            })
+                // if (this._field && !Object.prototype.hasOwnProperty.call(fields, this._field)) {
+                //     this.errors.push(this.labels.fieldNotSupported + this._field);
+                //     this._field = null;
+                // }
+            });
 
             this.userFields = fieldResults;
         }
@@ -153,7 +161,7 @@ export default class fieldPicker extends LightningElement {
     }
 
     get supportedObjectTypesList() {
-        return this.supportedObjectTypes ? this.splitValues(this.supportedObjectTypes.toLowerCase()) : [];
+        return this.supportedObjectTypes ? this.splitValues(this.supportedObjectTypes.toLowerCase()) : [this.objectType];
     }
 
     get isError() {
@@ -169,7 +177,12 @@ export default class fieldPicker extends LightningElement {
     }
 
     get fieldType() {
-        return this._field ? this.fields.find(e => e.value === this._field).dataType : null;
+        if (this.fields.find(e => e.value === this._field)) {
+            return this._field ? this.fields.find(e => e.value === this._field).dataType : null;
+        } else {
+            return null;
+        }
+
     }
 
     handleObjectChange(event) {
@@ -186,7 +199,7 @@ export default class fieldPicker extends LightningElement {
 
     dispatchDataChangedEvent(detail) {
         const memberRefreshedEvt = new CustomEvent('fieldselected', {
-            bubbles: true,
+            bubbles: false,
             detail: {
                 ...detail, ...{
                     fieldName: this._field

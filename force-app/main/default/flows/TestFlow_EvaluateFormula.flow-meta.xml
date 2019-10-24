@@ -4,7 +4,7 @@
         <name>Evaluate_Formula</name>
         <label>Evaluate Formula</label>
         <locationX>305</locationX>
-        <locationY>50</locationY>
+        <locationY>51</locationY>
         <actionName>EvaluateFormula</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -18,7 +18,7 @@
         </inputParameters>
         <outputParameters>
             <assignToReference>formulaResult</assignToReference>
-            <name>result</name>
+            <name>stringResult</name>
         </outputParameters>
     </actionCalls>
     <interviewLabel>TestFlow_EvaluateFormula {!$Flow.CurrentDateTime}</interviewLabel>
@@ -40,7 +40,7 @@
         <name>screenInput</name>
         <label>Input Screen</label>
         <locationX>164</locationX>
-        <locationY>50</locationY>
+        <locationY>51</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
