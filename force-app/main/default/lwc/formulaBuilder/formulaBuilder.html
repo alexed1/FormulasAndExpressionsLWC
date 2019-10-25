@@ -5,7 +5,6 @@
             <lightning-combobox name="field" 
                             label="Field"
                             variant="label-hidden"
-                            value={selectedField}
                             placeholder="Field"
                             options={fields}
                             onchange={selectField}>
@@ -13,7 +12,6 @@
             <lightning-combobox name="function" 
                                 label="Function"
                                 variant="label-hidden"
-                                value={selectedFunction}
                                 placeholder="Function"
                                 options={functions}
                                 onchange={selectOperator}>
@@ -21,13 +19,12 @@
             <lightning-combobox name="operator" 
                                 label="Operator"
                                 variant="label-hidden"
-                                value={value}
                                 placeholder="Operator"
                                 options={operators}
                                 onchange={selectOperator}>
             </lightning-combobox>
         </div>
-        <lightning-textarea onchange={changeFormula} value={formula} name="formula" variant="label-hidden" onblur={formulaChanged}></lightning-textarea>
+        <lightning-textarea onchange={changeFormula} value={formulaValue} name="formula" variant="label-hidden" onblur={formulaChangedFlowEvent}></lightning-textarea>
         <p>Use formula syntax</p>
     </div>
 </template>

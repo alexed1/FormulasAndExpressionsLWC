@@ -116,7 +116,6 @@ public with sharing class ExpressionBuilder {
 
     @AuraEnabled
     public static Map<String, Object> disassemblyFormulaString (String expression) {
-
         Map<String, Object> result = new Map<String, Object>();
 
         if (String.isEmpty(expression)) {
@@ -254,7 +253,7 @@ public with sharing class ExpressionBuilder {
             expression = expression.replaceAll(mMatcher.group(0), items.get(mMatcher.group(0)));
         }
 
-        if (expression.indexOf('(') == -1) {
+        if (expression.indexOf(')') == -1) {
             if (expression.indexOf('AND') > -1) {
                 result.put('logicType', 'AND');
             } else {
@@ -267,7 +266,6 @@ public with sharing class ExpressionBuilder {
         }
 
         result.put('expressionLines', convertSetToExpressionLineWraper(conditions));
-        
         return result;
     }
 

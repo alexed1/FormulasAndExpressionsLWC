@@ -39,6 +39,12 @@
             <name>formulaBuilder</name>
             <extensionName>c:formulaBuilder</extensionName>
             <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>objectName</name>
+                <value>
+                    <stringValue>Account</stringValue>
+                </value>
+            </inputParameters>
             <isRequired>true</isRequired>
         </fields>
         <showFooter>true</showFooter>

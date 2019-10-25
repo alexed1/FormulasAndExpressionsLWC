@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata" fqn="formulaBuilder">
-  <apiVersion>46.0</apiVersion>
-  <isExposed>true</isExposed>
-  <targets>
-    <target>lightning__AppPage</target>
-    <target>lightning__RecordPage</target>
-    <target>lightning__HomePage</target>
-    <target>lightning__FlowScreen</target>
-  </targets>
-  <targetConfigs>
-    <targetConfig targets="lightning__FlowScreen">
-            <property name="fields"   type="String" ></property>
-            <property name="functions"    type="String"></property>
-            <property name="operators"     type="String"></property>   
-            <property name="formula"     type="String"></property>    
-            <property name="name"     type="String"></property>      
-            <property name="objectName"     type="String"></property>  
-            <property name="supportedFunctions"     type="String"></property>  
-            <property name="supportedOperators"     type="String"></property>      
-     </targetConfig>
-</targetConfigs>
+    <apiVersion>46.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__HomePage</target>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="formulaValue" type="String"></property>
+            <property name="objectName" type="String"></property>
+            <!--            <property name="fields" type="String"></property>-->
+            <!--            <property name="functions" type="String"></property>-->
+            <!--            <property name="operators" type="String"></property>-->
+            <!--            <property name="formula" type="String"></property>-->
+            <!--            <property name="name" type="String"></property>-->
+            <!--            <property name="supportedFunctions" type="String"></property>-->
+            <!--            <property name="supportedOperators" type="String"></property>-->
+        </targetConfig>
+    </targetConfigs>
 </LightningComponentBundle>
