@@ -1,17 +1,27 @@
 global with sharing class FieldPickerController {
 
     @AuraEnabled(cacheable=true)
-    public static List<Member> getObjects(List<String> supportedObjectTypes) {
+    public static List<Member> getObjects(List<String> availableObjectTypes) {
 
         List<Member> result = new List<Member>();
+        Map<String, SObjectType> allTypes = new Map<String, SObjectType>();
 
-        for (String objType : supportedObjectTypes) {
+        if (availableObjectTypes == null || availableObjectTypes.size() == 0) {
+            allTypes = Schema.getGlobalDescribe();
+            availableObjectTypes = new List<String>(allTypes.keySet());
+        } else if (availableObjectTypes.size() > 0) {
+            for (String curType : availableObjectTypes) {
+                allTypes.put(curType, ((SObject) (Type.forName('Schema.' + curType).newInstance())).getSObjectType());
+            }
+        }
 
-            Schema.DescribeSObjectResult describeObject = Schema.getGlobalDescribe().get(objType).getDescribe();
+        for (String objType : availableObjectTypes) {
+
+            Schema.DescribeSObjectResult describeObject = allTypes.get(objType).getDescribe();
             String objectType = describeObject.getName();
             String objectLabel = describeObject.getLabel();
             Boolean isCustom = describeObject.isCustom();
-            
+
             if (isCustom || allowedStandardObjects.containsKey(objectType)) {
                 result.add(new Member(objectType, objectLabel));
             }
@@ -25,7 +35,7 @@ global with sharing class FieldPickerController {
     }
     @AuraEnabled(cacheable=true)
     public static List<Member> getPicklistValues(String objectApiName, String fieldName) {
-        
+
         List<Member> options = new List<Member>();
 
         Schema.DescribeSObjectResult describeObject = Schema.getGlobalDescribe().get(objectApiName).getDescribe();
@@ -44,9 +54,9 @@ global with sharing class FieldPickerController {
 
     public class Member implements Comparable {
 
-        @AuraEnabled 
+        @AuraEnabled
         public String label;
-        @AuraEnabled 
+        @AuraEnabled
         public String value;
 
         public Member(String value, String label) {
@@ -67,7 +77,7 @@ global with sharing class FieldPickerController {
             return -1;
 
         }
-        
+
     }
 
     private static Map<String, String> allowedStandardObjects = new Map<String, String>{

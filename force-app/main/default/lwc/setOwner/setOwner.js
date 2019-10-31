@@ -13,7 +13,8 @@ import USER_NAME_FIELD from '@salesforce/schema/User.Name';
 import GROUP_NAME_FIELD from '@salesforce/schema/Group.Name';
 
 import searchMemberByType from '@salesforce/apex/SearchUtils.searchMemberByType';
-import {getRecord} from 'lightning/uiRecordApi';
+
+import getSingleMembersByTypeAndId from '@salesforce/apex/SearchUtils.getSingleMembersByTypeAndId';
 import {ShowToastEvent} from 'lightning/platformShowToastEvent';
 import {logger, logError} from 'c/lwcLogger';
 
@@ -21,6 +22,7 @@ import {
     generateCapabilityColumns,
     splitValues
 } from 'c/buttonUtils';
+
 
 const typeMapping = {
     Group: PublicGroups,
@@ -50,12 +52,12 @@ export default class addNewMembers extends LightningElement {
     @track searchDisabled = false;
     source = 'ownerSetter';
 
-    @wire(getRecord, {recordId: '$memberId', fields: [USER_NAME_FIELD, GROUP_NAME_FIELD]})
-    wiredRecord({error, data}) {
+    @wire(getSingleMembersByTypeAndId, {type: '$selectedType', id: '$memberId'})
+    _getSingleMembersByTypeAndId({error, data}) {
         if (error) {
-            this.toastTheError(error, this.source);
+            console.log(error.body.message);
         } else if (data) {
-            this.memberData = data;
+            this.memberData = data[this.memberId];
         }
     }
 
@@ -92,7 +94,7 @@ export default class addNewMembers extends LightningElement {
 
     get selectedMemberName() {
         if (this.memberData) {
-            return this.memberData.fields.Name.value;
+            return this.memberData.Name;
         } else {
             return null;
         }

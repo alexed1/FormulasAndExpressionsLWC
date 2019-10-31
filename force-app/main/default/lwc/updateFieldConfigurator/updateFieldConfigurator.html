@@ -1,15 +1,14 @@
 <template>
     <lightning-card title='Field Update Edit'>
         <div class="slds-p-around--small">
-            <c-field-picker
+            <c-pick-object-and-field-f-s-c
                     field-label='Field to Update'
                     object-label='Object'
                     object-type={_objectType}
                     field={_fieldName}
                     onfieldselected={handleFieldChange}
-                    show-field-type
-                    object-disabled
-            ></c-field-picker>
+                    display-field-type
+            ></c-pick-object-and-field-f-s-c>
             <template if:true={fieldProperties}>
                 <template if:true={fieldProperties.isDisabled}>
                     <div class="slds-text-color_destructive">
@@ -29,6 +28,7 @@
                             <template if:true={formulaEditorVisible}>
                                 <div>
                                     <c-formula-builder object-name={_objectType}
+                                                       supported-context-types={supportedContextTypes}
                                                        onformulachanged={handleValueChange}></c-formula-builder>
                                 </div>
                             </template>
