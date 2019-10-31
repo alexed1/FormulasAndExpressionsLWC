@@ -18,38 +18,78 @@
     <screens>
         <name>Configure_Field_Update</name>
         <label>Configure Field Update</label>
-        <locationX>207</locationX>
+        <locationX>206</locationX>
+        <locationY>52</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>selected_formula</targetReference>
+        </connector>
+        <fields>
+            <name>update_field</name>
+            <extensionName>c:updateFieldConfigurator</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>supportedContextTypes</name>
+                <value>
+                    <stringValue>User, Profile, Organization</stringValue>
+                </value>
+            </inputParameters>
+            <isRequired>true</isRequired>
+            <outputParameters>
+                <assignToReference>selected_field_name</assignToReference>
+                <name>fieldName</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>selected_value_formula</assignToReference>
+                <name>value</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>selected_object_name</assignToReference>
+                <name>objectType</name>
+            </outputParameters>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>selected_formula</name>
+        <label>selected_formula</label>
+        <locationX>384</locationX>
         <locationY>52</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <fields>
-            <name>updateField</name>
-            <extensionName>c:updateFieldConfigurator</extensionName>
-            <fieldType>ComponentInstance</fieldType>
-            <inputParameters>
-                <name>fieldName</name>
-                <value>
-                    <stringValue>Type</stringValue>
-                </value>
-            </inputParameters>
-            <isRequired>true</isRequired>
-        </fields>
-        <fields>
-            <name>formulaBuilder</name>
-            <extensionName>c:formulaBuilder</extensionName>
-            <fieldType>ComponentInstance</fieldType>
-            <inputParameters>
-                <name>objectName</name>
-                <value>
-                    <stringValue>Account</stringValue>
-                </value>
-            </inputParameters>
-            <isRequired>true</isRequired>
+            <name>selected_formula_output</name>
+            <fieldText>&lt;p&gt;{!selected_object_name}.{!selected_field_name} will be updated with formula: {!selected_value_formula}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
+        <showHeader>false</showHeader>
     </screens>
     <startElementReference>Configure_Field_Update</startElementReference>
     <status>Draft</status>
+    <variables>
+        <name>selected_field_name</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>selected_object_name</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>selected_value_formula</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
 </Flow>
