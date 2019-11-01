@@ -20,6 +20,9 @@
             "c/lwcLogger": [
                 "lwcLogger/lwcLogger.js"
             ],
+            "c/pickObjectAndFieldFSC": [
+                "pickObjectAndFieldFSC/pickObjectAndFieldFSC.js"
+            ],
             "c/setOwner": [
                 "setOwner/setOwner.js"
             ],

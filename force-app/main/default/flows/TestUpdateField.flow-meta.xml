@@ -1,5 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Update_Field2</name>
+        <label>Update Field</label>
+        <locationX>524</locationX>
+        <locationY>53</locationY>
+        <actionName>UpdateFieldAction</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Is_Success</targetReference>
+        </connector>
+        <inputParameters>
+            <name>formula</name>
+            <value>
+                <elementReference>selected_value_formula</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>fieldName</name>
+            <value>
+                <elementReference>selected_field_name</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>objectId</name>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputParameters>
+        <outputParameters>
+            <assignToReference>isSuccess</assignToReference>
+            <name>isSuccess</name>
+        </outputParameters>
+        <outputParameters>
+            <assignToReference>errors</assignToReference>
+            <name>errors</name>
+        </outputParameters>
+    </actionCalls>
+    <decisions>
+        <name>Is_Success</name>
+        <label>Is Success?</label>
+        <locationX>671</locationX>
+        <locationY>65</locationY>
+        <defaultConnector>
+            <targetReference>screenUpdate</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>isSuccess</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>screenSuccess</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
     <interviewLabel>TestUpdateField {!$Flow.CurrentDateTime}</interviewLabel>
     <label>TestUpdateField</label>
     <processMetadataValues>
@@ -18,7 +80,7 @@
     <screens>
         <name>Configure_Field_Update</name>
         <label>Configure Field Update</label>
-        <locationX>206</locationX>
+        <locationX>205</locationX>
         <locationY>52</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
@@ -54,6 +116,38 @@
         <showHeader>true</showHeader>
     </screens>
     <screens>
+        <name>screenSuccess</name>
+        <label>screenSuccess</label>
+        <locationX>829</locationX>
+        <locationY>64</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>dispUpdate</name>
+            <fieldText>&lt;p&gt;Successful update&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>screenUpdate</name>
+        <label>screenUpdate</label>
+        <locationX>682</locationX>
+        <locationY>236</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>dispError</name>
+            <fieldText>&lt;p&gt;Errors occurred: {!errors}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
         <name>selected_formula</name>
         <label>selected_formula</label>
         <locationX>384</locationX>
@@ -61,6 +155,9 @@
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Update_Field2</targetReference>
+        </connector>
         <fields>
             <name>selected_formula_output</name>
             <fieldText>&lt;p&gt;{!selected_object_name}.{!selected_field_name} will be updated with formula: {!selected_value_formula}&lt;/p&gt;</fieldText>
@@ -71,6 +168,27 @@
     </screens>
     <startElementReference>Configure_Field_Update</startElementReference>
     <status>Draft</status>
+    <variables>
+        <name>errors</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>isSuccess</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
     <variables>
         <name>selected_field_name</name>
         <dataType>String</dataType>

@@ -1,0 +1,1352 @@
+[
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 128,
+            "modifiedTime": 1566578419247,
+            "changeTime": 1566578419247,
+            "contentHash": "51d86f3b64a3d9a0048d192f02147b0e9e9594e4",
+            "isWorkspace": false,
+            "isArtifactRoot": true
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 128,
+            "modifiedTime": 1566578419247,
+            "changeTime": 1566578419247,
+            "contentHash": "ae41ed56706e4439a34cda97ac997d7988935c2f",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 576,
+            "modifiedTime": 1568038380697,
+            "changeTime": 1568038380697,
+            "contentHash": "71ee789baaa5c9cc8a5da78b95ce8b79b98e4b34",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/aura",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/aura",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 64,
+            "modifiedTime": 1566518552900,
+            "changeTime": 1566578390311,
+            "contentHash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 704,
+            "modifiedTime": 1567969311099,
+            "changeTime": 1567969311099,
+            "contentHash": "2ce69dc19ab542d86ee9e6b5d668b35eb10aab84",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FieldPickerController.cls",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FieldPickerController.cls",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 6009,
+            "modifiedTime": 1567969311097,
+            "changeTime": 1567969311097,
+            "contentHash": "570b98012e8f3d05c24e855681e7394a78d80419",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FieldPickerController.cls-meta.xml",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FieldPickerController.cls-meta.xml",
+            "isDirectory": false,
+            "isMetadataFile": true,
+            "size": 174,
+            "modifiedTime": 1567886041047,
+            "changeTime": 1567886041047,
+            "contentHash": "7f6517e5462e478a2d535000a85299d8a5a10871",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaBuilderController.cls",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaBuilderController.cls",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 565,
+            "modifiedTime": 1567969311097,
+            "changeTime": 1567969311097,
+            "contentHash": "f5c4acd9181c13580c3d2f02e93a64d617d8b902",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaBuilderController.cls-meta.xml",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaBuilderController.cls-meta.xml",
+            "isDirectory": false,
+            "isMetadataFile": true,
+            "size": 202,
+            "modifiedTime": 1567886041047,
+            "changeTime": 1567886041047,
+            "contentHash": "ccbdbd8d296a15d0d7a76cb67a9f07bc63b70965",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaBuilderControllerTest.cls",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaBuilderControllerTest.cls",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 340,
+            "modifiedTime": 1567969311097,
+            "changeTime": 1567969311097,
+            "contentHash": "1ac1eddc47e7fb4b8dfc347fea279c7c295ab212",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaBuilderControllerTest.cls-meta.xml",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaBuilderControllerTest.cls-meta.xml",
+            "isDirectory": false,
+            "isMetadataFile": true,
+            "size": 206,
+            "modifiedTime": 1567969311097,
+            "changeTime": 1567969311097,
+            "contentHash": "c7ec94446d7852bb21455a39542d5b9ed9c54df4",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaEvaluator.cls",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaEvaluator.cls",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 17359,
+            "modifiedTime": 1567969311098,
+            "changeTime": 1567969311098,
+            "contentHash": "f1e6f36974b1cc0fd9a9d4a1fa487e1ce4ebb0a6",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaEvaluator.cls-meta.xml",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaEvaluator.cls-meta.xml",
+            "isDirectory": false,
+            "isMetadataFile": true,
+            "size": 194,
+            "modifiedTime": 1567886041047,
+            "changeTime": 1567886041047,
+            "contentHash": "f4f660d6f3b0e44e81c43e7da3ddfa286e9f0f8e",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaEvaluatorTest.cls",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaEvaluatorTest.cls",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 4129,
+            "modifiedTime": 1567969311098,
+            "changeTime": 1567969311098,
+            "contentHash": "d0c7910bf493004f40b46a9b531913b15bed9dca",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaEvaluatorTest.cls-meta.xml",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaEvaluatorTest.cls-meta.xml",
+            "isDirectory": false,
+            "isMetadataFile": true,
+            "size": 198,
+            "modifiedTime": 1567969311098,
+            "changeTime": 1567969311098,
+            "contentHash": "6730f3d7900097323ad429e8368d998a889c18ff",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/RegExps.cls",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/RegExps.cls",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 69012,
+            "modifiedTime": 1567886041048,
+            "changeTime": 1567886041048,
+            "contentHash": "40aff569327c0825c84ca075f710dc61e808a51d",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/RegExps.cls-meta.xml",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/RegExps.cls-meta.xml",
+            "isDirectory": false,
+            "isMetadataFile": true,
+            "size": 174,
+            "modifiedTime": 1566492404664,
+            "changeTime": 1566578386620,
+            "contentHash": "05c18a0ab55f441b30bbc2451179237979dbf300",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/SearchUtils.cls",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/SearchUtils.cls",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 4134,
+            "modifiedTime": 1567886041048,
+            "changeTime": 1567886041048,
+            "contentHash": "4821d4b2cf6b7201564dea31ab1489edc2cffb3d",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/SearchUtils.cls-meta.xml",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/SearchUtils.cls-meta.xml",
+            "isDirectory": false,
+            "isMetadataFile": true,
+            "size": 174,
+            "modifiedTime": 1567886041048,
+            "changeTime": 1567886041048,
+            "contentHash": "7f6517e5462e478a2d535000a85299d8a5a10871",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/SearchUtilsTest.cls",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/SearchUtilsTest.cls",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 2307,
+            "modifiedTime": 1567886041049,
+            "changeTime": 1567886041049,
+            "contentHash": "79cf1ff753cbbe0272350844c6967a211f6d7080",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/SearchUtilsTest.cls-meta.xml",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/SearchUtilsTest.cls-meta.xml",
+            "isDirectory": false,
+            "isMetadataFile": true,
+            "size": 174,
+            "modifiedTime": 1567886041049,
+            "changeTime": 1567886041049,
+            "contentHash": "7f6517e5462e478a2d535000a85299d8a5a10871",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/UpdateFieldAction.cls",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/UpdateFieldAction.cls",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 3078,
+            "modifiedTime": 1567969311098,
+            "changeTime": 1567969311098,
+            "contentHash": "833ae0fc9b8ae0c9e65108cfaccf6043b7ab2d76",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/UpdateFieldAction.cls-meta.xml",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/UpdateFieldAction.cls-meta.xml",
+            "isDirectory": false,
+            "isMetadataFile": true,
+            "size": 195,
+            "modifiedTime": 1567969311099,
+            "changeTime": 1567969311099,
+            "contentHash": "d2e2cb031796c86447750c22b33ead1569f2cfd8",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/UpdateFieldActionTest.cls",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/UpdateFieldActionTest.cls",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 1823,
+            "modifiedTime": 1567969311099,
+            "changeTime": 1567969311099,
+            "contentHash": "58403469a62f8fd57cf7c8453bfedd94c632a8a8",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/UpdateFieldActionTest.cls-meta.xml",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/UpdateFieldActionTest.cls-meta.xml",
+            "isDirectory": false,
+            "isMetadataFile": true,
+            "size": 199,
+            "modifiedTime": 1567969311099,
+            "changeTime": 1567969311099,
+            "contentHash": "fe619695b62837a33629e57b2b9e3771ab38affd",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/components",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/components",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 64,
+            "modifiedTime": 1566520565877,
+            "changeTime": 1566578390308,
+            "contentHash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/contentassets",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/contentassets",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 64,
+            "modifiedTime": 1566518552900,
+            "changeTime": 1566578386534,
+            "contentHash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/flexipages",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/flexipages",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 64,
+            "modifiedTime": 1566518552901,
+            "changeTime": 1566578386623,
+            "contentHash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/labels",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/labels",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 96,
+            "modifiedTime": 1567886041049,
+            "changeTime": 1567886041049,
+            "contentHash": "c3835cc038e1e9f66a66938c26f39887d32c77d8",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/labels/CustomLabels.labels-meta.xml",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/labels/CustomLabels.labels-meta.xml",
+            "isDirectory": false,
+            "isMetadataFile": true,
+            "size": 8913,
+            "modifiedTime": 1567886041049,
+            "changeTime": 1567886041049,
+            "contentHash": "126a0e9d46228b0cdf614946ea16c83c9d4a2d50",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/layouts",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/layouts",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 64,
+            "modifiedTime": 1566520546096,
+            "changeTime": 1566578390308,
+            "contentHash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 416,
+            "modifiedTime": 1567969311102,
+            "changeTime": 1567969311102,
+            "contentHash": "491af14ea5242abf91bf707baaefccd8b77cf748",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/buttonUtils",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/buttonUtils",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 128,
+            "modifiedTime": 1567886041049,
+            "changeTime": 1567886041049,
+            "contentHash": "0199d61776086765f2475226108fee5e33991216",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/buttonUtils/buttonUtils.js",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/buttonUtils/buttonUtils.js",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 902,
+            "modifiedTime": 1567886041049,
+            "changeTime": 1567886041049,
+            "contentHash": "baeae7c1052762aed2bc221c48f9f18959a0295f",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/buttonUtils/buttonUtils.js-meta.xml",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/buttonUtils/buttonUtils.js-meta.xml",
+            "isDirectory": false,
+            "isMetadataFile": true,
+            "size": 226,
+            "modifiedTime": 1567886041049,
+            "changeTime": 1567886041049,
+            "contentHash": "ba836d3d5a85ad5abec7f84be3f5b34d5aeaba0d",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionBuilder",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionBuilder",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 160,
+            "modifiedTime": 1567886041050,
+            "changeTime": 1567886041050,
+            "contentHash": "311b267a434c15eff0f19d92013e8b95a42e361b",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionBuilder/expressionBuilder.html",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionBuilder/expressionBuilder.html",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 2394,
+            "modifiedTime": 1567886041050,
+            "changeTime": 1567886041050,
+            "contentHash": "83f9ba7d779e45947967860c4890fd8efb7dc683",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionBuilder/expressionBuilder.js",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionBuilder/expressionBuilder.js",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 1875,
+            "modifiedTime": 1567886041050,
+            "changeTime": 1567886041050,
+            "contentHash": "ac97f820f2fa4982a93c8b125dc78cf2fe8e6b3f",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionBuilder/expressionBuilder.js-meta.xml",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionBuilder/expressionBuilder.js-meta.xml",
+            "isDirectory": false,
+            "isMetadataFile": true,
+            "size": 382,
+            "modifiedTime": 1567886041050,
+            "changeTime": 1567886041050,
+            "contentHash": "e3fa315c952dda542aadfec81db1b923d9c9042e",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionLine",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionLine",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 160,
+            "modifiedTime": 1567886041050,
+            "changeTime": 1567886041050,
+            "contentHash": "e889bb343a861c5d90110bf8c316e7b90442b064",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionLine/expressionLine.html",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionLine/expressionLine.html",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 2443,
+            "modifiedTime": 1567886041050,
+            "changeTime": 1567886041050,
+            "contentHash": "4687497022ac4252bb317db60d9b63c730e2d58c",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionLine/expressionLine.js",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionLine/expressionLine.js",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 1897,
+            "modifiedTime": 1567886041050,
+            "changeTime": 1567886041050,
+            "contentHash": "8dcfd484038a5202e59fffecd2ce647233ef447c",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionLine/expressionLine.js-meta.xml",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionLine/expressionLine.js-meta.xml",
+            "isDirectory": false,
+            "isMetadataFile": true,
+            "size": 300,
+            "modifiedTime": 1567886041050,
+            "changeTime": 1567886041050,
+            "contentHash": "c551932a09880bcd2a6572096e0acf47a765ca55",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/fieldPicker",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/fieldPicker",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 192,
+            "modifiedTime": 1567969311100,
+            "changeTime": 1567969311100,
+            "contentHash": "2f5a8871542a50ca158bfb1cd2daa6cbadaf4c04",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/fieldPicker/fieldPicker.css",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/fieldPicker/fieldPicker.css",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 95,
+            "modifiedTime": 1567886041051,
+            "changeTime": 1567886041051,
+            "contentHash": "5e0d27a3e31914e072b39db3950984155ba5a3d3",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/fieldPicker/fieldPicker.html",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/fieldPicker/fieldPicker.html",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 1593,
+            "modifiedTime": 1567969311100,
+            "changeTime": 1567969311100,
+            "contentHash": "f94b5faea4ae07a1b0af1abe77263e405c4fd433",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/fieldPicker/fieldPicker.js",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/fieldPicker/fieldPicker.js",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 5176,
+            "modifiedTime": 1567969311100,
+            "changeTime": 1567969311100,
+            "contentHash": "b460405d37c29ab598748d73c9a2938bd8a30599",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/fieldPicker/fieldPicker.js-meta.xml",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/fieldPicker/fieldPicker.js-meta.xml",
+            "isDirectory": false,
+            "isMetadataFile": true,
+            "size": 370,
+            "modifiedTime": 1567886041051,
+            "changeTime": 1567886041051,
+            "contentHash": "ef6bf464454c0bc820be307b809bc734d6d7b267",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/formulaBuilder",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/formulaBuilder",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 192,
+            "modifiedTime": 1567969311101,
+            "changeTime": 1567969311101,
+            "contentHash": "f6e5e894fca6879b9ce424b0df18f675b7cac4ec",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/formulaBuilder/formulaBuilder.css",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/formulaBuilder/formulaBuilder.css",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 594,
+            "modifiedTime": 1567969311101,
+            "changeTime": 1567969311101,
+            "contentHash": "c416a298c5a74a479f788e67e723614299afeb06",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/formulaBuilder/formulaBuilder.html",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/formulaBuilder/formulaBuilder.html",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 1502,
+            "modifiedTime": 1567969311101,
+            "changeTime": 1567969311101,
+            "contentHash": "13a81b85a56da94085552a16b024a912a265ac8f",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/formulaBuilder/formulaBuilder.js",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/formulaBuilder/formulaBuilder.js",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 2625,
+            "modifiedTime": 1567969311101,
+            "changeTime": 1567969311101,
+            "contentHash": "08bd3273287d057c696194b26d55e04844de1428",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/formulaBuilder/formulaBuilder.js-meta.xml",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/formulaBuilder/formulaBuilder.js-meta.xml",
+            "isDirectory": false,
+            "isMetadataFile": true,
+            "size": 416,
+            "modifiedTime": 1567886041052,
+            "changeTime": 1567886041052,
+            "contentHash": "fa1055d580af0d5799685e097d61f7b8781defcd",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/lwcLogger",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/lwcLogger",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 128,
+            "modifiedTime": 1567886041053,
+            "changeTime": 1567886041053,
+            "contentHash": "a9bd2d1a7fa52fafe8567638a1da0495c6b488cb",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/lwcLogger/lwcLogger.js",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/lwcLogger/lwcLogger.js",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 1369,
+            "modifiedTime": 1567886041053,
+            "changeTime": 1567886041053,
+            "contentHash": "33fc26b37f804852ff2fcc332a58be3b43f3e1a7",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/lwcLogger/lwcLogger.js-meta.xml",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/lwcLogger/lwcLogger.js-meta.xml",
+            "isDirectory": false,
+            "isMetadataFile": true,
+            "size": 228,
+            "modifiedTime": 1567886041053,
+            "changeTime": 1567886041053,
+            "contentHash": "759451bfe7634116c6753cfdedb73ffbb2da92d6",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setOwner",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setOwner",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 192,
+            "modifiedTime": 1567886041053,
+            "changeTime": 1567886041053,
+            "contentHash": "88b986a80641d6cc638344f456fe2f982debd300",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setOwner/setOwner.css",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setOwner/setOwner.css",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 50,
+            "modifiedTime": 1567886041053,
+            "changeTime": 1567886041053,
+            "contentHash": "58fba911553a62acfbb5298cd4a5de6e360c61c7",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setOwner/setOwner.html",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setOwner/setOwner.html",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 4417,
+            "modifiedTime": 1567886041053,
+            "changeTime": 1567886041053,
+            "contentHash": "2d558a6397a82575fbc0349b98a295274cac2c37",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setOwner/setOwner.js",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setOwner/setOwner.js",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 4650,
+            "modifiedTime": 1567886041053,
+            "changeTime": 1567886041053,
+            "contentHash": "1210ac4b4bf7b7eb4caf0c92311785e318abc9d6",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setOwner/setOwner.js-meta.xml",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setOwner/setOwner.js-meta.xml",
+            "isDirectory": false,
+            "isMetadataFile": true,
+            "size": 499,
+            "modifiedTime": 1567886041054,
+            "changeTime": 1567886041054,
+            "contentHash": "fe0400765c696b7c505cd79bac95c3a894c1c0cb",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setPickList",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setPickList",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 160,
+            "modifiedTime": 1567969311102,
+            "changeTime": 1567969311102,
+            "contentHash": "bb3c8a9240d07b52cca53dacc156710af4fdc376",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setPickList/setPickList.html",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setPickList/setPickList.html",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 704,
+            "modifiedTime": 1567886041054,
+            "changeTime": 1567886041054,
+            "contentHash": "9c1f2d4052e352e5a0773250b628950f50672334",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setPickList/setPickList.js",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setPickList/setPickList.js",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 2588,
+            "modifiedTime": 1567969311103,
+            "changeTime": 1567969311103,
+            "contentHash": "9bcaab3500788b173a955b21b7815d998473d9ef",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setPickList/setPickList.js-meta.xml",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setPickList/setPickList.js-meta.xml",
+            "isDirectory": false,
+            "isMetadataFile": true,
+            "size": 294,
+            "modifiedTime": 1567886041055,
+            "changeTime": 1567886041055,
+            "contentHash": "759904d3d77ed4882cf4af4c5a00221ce2f22534",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/updateFieldConfigurator",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/updateFieldConfigurator",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 160,
+            "modifiedTime": 1567969311105,
+            "changeTime": 1567969311105,
+            "contentHash": "af8dbfa0a4cdfc445b19ec406bb9e3aa34709ea3",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/updateFieldConfigurator/updateFieldConfigurator.html",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/updateFieldConfigurator/updateFieldConfigurator.html",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 7611,
+            "modifiedTime": 1567969311104,
+            "changeTime": 1567969311104,
+            "contentHash": "8c1ad7b099bfc21ab2d7143e290226541179b6a5",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/updateFieldConfigurator/updateFieldConfigurator.js",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/updateFieldConfigurator/updateFieldConfigurator.js",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 3947,
+            "modifiedTime": 1567969311104,
+            "changeTime": 1567969311104,
+            "contentHash": "b3028abb40d8bcda0b6d400a332db4292a880db7",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/updateFieldConfigurator/updateFieldConfigurator.js-meta.xml",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/updateFieldConfigurator/updateFieldConfigurator.js-meta.xml",
+            "isDirectory": false,
+            "isMetadataFile": true,
+            "size": 441,
+            "modifiedTime": 1567969311105,
+            "changeTime": 1567969311105,
+            "contentHash": "24038e5c97cdb2ede3ba2afc08efe717e97f306c",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/pages",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/pages",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 64,
+            "modifiedTime": 1566520646116,
+            "changeTime": 1566578390311,
+            "contentHash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/permissionsets",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/permissionsets",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 64,
+            "modifiedTime": 1566518552901,
+            "changeTime": 1566578386534,
+            "contentHash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/sites",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/sites",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 64,
+            "modifiedTime": 1566521122961,
+            "changeTime": 1566578390308,
+            "contentHash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 128,
+            "modifiedTime": 1567886041045,
+            "changeTime": 1567886041045,
+            "contentHash": "94b65d41e40870e77f72cba72966f3bed8bd0800",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 128,
+            "modifiedTime": 1566520123125,
+            "changeTime": 1566578386629,
+            "contentHash": "9f4bb3dd78853fee52f25b5a18949a8603beab6b",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/SiteStyles.css",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/SiteStyles.css",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 402,
+            "modifiedTime": 1566520123125,
+            "changeTime": 1566578386629,
+            "contentHash": "acbb17c79c96e91d9c04ae4c847b7241ccde01de",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 320,
+            "modifiedTime": 1566520123128,
+            "changeTime": 1566578386628,
+            "contentHash": "ca36f65b7f8888bd595c26bba98c091a986284ab",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/clock.png",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/clock.png",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 4681,
+            "modifiedTime": 1566520123125,
+            "changeTime": 1566578386627,
+            "contentHash": "6f2f8d42808b3c04c1a2e7d9b6ba37ea7f862ba7",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/construction.png",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/construction.png",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 15051,
+            "modifiedTime": 1566520123126,
+            "changeTime": 1566578386628,
+            "contentHash": "322851d6d1ef8caf107caf445de1b6c05caef6bc",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/force_logo.png",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/force_logo.png",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 1728,
+            "modifiedTime": 1566520123126,
+            "changeTime": 1566578386628,
+            "contentHash": "40bb27e6354b88edcd694651e69ac817cc859541",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/maintenance.png",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/maintenance.png",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 12247,
+            "modifiedTime": 1566520123127,
+            "changeTime": 1566578386625,
+            "contentHash": "3eae4032e6c554a7c44ec277b10f9fa92de2d6cf",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/poweredby.png",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/poweredby.png",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 984,
+            "modifiedTime": 1566520123127,
+            "changeTime": 1566578386626,
+            "contentHash": "a29fa078df1fc18309a8fa02d5941312e4e41344",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/tools.png",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/tools.png",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 2136,
+            "modifiedTime": 1566520123128,
+            "changeTime": 1566578386626,
+            "contentHash": "06ee26032a159736878decef296cba66ec8d8e25",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/unauthorized.png",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/unauthorized.png",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 2076,
+            "modifiedTime": 1566520123128,
+            "changeTime": 1566578386627,
+            "contentHash": "74dc855d72862a1f62d1c9ec0535f43a229fb1a4",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/warning.png",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/warning.png",
+            "isDirectory": false,
+            "isMetadataFile": false,
+            "size": 1767,
+            "modifiedTime": 1566520123129,
+            "changeTime": 1566578386625,
+            "contentHash": "90ef2806b042926ca428c19654b9306555b53429",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples.resource-meta.xml",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples.resource-meta.xml",
+            "isDirectory": false,
+            "isMetadataFile": true,
+            "size": 279,
+            "modifiedTime": 1566520123102,
+            "changeTime": 1566578386630,
+            "contentHash": "d631b8484f7cf65ecbe56127a65e4ec278d8657d",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/tabs",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/tabs",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 64,
+            "modifiedTime": 1566520248501,
+            "changeTime": 1566578386533,
+            "contentHash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/triggers",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/triggers",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 64,
+            "modifiedTime": 1566518552901,
+            "changeTime": 1566578386623,
+            "contentHash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/workflows",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/workflows",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 96,
+            "modifiedTime": 1568038380698,
+            "changeTime": 1568038380698,
+            "contentHash": "7fb00a023b87cf19671452bb28b7c7d588d2f173",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/workflows/Account.workflow-meta.xml",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/workflows/Account.workflow-meta.xml",
+            "isDirectory": false,
+            "isMetadataFile": true,
+            "size": 867,
+            "modifiedTime": 1568038380698,
+            "changeTime": 1568038380698,
+            "contentHash": "19a0e3f1b80f1bfc986d91e985b309b414ee4a2c",
+            "isWorkspace": false,
+            "isArtifactRoot": false
+        }
+    ],
+    [
+        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField",
+        {
+            "state": "n",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField",
+            "isDirectory": true,
+            "isMetadataFile": false,
+            "size": 416,
+            "modifiedTime": 1567898503895,
+            "changeTime": 1567898503895,
+            "contentHash": "65bb6de98cb1802b0d0d4e2367f7d48b05b4a600",
+            "isWorkspace": true,
+            "isArtifactRoot": false
+        }
+    ]
+]
