@@ -12,6 +12,7 @@
         <targetConfig targets="lightning__FlowScreen">
             <property name="formulaValue" type="String"></property>
             <property name="objectName" type="String"></property>
+            <property name="supportedContextTypes" type="String" role="inputOnly"></property>
             <!--            <property name="fields" type="String"></property>-->
             <!--            <property name="functions" type="String"></property>-->
             <!--            <property name="operators" type="String"></property>-->

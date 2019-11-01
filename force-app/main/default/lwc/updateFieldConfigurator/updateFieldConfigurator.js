@@ -1,16 +1,13 @@
 import {LightningElement, api, wire, track} from 'lwc';
 
 export default class updateFieldConfigurator extends LightningElement {
-    @api objectType ='Account';
-    @api fieldName;
-    @api value;
+
+    @api supportedContextTypes;
 
     @track _value;
     @track _objectType;
     @track _fieldName;
-
     @track selectedField;
-
     @track textOption;
     @track formulaEditorVisible = false;
     @track formulaEditorMessage = 'Show Formula Editor';
@@ -23,16 +20,28 @@ export default class updateFieldConfigurator extends LightningElement {
 
     customReferenceTypes = ['User'];
 
-    connectedCallback() {
-        if (this.fieldName) {
-            this._fieldName = this.fieldName;
-        }
-        if (this.objectType) {
-            this._objectType = this.objectType;
-        }
-        if (this.value) {
-            this._value = this.value;
-        }
+    @api get objectType() {
+        return this._objectType;
+    }
+
+    set objectType(value) {
+        this._objectType = value;
+    }
+
+    @api get fieldName() {
+        return this._fieldName;
+    }
+
+    set fieldName(value) {
+        this._fieldName = value;
+    }
+
+    @api get value() {
+        return this._value;
+    }
+
+    set value(value) {
+        this._value = value;
     }
 
     get textOptions() {
@@ -52,8 +61,11 @@ export default class updateFieldConfigurator extends LightningElement {
 
     handleFieldChange(event) {
         this.selectedField = JSON.parse(JSON.stringify(event.detail));
-        if (this._objectType != this.selectedField.objectType) {
+        if (this._objectType !== this.selectedField.objectType) {
             this._objectType = this.selectedField.objectType;
+        }
+        if (this._fieldName !== this.selectedField.fieldName) {
+            this._fieldName = this.selectedField.fieldName;
         }
         if (!this.selectedField.isInit) {
             this._value = null;

@@ -1,30 +1,39 @@
 import {LightningElement, track, api, wire} from 'lwc';
 import {FlowAttributeChangeEvent} from 'lightning/flowSupport';
-import {getObjectInfo} from 'lightning/uiObjectInfoApi';
 import describeSObjects from '@salesforce/apex/SearchUtils.describeSObjects';
-import getFieldList from '@salesforce/apex/FormulaBuilderController.getFieldList';
+
 
 export default class FormulaBuilder extends LightningElement {
 
-    @track _fields;
-    @track contextFields = [];
     @api functions;
     @api operators;
+
     @track formula = '';
-    @api name;
-    @api contextTypes = ['Organization', 'Profile'];
+    @track _objectName;
+    @track contextFields = [];
+    @track contextTypes;
 
-    @api
-    get fields() {
-        if (this._fields && this.contextFields) {
-            return [...this._fields, ...this.contextFields];
+
+    @api get objectName() {
+        return this._objectName;
+    }
+
+    set objectName(value) {
+        this._objectName = value;
+        if (!this.contextTypes) {
+            this.contextTypes = [value];
         }
-        return this._fields;
     }
 
-    set fields(value) {
-        this._fields = value.split(',');
+    @api //f.e. 'User,Organization,Profile'
+    get supportedContextTypes() {
+        return this.contextTypes.filter(curObject => curObject !== this._objectName).join(',');
     }
+
+    set supportedContextTypes(value) {
+        this.contextTypes = [...[this._objectName], ...this.splitValues(value)];
+    }
+
 
     @api supportedFunctions = [
         'AND', 'OR', 'NOT', 'XOR', 'IF', 'CASE', 'LEN', 'SUBSTRING', 'LEFT', 'RIGHT',
@@ -39,11 +48,6 @@ export default class FormulaBuilder extends LightningElement {
     @api supportedOperators = ['+', '-', '/', '*', '==', '!=', '>', '<', '>=', '<=', '<>'];
 
     @api
-    get objectName() {
-        return this.name
-    }
-
-    @api
     get formulaValue() {
         return this.formula;
     }
@@ -52,28 +56,16 @@ export default class FormulaBuilder extends LightningElement {
         this.formula = value;
     }
 
-    set objectName(name) {
-        this.name = name;
-        getFieldList({objectName: name})
-            .then(result => {
-                let fields = [];
-                result.forEach(fieldName => {
-                    let fieldValue = name + '.' + fieldName;
-                    fields.push({label: fieldName, value: fieldValue});
-                });
-                this._fields = fields
-            })
-    }
-
     @wire(describeSObjects, {types: '$contextTypes'})
     _describeSObjects(result) {
         if (result.error) {
+            console.log(result.error.body[0].message);
             // this.errors.push(error.body[0].message);
         } else if (result.data) {
             this.contextTypes.forEach(objType => {
 
                 let newContextFields = result.data[objType].map(curField => {
-                    return {label: objType + ': ' + curField.label, value: '$'+objType + '.' + curField.value}
+                    return {label: objType + ': ' + curField.label, value: '$' + objType + '.' + curField.value}
                 });
 
                 if (this.contextFields) {
@@ -85,22 +77,6 @@ export default class FormulaBuilder extends LightningElement {
             });
         }
     }
-
-    @wire(getObjectInfo, {objectApiName: 'User'})
-    _getUserInfo({error, data}) {
-        if (error) {
-            // this.errors.push(error.body[0].message);
-        } else if (data) {
-            let fields = Object.values(data.fields);
-            fields.forEach(field => {
-                this.contextFields.push({
-                    label: 'Current User: ' + field.label,
-                    value: '$User.' + field.apiName
-                });
-            });
-        }
-    }
-
 
     formulaChangedEvent() {
         const memberRefreshedEvt = new CustomEvent('formulachanged', {
@@ -158,5 +134,9 @@ export default class FormulaBuilder extends LightningElement {
             this.formula = this.formula + event.detail.value + ' ';
             this.dispatchFormulaChangedEvents();
         }
+    }
+
+    splitValues(originalString) {
+        return originalString ? originalString.replace(/ /g, '').split(',') : [];
     }
 }
