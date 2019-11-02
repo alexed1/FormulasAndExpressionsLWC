@@ -9,15 +9,17 @@
         <target>lightning__FlowScreen</target>
     </targets>
     <targetConfigs>
-      <targetConfig targets="lightning__FlowScreen">
-              <property name="expressions"   type="String" ></property>
-              <property name="addButtonLabel"    type="String"></property>
-              <property name="localVariables"     type="String"></property>   
-              <property name="contextRecordObjectName"     type="String"></property>    
-              <property name="systemVariables"     type="String"></property> 
-              <property name="availableRHSMergeFields"     type="String"></property>          
-       </targetConfig>
-  </targetConfigs>
-    
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="value" type="String"> </property>
+            <property name="expressions" type="String" role="inputOnly"> </property>
+            <property name="addButtonLabel" type="String" role="inputOnly"> </property>
+            <property name="localVariables" type="String" role="inputOnly"> </property>
+            <property name="contextRecordObjectName" type="String" role="inputOnly"> </property>
+            <property name="systemVariables" type="String" role="inputOnly"> </property>
+            <property name="availableRHSMergeFields" type="String" role="inputOnly"> </property>
+            <property name="supportedContextTypes" type="String" role="inputOnly"> </property>
+        </targetConfig>
+    </targetConfigs>
+
 
 </LightningComponentBundle>

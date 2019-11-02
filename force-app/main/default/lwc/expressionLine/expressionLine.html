@@ -8,15 +8,13 @@
                     </div>
                 </lightning-layout-item>
                 <lightning-layout-item size="11">
-                    <c-field-picker
-                            hide-object-type-select="true"
-                            supported-object-types={objectType}
-                            onfieldselected={handleFieldChange}
-                            field={fieldName}
-                            object-type={objectType}
-                            local-variables={localVariables}
-                            system-variables={systemVariables}
-                    ></c-field-picker>
+                    <lightning-combobox name="field"
+                                        label="Field"
+                                        placeholder="Field"
+                                        options={fields}
+                                        value={fieldName}
+                                        onchange={selectField}>
+                    </lightning-combobox>
                 </lightning-layout-item>
             </lightning-layout>
         </lightning-layout-item>
@@ -36,13 +34,14 @@
                 <lightning-layout-item size="11">
                     <label class="slds-form-element__label" for="input">Value</label>
                     <div class="slds-form-element__control">
-                        <input id="input" 
-                            name="input" 
-                            list="valueList" 
-                            class="slds-input" 
-                            type="text"
-                            disabled={disabledFilter}
-                            oninput={handleValueChange}
+                        <input id="input"
+                               name="input"
+                               list="valueList"
+                               class="slds-input"
+                               type="text"
+                               disabled={disabledFilter}
+                               oninput={handleValueChange}
+                               value={value}
                         />
                         <datalist id="valueList" class="">
                             <template for:each={availableMergeFields} for:item='item'>
@@ -52,13 +51,13 @@
                     </div>
                 </lightning-layout-item>
                 <lightning-layout-item size="1" class="slds-p-left--xx-small slds-align-bottom">
-                        <lightning-button-icon 
+                    <lightning-button-icon
                             icon-name="utility:delete"
-                            alternative-text="Delete"   
+                            alternative-text="Delete"
                             onclick={handleExpressionRemove}
                             class="slds-m-left_xx-small">
-                        </lightning-button-icon>
-                    </lightning-layout-item>
+                    </lightning-button-icon>
+                </lightning-layout-item>
             </lightning-layout>
         </lightning-layout-item>
     </lightning-layout>
