@@ -1,4 +1,5 @@
 <template>
+    <lightning-spinner if:true={isLoading} alternative-text="Loading" size="large"></lightning-spinner>
     <div class="slds-box slds-theme_default">
         <div class="slds-grid slds-wrap">
             <lightning-layout-item size="6">
@@ -26,7 +27,7 @@
             </lightning-layout-item>
             <lightning-layout-item size="12" class="slds-m-top_x-small">
                 <template for:each={expressionLines} for:item="expression" for:index="index">
-                    <c-expression-line 
+                    <c-expression-line
                         key={expression.id}
                         expression-index={index}
                         expression-id={expression.id}
@@ -37,6 +38,7 @@
                         local-variables={expression.localVariables}
                         system-variables={expression.systemVariables}
                         available-merge-fields={expression.availableRHSMergeFields}
+                        fields={contextFields}
                         onexpressionremoved={handleRemoveExpression}
                         onfieldselected={handleExpressionChange}>
                     </c-expression-line>

@@ -1,8 +1,8 @@
 public with sharing class ExpressionBuilder {
     @AuraEnabled
-    public static String assembleFormulaString (String customLogic, String logicType, String expressionLines) {
+    public static String assembleFormulaString(String customLogic, String logicType, String expressionLines) {
 
-        List<ExpressionLineWraper> lines = (List<ExpressionLineWraper>)JSON.deserialize(expressionLines, List<ExpressionLineWraper>.class);
+        List<ExpressionLineWraper> lines = (List<ExpressionLineWraper>) JSON.deserialize(expressionLines, List<ExpressionLineWraper>.class);
 
         String result = '';
         String resultEnd = '';
@@ -20,16 +20,16 @@ public with sharing class ExpressionBuilder {
             while (needRerun) {
 
                 Pattern mPattern = pattern.compile('\\([0-9A-z\\s]*\\)');
-                Matcher mMatcher = mPattern.matcher(customLogic); 
+                Matcher mMatcher = mPattern.matcher(customLogic);
                 needRerun = false;
 
-                while (mMatcher.find()){
+                while (mMatcher.find()) {
                     needRerun = true;
                     items.put('F' + index, mMatcher.group(0));
                     customLogic = customLogic.replaceAll('\\(' + mMatcher.group(0) + '\\)', 'F' + index);
                     index = index + 1;
                 }
-                
+
             }
 
             customLogic = customLogic.replaceAll(' ', '');
@@ -37,7 +37,7 @@ public with sharing class ExpressionBuilder {
             for (String key : items.keySet()) {
 
                 String value = items.get(key).replaceAll('[\\(\\)\\s]', '').trim();
-                
+
                 if (value.indexOf('AND') > -1) {
                     List<String> formulaItems = value.split('AND');
                     items.put(key, simpleFormulaConversion(formulaItems, 'AND', formulaItems.size()));
@@ -55,7 +55,7 @@ public with sharing class ExpressionBuilder {
                 Pattern mPattern = pattern.compile('F[0-9]{1,}');
                 Matcher mMatcher = mPattern.matcher(oldValue);
 
-                while (mMatcher.find()){
+                while (mMatcher.find()) {
                     String newValue = oldValue.replaceAll(mMatcher.group(0), items.get(mMatcher.group(0)));
                     items.put(key, newValue);
                 }
@@ -74,7 +74,7 @@ public with sharing class ExpressionBuilder {
             Pattern mPattern = pattern.compile('F[0-9]{1,}');
             Matcher mMatcher = mPattern.matcher(customLogic);
 
-            while (mMatcher.find()){
+            while (mMatcher.find()) {
                 customLogic = customLogic.replaceAll(mMatcher.group(0), items.get(mMatcher.group(0)));
             }
         }
@@ -83,7 +83,7 @@ public with sharing class ExpressionBuilder {
         Matcher mMatcher = mPattern.matcher(customLogic);
         Set<String> indexs = new Set<String>();
 
-        while (mMatcher.find()){
+        while (mMatcher.find()) {
             indexs.add(mMatcher.group(0));
         }
 
@@ -111,11 +111,11 @@ public with sharing class ExpressionBuilder {
         }
 
         return customLogic;
-        
+
     }
 
     @AuraEnabled
-    public static Map<String, Object> disassemblyFormulaString (String expression) {
+    public static Map<String, Object> disassemblyFormulaString(String expression) {
         Map<String, Object> result = new Map<String, Object>();
 
         if (String.isEmpty(expression)) {
@@ -128,14 +128,14 @@ public with sharing class ExpressionBuilder {
         Pattern mPattern = pattern.compile('[^ANDOR(][\\w!=<>.,"()$]{1,}');
         Matcher mMatcher = mPattern.matcher(expression);
 
-        while (mMatcher.find()){
+        while (mMatcher.find()) {
             expression = mMatcher.group(0).removeEnd(')');
         }
 
         mPattern = pattern.compile('(LEFT|RIGHT)\\(\\$[\\w,.]{1,}\\)==[\\w()"]{1,}');
         mMatcher = mPattern.matcher(expression);
 
-        while (mMatcher.find()){
+        while (mMatcher.find()) {
             List<String> values = mMatcher.group(0).split('==');
             values[0] = values[0].replaceAll('LEFT\\(', '').replaceAll('RIGHT\\(', '').split(',')[0];
             String newValue = values[0].replaceAll('\\$', '\\\\\\$') + ' starts_with ' + values[1];
@@ -145,7 +145,7 @@ public with sharing class ExpressionBuilder {
         mPattern = pattern.compile('[!]{0,1}(CONTAINS|INCLUDES)\\(\\$[\\w,.]{1,}[\\w("]{1,}[)]{2}');
         mMatcher = mPattern.matcher(expression);
 
-        while (mMatcher.find()){
+        while (mMatcher.find()) {
             List<String> values = mMatcher.group(0).split(',');
             String operator = '';
 
@@ -189,12 +189,12 @@ public with sharing class ExpressionBuilder {
         expression = expression.replaceAll('<=', ' less_or_equal ');
 
         Set<String> conditions = new Set<String>(expression.replaceAll('OR\\(', '')
-                                                            .replaceAll('AND\\(', '')
-                                                            .replaceAll('\\)', '')
-                                                            .split(','));
-            
+                .replaceAll('AND\\(', '')
+                .replaceAll('\\)', '')
+                .split(','));
+
         Integer index = 1;
-        
+
         for (String condition : conditions) {
             expression = expression.replaceAll(condition.replaceAll('\\$', '\\\\\\$'), String.valueOf(index));
             index++;
@@ -205,32 +205,32 @@ public with sharing class ExpressionBuilder {
         Map<String, String> items = new Map<String, String>();
         index = 1;
         Boolean needRerun = true;
-        
+
         while (needRerun) {
 
             mPattern = pattern.compile('(OR|AND)\\([\\w\\s,]{1,}\\)');
             mMatcher = mPattern.matcher(expression);
             needRerun = false;
 
-            while (mMatcher.find()){
+            while (mMatcher.find()) {
                 needRerun = true;
                 items.put('F' + index, mMatcher.group(0));
                 expression = expression.replaceAll(mMatcher.group(0).replace('(', '\\(').replace(')', '\\)'), 'F' + index);
                 index = index + 1;
             }
-            
+
         }
 
         expression = expression.replaceAll(', ', parentCondition);
-        
+
         for (String key : items.keySet()) {
             String values = items.get(key);
             String condition = values.indexOf('AND') == 0 ? ' AND ' : ' OR ';
-            
+
             mPattern = pattern.compile('[^ANDOR(][\\w\\s,]{1,}\\)');
             mMatcher = mPattern.matcher(values);
 
-            while (mMatcher.find()){
+            while (mMatcher.find()) {
                 values = mMatcher.group(0).removeEnd(')');
             }
 
@@ -240,7 +240,7 @@ public with sharing class ExpressionBuilder {
             mPattern = pattern.compile('F[0-9]{1,}');
             mMatcher = mPattern.matcher(values);
 
-            while (mMatcher.find()){
+            while (mMatcher.find()) {
                 String newValue = values.replaceAll(mMatcher.group(0), items.get(mMatcher.group(0)));
                 items.put(key, newValue);
             }
@@ -249,7 +249,7 @@ public with sharing class ExpressionBuilder {
         mPattern = pattern.compile('F[0-9]{1,}');
         mMatcher = mPattern.matcher(expression);
 
-        while (mMatcher.find()){
+        while (mMatcher.find()) {
             expression = expression.replaceAll(mMatcher.group(0), items.get(mMatcher.group(0)));
         }
 
@@ -269,7 +269,7 @@ public with sharing class ExpressionBuilder {
         return result;
     }
 
-    public static String simpleFormulaConversion (List<String> formulaItems, String logicType, Integer size) {
+    public static String simpleFormulaConversion(List<String> formulaItems, String logicType, Integer size) {
 
         String result = logicType + '(';
         String resultEnd = '';
@@ -280,15 +280,14 @@ public with sharing class ExpressionBuilder {
                 result = result + itemValue + ', ';
             } else {
                 result = result + itemValue + ')';
-            } 
+            }
         }
 
         return result + resultEnd;
     }
 
-    public static String convertExpressionLines (ExpressionLineWraper expressionLine) {
-        String leftItem = expressionLine.objectType != '' ? '\\$' + expressionLine.objectType + '.' : '';
-        leftItem = leftItem + expressionLine.fieldName;
+    public static String convertExpressionLines(ExpressionLineWraper expressionLine) {
+        String leftItem = '\\'+expressionLine.fieldName;
         String rightItem = expressionLine.parameter;
         String dataType = expressionLine.dataType.toUpperCase();
         String result = '';
@@ -345,21 +344,21 @@ public with sharing class ExpressionBuilder {
 
     }
 
-    public static List<ExpressionLineWraper> convertSetToExpressionLineWraper (Set<String> lines) {
+    public static List<ExpressionLineWraper> convertSetToExpressionLineWraper(Set<String> lines) {
         List<ExpressionLineWraper> result = new List<ExpressionLineWraper>();
 
         for (String line : lines) {
             List<String> lineParameters = line.split(' ');
             if (lineParameters.size() == 3) {
                 List<String> fieldInfo = lineParameters[0].replaceAll('[$]', '').split('\\.');
-                result.add(new ExpressionLineWraper(fieldInfo[0], fieldInfo[1], '', lineParameters[1], lineParameters[2]));
+                result.add(new ExpressionLineWraper(fieldInfo[0], lineParameters[0], '', lineParameters[1], lineParameters[2]));
             }
         }
 
         return result;
     }
 
-    public static String convertValueType (String fieldValue, String dataType) {
+    public static String convertValueType(String fieldValue, String dataType) {
         if (dataType == 'BOOLEAN') {
             return 'BOOLEAN("' + fieldValue + '")';
         } else if (dataType == 'CURRENCY' || dataType == 'PERCENT' || dataType == 'DOUBLE') {
@@ -387,7 +386,7 @@ public with sharing class ExpressionBuilder {
         @AuraEnabled
         public String parameter;
 
-        public ExpressionLineWraper (String objectType, String fieldName, String dataType, String operator, String parameter) {
+        public ExpressionLineWraper(String objectType, String fieldName, String dataType, String operator, String parameter) {
             this.objectType = objectType;
             this.fieldName = fieldName;
             this.dataType = dataType;
