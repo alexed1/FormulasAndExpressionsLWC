@@ -59,11 +59,14 @@ export default class expressionBuilder extends LightningElement {
         } else if (result.data) {
             this.contextTypes.forEach(objType => {
                 let newContextFields = result.data[objType].map(curField => {
-                    return {...curField, ...{label: objType + ': ' + curField.label}}
+                    return {
+                        ...curField, ...{
+                            label: objType + ': ' + curField.label,
+                            value: '$' + curField.type + '.' + curField.value
+                        }
+                    }
                 });
-                newContextFields = newContextFields.map(curField => {
-                    return {...curField, ...{value: '$' + curField.type + '.' + curField.value}};
-                });
+
                 if (this.contextFields && this.contextFields.length > 0) {
                     this.contextFields = this.contextFields.concat(newContextFields);
                 } else {
