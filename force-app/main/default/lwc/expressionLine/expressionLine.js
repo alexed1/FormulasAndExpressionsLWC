@@ -64,10 +64,10 @@ export default class expressionLine extends LightningElement {
     get availableOperators() {
         if (this.currentField) {
             return this.allOperators.filter(curOperator => curOperator.types.includes(this.currentField.dataType.toUpperCase()));
-        } else {
+            } else {
             return [];
+            }
         }
-    }
 
     selectField(event) {
         let eventValue = event.detail.value;
@@ -86,7 +86,7 @@ export default class expressionLine extends LightningElement {
             if (!this.currentField || this.currentField.value !== this._fieldName) {
                 this.currentField = this._fields.find(curField => curField.value === this._fieldName);
             }
-        }
+                }
     }
 
     get disabledFilter() {

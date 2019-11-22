@@ -10,7 +10,7 @@
     </targets>
     <targetConfigs>
         <targetConfig targets="lightning__FlowScreen">
-            <property name="value" type="String"> </property>
+            <property name="value" type="String"></property>
             <property name="expressions" type="String" role="inputOnly"> </property>
             <property name="addButtonLabel" type="String" role="inputOnly"> </property>
             <property name="localVariables" type="String" role="inputOnly"> </property>
@@ -20,6 +20,4 @@
             <property name="supportedContextTypes" type="String" role="inputOnly"> </property>
         </targetConfig>
     </targetConfigs>
-
-
 </LightningComponentBundle>

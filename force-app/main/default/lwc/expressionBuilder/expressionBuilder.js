@@ -83,8 +83,8 @@ export default class expressionBuilder extends LightningElement {
     lastExpressionIndex = 0;
     logicTypes = [
         {value: 'AND', label: 'All Conditions Are Met'},
-        {value: 'OR', label: 'Any Condition Is Met'},
-        {value: 'CUSTOM', label: 'Custom Condition Logic Is Met'}
+        {value: 'OR', label: 'Any Condition Is Met'}
+        // {value: 'CUSTOM', label: 'Custom Condition Logic Is Met'}
     ];
     conditionLogicHelpText = 'placeholder for conditionLogicHelpTest' //conditionLogicHelpText;
 

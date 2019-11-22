@@ -16,7 +16,7 @@ export default class FormulaBuilder extends LightningElement {
 
     @api get objectName() {
         return this._objectName;
-    }
+        }
 
     set objectName(value) {
         this._objectName = value;
@@ -65,7 +65,7 @@ export default class FormulaBuilder extends LightningElement {
             this.contextTypes.forEach(objType => {
 
                 let newContextFields = result.data[objType].map(curField => {
-                    return {label: objType + ': ' + curField.label, value: '$' + objType + '.' + curField.value}
+                    return {label: objType + ': ' + curField.label, value: '$'+objType + '.' + curField.value}
                 });
 
                 if (this.contextFields) {
