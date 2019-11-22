@@ -3,7 +3,7 @@
     <actionCalls>
         <name>Evaluate_Formula</name>
         <label>Evaluate Formula</label>
-        <locationX>475</locationX>
+        <locationX>476</locationX>
         <locationY>194</locationY>
         <actionName>EvaluateFormula</actionName>
         <actionType>apex</actionType>
@@ -24,7 +24,7 @@
     <actionCalls>
         <name>Evaluate_Formula2</name>
         <label>Evaluate Formula</label>
-        <locationX>475</locationX>
+        <locationX>476</locationX>
         <locationY>354</locationY>
         <actionName>EvaluateFormula</actionName>
         <actionType>apex</actionType>
@@ -34,9 +34,13 @@
         <inputParameters>
             <name>formulaString</name>
             <value>
-                <elementReference>formulaBuilder1.formulaValue</elementReference>
+                <elementReference>formula_input</elementReference>
             </value>
         </inputParameters>
+        <outputParameters>
+            <assignToReference>formulaResult</assignToReference>
+            <name>stringResult</name>
+        </outputParameters>
     </actionCalls>
     <interviewLabel>TestFlow_EvaluateFormula {!$Flow.CurrentDateTime}</interviewLabel>
     <label>TestFlow_EvaluateFormula</label>
@@ -75,6 +79,10 @@
                 </value>
             </inputParameters>
             <isRequired>true</isRequired>
+            <outputParameters>
+                <assignToReference>formula_input</assignToReference>
+                <name>formulaValue</name>
+            </outputParameters>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -118,6 +126,13 @@
     </screens>
     <startElementReference>screenBuildFormula</startElementReference>
     <status>Draft</status>
+    <variables>
+        <name>formula_input</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
     <variables>
         <name>formulaResult</name>
         <dataType>String</dataType>

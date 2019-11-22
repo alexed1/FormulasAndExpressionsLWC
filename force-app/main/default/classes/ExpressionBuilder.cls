@@ -113,7 +113,23 @@ public with sharing class ExpressionBuilder {
         return customLogic;
 
     }
-
+/*
+Due to not stable formula disassembly for custom conditions we have excluded this option.
+Currently expression builder accepts "AND" or "OR" logic only.
+Steps to reproduce some of issues with custom logic:
+1. In expression builder add 4 rows and set criterias in each of them, f.e. :
+Account.Name contains 1
+Account.Name contains 2
+Account.Name contains 3
+Account.Name contains 4
+2. Set complex custom condition (f.e. : (1 AND 2) OR ((4 AND 3) AND (4 AND 2)))
+Actual result:
+Generated formula will not represent all conditions (missing  CONTAINS($Account.Name, TEXT("3")), extra letter "F" before third "CONTAINS") and will look like this:
+OR(AND(CONTAINS($Account.Name, TEXT("1")), CONTAINS($Account.Name, TEXT("2"))), AND(FCONTAINS($Account.Name, TEXT("2")), AND(CONTAINS($Account.Name, TEXT("4")), CONTAINS($Account.Name, TEXT("2")))))
+Expected result:
+Formula represents all conditions and must look like this:
+OR(AND(CONTAINS($Account.Name, TEXT("1")),CONTAINS($Account.Name, TEXT("2"))), AND(CONTAINS($Account.Name, TEXT("1")),CONTAINS($Account.Name, TEXT("2")),CONTAINS($Account.Name, TEXT("3")),CONTAINS($Account.Name, TEXT("4"))))
+*/
     @AuraEnabled
     public static Map<String, Object> disassemblyFormulaString(String expression) {
         Map<String, Object> result = new Map<String, Object>();
@@ -124,12 +140,17 @@ public with sharing class ExpressionBuilder {
 
         expression = expression.replaceAll('[\\s]', '');
         String parentCondition = expression.indexOf('AND') == 0 ? ' AND ' : ' OR ';
-
+        Boolean isSingleExpression = expression.indexOf('AND(') != 0 && expression.indexOf('OR(') != 0;
+        Boolean isCustomLogic = expression.indexOf('AND(') != -1 && expression.indexOf('OR(') != -1;
         Pattern mPattern = pattern.compile('[^ANDOR(][\\w!=<>.,"()$]{1,}');
+//        Pattern mPattern = pattern.compile('(?<=OR|AND\\().*');
         Matcher mMatcher = mPattern.matcher(expression);
 
         while (mMatcher.find()) {
-            expression = mMatcher.group(0).removeEnd(')');
+            expression = mMatcher.group(0);
+            if (!isSingleExpression) {
+                expression.removeEnd(')');
+            }
         }
 
         mPattern = pattern.compile('(LEFT|RIGHT)\\(\\$[\\w,.]{1,}\\)==[\\w()"]{1,}');
@@ -191,6 +212,7 @@ public with sharing class ExpressionBuilder {
         Set<String> conditions = new Set<String>(expression.replaceAll('OR\\(', '')
                 .replaceAll('AND\\(', '')
                 .replaceAll('\\)', '')
+//                .replaceAll('\\(', '')
                 .split(','));
 
         Integer index = 1;
@@ -253,16 +275,20 @@ public with sharing class ExpressionBuilder {
             expression = expression.replaceAll(mMatcher.group(0), items.get(mMatcher.group(0)));
         }
 
-        if (expression.indexOf(')') == -1) {
+        if (!isSingleExpression) {
+            if (isCustomLogic) {
+                result.put('logicType', 'CUSTOM');
+                result.put('customLogic', expression);
+            } else {
             if (expression.indexOf('AND') > -1) {
                 result.put('logicType', 'AND');
             } else {
                 result.put('logicType', 'OR');
             }
             result.put('customLogic', '');
+            }
         } else {
-            result.put('logicType', 'CUSTOM');
-            result.put('customLogic', expression);
+            result.put('logicType', 'AND');
         }
 
         result.put('expressionLines', convertSetToExpressionLineWraper(conditions));
@@ -270,7 +296,9 @@ public with sharing class ExpressionBuilder {
     }
 
     public static String simpleFormulaConversion(List<String> formulaItems, String logicType, Integer size) {
-
+        if (size == 1) {
+            return '1';
+        }
         String result = logicType + '(';
         String resultEnd = '';
 

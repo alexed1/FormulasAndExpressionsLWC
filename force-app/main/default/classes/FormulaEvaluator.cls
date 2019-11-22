@@ -1,16 +1,16 @@
-public  with sharing class FormulaEvaluator {
+public with sharing class FormulaEvaluator {
 
     public static String parseFormula(String formula, String context) {
-        List<ContextWraper> contextResult = (List<ContextWraper>)JSON.deserialize(context, List<ContextWraper>.class);
+        List<ContextWrapper> contextResult = (List<ContextWrapper>) JSON.deserialize(context, List<ContextWrapper>.class);
         Map<String, String> mapParameters = new Map<String, String>();
 
-        for (ContextWraper cont : contextResult) {
+        for (ContextWrapper cont : contextResult) {
             if (!String.isEmpty(cont.value) && cont.name == '$Record') {
                 //TODO: replace Schema.getGlobalDescribe() code with recordId.getSObjectType();
-                String keyPrefix = cont.value.substring(0,3);
-                for (Schema.SObjectType obj : Schema.getGlobalDescribe().Values()){
+                String keyPrefix = cont.value.substring(0, 3);
+                for (Schema.SObjectType obj : Schema.getGlobalDescribe().Values()) {
                     String prefix = obj.getDescribe().getKeyPrefix();
-                    if (prefix == keyPrefix && prefix.indexOf(keyPrefix) != -1){
+                    if (prefix == keyPrefix && prefix.indexOf(keyPrefix) != -1) {
                         String objectAPIName = obj.getDescribe().getName();
                         formula = formula.replaceAll('[$]Record', '\\$' + objectAPIName);
                         formula = formula.replaceAll('[!]Record', '\\!' + objectAPIName);
@@ -28,13 +28,13 @@ public  with sharing class FormulaEvaluator {
         Matcher mMatcher = mPattern.matcher(formula);
         List<String> variables = new List<String>();
 
-        while(mMatcher.find()){
+        while (mMatcher.find()) {
             variables.add(mMatcher.group(0));
         }
 
         Map<String, Set<String>> objectWithFields = new Map<String, Set<String>>();
 
-        for(String variable : variables) {
+        for (String variable : variables) {
             List<String> splitedValue = variable.replace('$', '').replace('{!', '').replace('}', '').split('[.]', 2);
             String contectVariableName = splitedValue[0];
 
@@ -100,7 +100,7 @@ public  with sharing class FormulaEvaluator {
                 return result;
             }
         }
-        
+
         formula = formula.replaceAll('["]', '');
         mPattern = pattern.compile('[A-z0-9 ]{1,}');
         mMatcher = mPattern.matcher(formula);
@@ -113,7 +113,7 @@ public  with sharing class FormulaEvaluator {
 
     }
 
-    public static String updateFormulaFields (String objectName, String objectId, String formula, Set<String> fields) {
+    public static String updateFormulaFields(String objectName, String objectId, String formula, Set<String> fields) {
         Map<String, Schema.DisplayType> fieldNameToType = getFieldTypes(objectName, fields);
 
         String queryString = 'SELECT ';
@@ -185,13 +185,13 @@ public  with sharing class FormulaEvaluator {
         return fieldNameToType;
     }
 
-    public static String evaluateFormula (String formula, String resultType) {
+    public static String evaluateFormula(String formula, String resultType) {
         Pattern mPattern = pattern.compile('[0-9.]{3,}');
         Matcher mMatcher = mPattern.matcher(formula);
         //TODO: add scale as an input param for Numeric values
         Integer scale = 0;
 
-        while(mMatcher.find()){
+        while (mMatcher.find()) {
             List<String> items = mMatcher.group(0).split('[.]');
             if (items.size() > 1 && items[1].length() > scale) {
                 scale = items[1].length();
@@ -202,80 +202,80 @@ public  with sharing class FormulaEvaluator {
         return String.valueOf(parserContext.result);
     }
 
-    public static RegExps.ParserContext evaluate(String formula, String outputType, Integer scale){
+    public static RegExps.ParserContext evaluate(String formula, String outputType, Integer scale) {
 
         RegExps.ParserContext context = new RegExps.ParserContext(formula, outputType, scale);
 
-        try{
+        try {
 
             String outputFormula = null;
             Boolean parenthesisAdded = false;
             Integer iteration = 0;
-            
+
             replaceExpressionValues(context);
 
             while (true) {
                 if (outputFormula == context.outputString) {
                     if (parenthesisAdded) {
-                        break; 
+                        break;
                     } else {
                         parenthesisAdded = true;
                         RegExps.wrapParentesis(context, 'NUMBER');
                     }
                 }
-                
+
                 outputFormula = context.outputString;
-                
+
                 RegExps.evaluateMathExpressions(context);
                 if (outputFormula != context.outputString) {
                     RegExps.clearParentesis(context, 'NUMBER');
                     parenthesisAdded = false;
                     continue;
                 }
-                
+
                 RegExps.evaluateMathFunctions(context);
                 if (outputFormula != context.outputString) {
                     parenthesisAdded = false;
                     continue;
                 }
-                
+
                 RegExps.evaluateStringOperations(context);
                 if (outputFormula != context.outputString) {
                     parenthesisAdded = false;
                     continue;
                 }
-                
+
                 RegExps.evaluateStringFunctions(context);
                 if (outputFormula != context.outputString) {
                     parenthesisAdded = false;
                     continue;
                 }
-                
-                RegExps.evaluateCompareExpressions(context);   
+
+                RegExps.evaluateCompareExpressions(context);
                 if (outputFormula != context.outputString) {
                     parenthesisAdded = false;
                     continue;
                 }
-                
+
                 RegExps.evaluateBooleanExpressions(context);
                 if (outputFormula != context.outputString) {
                     parenthesisAdded = false;
                     continue;
                 }
-                
-                
+
+
                 RegExps.evaluateFlowExpressions(context);
                 if (outputFormula != context.outputString) {
                     parenthesisAdded = false;
                     continue;
                 }
-                
+
                 RegExps.evaluateFlowExpressionsCASE(context);
                 if (outputFormula != context.outputString) {
                     parenthesisAdded = false;
                     continue;
                 }
-                
+
                 RegExps.evaluateTypeConversionFunctions(context);
                 if (outputFormula != context.outputString) {
                     parenthesisAdded = false;
@@ -288,8 +288,8 @@ public  with sharing class FormulaEvaluator {
                     parenthesisAdded = false;
                     continue;
                 }
-                
-                RegExps.clearParentesis(context,'ALL');
+
+                RegExps.clearParentesis(context, 'ALL');
             }
             context.result = RegExps.evaluateResult(context);
 
@@ -301,13 +301,13 @@ public  with sharing class FormulaEvaluator {
         return context;
     }
 
-    public static void replaceExpressionValues(RegExps.ParserContext context){
-        
+    public static void replaceExpressionValues(RegExps.ParserContext context) {
+
         context.outputString = ' ' + context.outputString + ' ';
         context.outputString = context.outputString.replaceAll(RegExps.EXP_MULTILINE_COMMENT, '');
-        
+
         Pattern myPattern = pattern.compile(RegExps.EXP_STRING);
-        Matcher m = myPattern.matcher(context.outputString); 
+        Matcher m = myPattern.matcher(context.outputString);
         Set<String> stringList = new Set<String>();
 
         while (m.find()) {
@@ -315,20 +315,20 @@ public  with sharing class FormulaEvaluator {
         }
 
         for (String str : stringList) {
-            context.outputString = context.outputString.replace(str, ' _S'+context.referencesString.size() + 'S_ ');
-            context.referencesString.put('_S' + context.referencesString.size() + 'S_', str.substring(1,str.length() - 1));
+            context.outputString = context.outputString.replace(str, ' _S' + context.referencesString.size() + 'S_ ');
+            context.referencesString.put('_S' + context.referencesString.size() + 'S_', str.substring(1, str.length() - 1));
         }
 
-        context.outputString = context.outputString.replaceAll('\\s*\\(\\s*',' ( ');
-        context.outputString = context.outputString.replaceAll('\\s*\\)\\s*',' ) ');
-        context.outputString = context.outputString.replaceAll('\\s*,\\s*',' , ');
-        context.outputString = context.outputString.replaceAll('\\s*\\*\\s*',' * ');
-        context.outputString = context.outputString.replaceAll('\\s*/\\s*',' / ');
-        context.outputString = context.outputString.replaceAll('\\s*!=\\s*',' <> ');
-        context.outputString = context.outputString.replaceAll('\\s*!',' ! ');
-        context.outputString = context.outputString.replaceAll('\\s*&&\\s*',' && ');
-        context.outputString = context.outputString.replaceAll('\\s*\\|\\|\\s*',' || ');
-        context.outputString = context.outputString.replaceAll('\\s*\\^\\^\\s*',' ^^ ');
+        context.outputString = context.outputString.replaceAll('\\s*\\(\\s*', ' ( ');
+        context.outputString = context.outputString.replaceAll('\\s*\\)\\s*', ' ) ');
+        context.outputString = context.outputString.replaceAll('\\s*,\\s*', ' , ');
+        context.outputString = context.outputString.replaceAll('\\s*\\*\\s*', ' * ');
+        context.outputString = context.outputString.replaceAll('\\s*/\\s*', ' / ');
+        context.outputString = context.outputString.replaceAll('\\s*!=\\s*', ' <> ');
+        context.outputString = context.outputString.replaceAll('\\s*!', ' ! ');
+        context.outputString = context.outputString.replaceAll('\\s*&&\\s*', ' && ');
+        context.outputString = context.outputString.replaceAll('\\s*\\|\\|\\s*', ' || ');
+        context.outputString = context.outputString.replaceAll('\\s*\\^\\^\\s*', ' ^^ ');
 
         for (String op : RegExps.COMPARE_OPERATORS.keyset()) {
             context.outputString = context.outputString.replaceAll('\\s*' + op + '\\s*', ' ' + RegExps.COMPARE_OPERATORS.get(op) + ' ');
@@ -336,8 +336,8 @@ public  with sharing class FormulaEvaluator {
 
         List<String> vList = new List<String>();
         myPattern = pattern.compile(RegExps.EXP_DATETIME);
-        m = myPattern.matcher(context.outputString); 
-        
+        m = myPattern.matcher(context.outputString);
+
         while (m.find()) {
             vList.add(m.group(0));
         }
@@ -345,7 +345,7 @@ public  with sharing class FormulaEvaluator {
         for (String str : vList) {
 
             DateTime vdt = null;
-            
+
             if (!Pattern.matches(RegExps.EXP_DATETIME, str)) {
                 throw new ExpressionParsingException('Invalid date/time value "' + str + '". Expected: YYYY-MM-DDTHH:MM:SS');
             }
@@ -355,23 +355,23 @@ public  with sharing class FormulaEvaluator {
                     '0', '0', '0'
             };
 
-            if (str.split('T').size()>1) {
+            if (str.split('T').size() > 1) {
                 timePart = str.split('T')[1].split(':');
             }
 
-            vdt = DateTime.newInstanceGmt(Integer.valueOf(datePart[0]), Integer.valueOf(datePart[1]), Integer.valueOf(datePart[2]), 
-                                          Integer.valueOf(timePart[0]), Integer.valueOf(timePart[1]), Integer.valueOf(timePart[2]));
-            
+            vdt = DateTime.newInstanceGmt(Integer.valueOf(datePart[0]), Integer.valueOf(datePart[1]), Integer.valueOf(datePart[2]),
+                    Integer.valueOf(timePart[0]), Integer.valueOf(timePart[1]), Integer.valueOf(timePart[2]));
+
             context.replace(str, vdt);
         }
-        
+
         context.outputString = context.outputString.replaceAll('\\s*\\+\\s*', ' + ');
         context.outputString = context.outputString.replaceAll('\\s*\\-\\s*', ' - ');
         context.outputString = context.outputString.replaceAll('\\s*\\+\\s*', ' + ');
         context.outputString = context.outputString.replaceAll('\\s*\\-\\s*', ' - ');
         context.outputString = context.outputString.toUpperCase();
 
-        Map<Integer,List<String>> fieldNamesByLength = new Map<Integer,List<String>>();
+        Map<Integer, List<String>> fieldNamesByLength = new Map<Integer, List<String>>();
 
         for (String k : context.fieldValues.keyset()) {
             List<String> fls = fieldNamesByLength.get(k.length());
@@ -385,8 +385,8 @@ public  with sharing class FormulaEvaluator {
         }
 
         List<List<String>> sortedKeys = fieldNamesByLength.values();
-        
-        for (Integer i = sortedKeys.size()-1; i >=0; i--) {
+
+        for (Integer i = sortedKeys.size() - 1; i >= 0; i--) {
             List<String> fls = sortedKeys[i];
 
             for (String k : fls) {
@@ -395,22 +395,22 @@ public  with sharing class FormulaEvaluator {
                 String fieldType = context.fieldTypes.get(k);
 
                 if (fieldType == 'BOOLEAN') {
-                    if(vObj == null) {
+                    if (vObj == null) {
                         vObj = false;
-                    } 
-                    context.replace(k, (Boolean)vObj);
+                    }
+                    context.replace(k, (Boolean) vObj);
                 } else if (fieldType == 'INTEGER' || fieldType == 'DOUBLE') {
-                    if(vObj == null) {
+                    if (vObj == null) {
                         vObj = 0;
                     }
-                    context.replace(k, (Decimal)vObj);
+                    context.replace(k, (Decimal) vObj);
                 } else if (fieldType == 'STRING' || fieldType == 'ID') {
-                    if(vObj == null) {
+                    if (vObj == null) {
                         vObj = '';
                     }
-                    context.replace(k, (String)vObj);
+                    context.replace(k, (String) vObj);
                 } else if (fieldType == 'DATE' || fieldType == 'DATETIME') {
-                    context.replace(k, (DateTime)vObj);
+                    context.replace(k, (DateTime) vObj);
                 }
             }
         }
@@ -419,8 +419,8 @@ public  with sharing class FormulaEvaluator {
 
         vList = new List<String>();
         myPattern = pattern.compile(EXP_VALUES_NO_STRING);
-        m = myPattern.matcher(context.outputString); 
-        
+        m = myPattern.matcher(context.outputString);
+
         while (m.find()) {
             vList.add(m.group(0));
         }
@@ -432,11 +432,11 @@ public  with sharing class FormulaEvaluator {
                 context.replace(str, Decimal.valueOf(str));
             } else if (Pattern.matches(RegExps.EXP_BOOLEAN, str)) {
                 context.replace(str, Boolean.valueOf(str));
-            }   
-        }        
+            }
+        }
 
         myPattern = pattern.compile('(\\$PI|\\$E|\\$TODAY|\\$NOW|\\$RANDOM)');
-        m = myPattern.matcher(context.outputString); 
+        m = myPattern.matcher(context.outputString);
 
         while (m.find()) {
             if (m.group(0) == '$PI') {
@@ -458,14 +458,14 @@ public  with sharing class FormulaEvaluator {
             }
         }
 
-        context.outputString = context.outputString.replaceAll('\\s+',' ');
+        context.outputString = context.outputString.replaceAll('\\s+', ' ');
     }
 
-    public class ContextWraper {
+    public class ContextWrapper {
         public String name;
         public String value;
 
-        public ContextWraper(String name, String value) {
+        public ContextWrapper(String name, String value) {
             this.name = name;
             this.value = value;
         }

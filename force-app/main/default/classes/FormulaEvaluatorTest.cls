@@ -11,10 +11,10 @@ public with sharing class FormulaEvaluatorTest {
 
         insert opp;
 
-        List<ContextWraper> context = new List<ContextWraper>();
-        context.add(new ContextWraper('$Record', opp.Id));
-        context.add(new ContextWraper('itemOne', '30'));
-        context.add(new ContextWraper('itemTwo', '45'));
+        List<ContextWrapper> context = new List<ContextWrapper>();
+        context.add(new ContextWrapper('$Record', opp.Id));
+        context.add(new ContextWrapper('itemOne', '30'));
+        context.add(new ContextWrapper('itemTwo', '45'));
         String stringContext = JSON.serialize(context);
 
         System.assertEquals('Test Opportunity', FormulaEvaluator.parseFormula('$Record.Name', stringContext), 'Formula include record');
@@ -55,11 +55,11 @@ public with sharing class FormulaEvaluatorTest {
         System.assertEquals('$Opportunity.Name$Opportunity.Amount', FormulaEvaluator.parseFormula('CONCATENATE("$Opportunity.Name","$Opportunity.Amount")', stringContext), 'Formula CONCATENATE "&');
     }
 
-    public class ContextWraper {
+    public class ContextWrapper {
         public String name;
         public String value;
 
-        public ContextWraper(String name, String value) {
+        public ContextWrapper(String name, String value) {
             this.name = name;
             this.value = value;
         }
