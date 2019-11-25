@@ -7,11 +7,7 @@ import describeSObjects from '@salesforce/apex/SearchUtils.describeSObjects';
 
 export default class expressionBuilder extends LightningElement {
 
-    @api expressions;
     @api addButtonLabel = 'Add Condition';
-    @api localVariables;
-    @api systemVariables;
-    @api availableRHSMergeFields;
 
     @track objectName;
     @track expressionLines = [];
@@ -23,20 +19,20 @@ export default class expressionBuilder extends LightningElement {
     @track isLoading = true;
 
     @api
-    get value() {
+    get formulaString() {
         return this.convertedExpression;
     }
 
-    set value(value) {
+    set formulaString(value) {
         this.convertedExpression = value;
     }
 
     @api
-    get contextRecordObjectName() {
+    get contextObjectType() {
         return this._objectName;
     }
 
-    set contextRecordObjectName(value) {
+    set contextObjectType(value) {
         this._objectName = value;
         if (!this.contextTypes || this.contextTypes.length === 0) {
             this.contextTypes = [value];
@@ -44,11 +40,11 @@ export default class expressionBuilder extends LightningElement {
     }
 
     @api //f.e. 'User,Organization,Profile'
-    get supportedContextTypes() {
+    get supportedSystemTypes() {
         return this.contextTypes.filter(curObject => curObject !== this._objectName).join(',');
     }
 
-    set supportedContextTypes(value) {
+    set supportedSystemTypes(value) {
         this.contextTypes = [...[this._objectName], ...this.splitValues(value)];
     }
 
@@ -89,8 +85,7 @@ export default class expressionBuilder extends LightningElement {
     conditionLogicHelpText = 'placeholder for conditionLogicHelpTest' //conditionLogicHelpText;
 
     doDisassemblyFormulaString() {
-        let expressionsToDisassemble = this.convertedExpression ? this.convertedExpression : this.expressions;
-        disassemblyFormulaString({expression: expressionsToDisassemble}).then(result => {
+        disassemblyFormulaString({expression: this.convertedExpression}).then(result => {
             if (result.logicType !== undefined) {
                 this.logicType = result.logicType;
             }
@@ -122,10 +117,7 @@ export default class expressionBuilder extends LightningElement {
     generateNewExpression() {
         return {
             id: this.lastExpressionIndex++,
-            objectType: this.contextRecordObjectName,
-            localVariables: this.localVariables !== undefined ? JSON.parse(this.localVariables) : [],
-            systemVariables: this.systemVariables !== undefined ? JSON.parse(this.systemVariables) : [],
-            availableRHSMergeFields: this.availableRHSMergeFields !== undefined ? JSON.parse(this.availableRHSMergeFields) : [],
+            objectType: this.contextObjectType,
             parameter: ''
         };
     }

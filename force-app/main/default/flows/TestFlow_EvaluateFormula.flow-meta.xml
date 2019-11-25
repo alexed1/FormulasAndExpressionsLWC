@@ -24,7 +24,7 @@
     <actionCalls>
         <name>Evaluate_Formula2</name>
         <label>Evaluate Formula</label>
-        <locationX>476</locationX>
+        <locationX>477</locationX>
         <locationY>354</locationY>
         <actionName>EvaluateFormula</actionName>
         <actionType>apex</actionType>
@@ -35,6 +35,12 @@
             <name>formulaString</name>
             <value>
                 <elementReference>formula_input</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>contextDataString</name>
+            <value>
+                <stringValue>[{&quot;value&quot;:&quot;0015400000QJToqAAH&quot;,&quot;name&quot;:&quot;$Record&quot;}]</stringValue>
             </value>
         </inputParameters>
         <outputParameters>
@@ -60,7 +66,7 @@
     <screens>
         <name>screenBuildFormula</name>
         <label>Builder Formula</label>
-        <locationX>161</locationX>
+        <locationX>162</locationX>
         <locationY>342</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
@@ -73,7 +79,7 @@
             <extensionName>c:formulaBuilder</extensionName>
             <fieldType>ComponentInstance</fieldType>
             <inputParameters>
-                <name>objectName</name>
+                <name>contextObjectType</name>
                 <value>
                     <stringValue>Account</stringValue>
                 </value>
@@ -81,7 +87,7 @@
             <isRequired>true</isRequired>
             <outputParameters>
                 <assignToReference>formula_input</assignToReference>
-                <name>formulaValue</name>
+                <name>formulaString</name>
             </outputParameters>
         </fields>
         <showFooter>true</showFooter>

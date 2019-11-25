@@ -13,7 +13,7 @@
             <property name="objectType" type="String"></property>
             <property name="fieldName" type="String"></property>
             <property name="value" type="String"></property>
-            <property name="supportedContextTypes" type="String" role="inputOnly"></property>
+            <property name="supportedSystemTypes" type="String" role="inputOnly"></property>
         </targetConfig>
     </targetConfigs>
 

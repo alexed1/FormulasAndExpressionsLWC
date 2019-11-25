@@ -37,13 +37,13 @@
                 </value>
             </inputParameters>
             <inputParameters>
-                <name>contextRecordObjectName</name>
+                <name>contextObjectType</name>
                 <value>
                     <stringValue>Account</stringValue>
                 </value>
             </inputParameters>
             <inputParameters>
-                <name>value</name>
+                <name>formulaString</name>
                 <value>
                     <elementReference>expression_value</elementReference>
                 </value>
@@ -51,7 +51,7 @@
             <isRequired>true</isRequired>
             <outputParameters>
                 <assignToReference>expression_value</assignToReference>
-                <name>value</name>
+                <name>formulaString</name>
             </outputParameters>
         </fields>
         <showFooter>true</showFooter>
