@@ -2,7 +2,7 @@ import {LightningElement, api, wire, track} from 'lwc';
 
 export default class updateFieldConfigurator extends LightningElement {
 
-    @api supportedContextTypes;
+    @api supportedSystemTypes;
 
     @track _value;
     @track _objectType;

@@ -4,11 +4,11 @@ It is an LWC that allows user to created formulas just like you do with standard
 
 ## Supported attributes
 
-### formulaValue
+### formulaString
 Allows to specify formula value this component will be initialized with.
-### objectName
+### contextObjectType
 Standard or custom object API name, determines set of fields which user will be able to choose from 'Insert Field' picklist
-### supportedContextTypes
+### supportedSystemTypes
 Comma separated list of Object API Names, which will be used as context variables and user will also be able to choose those objects fields. Usually it is User, Profile or Organization.
 
 ## Formula Evaluator
@@ -67,11 +67,11 @@ Any Condition Is Met - result of evaluating this expression will return 'true' o
 
 ### Supported Component Attributes
 
-#### value 
+#### formulaString 
 Used to initialize a component with predetermined value or stores formula for current component state 
 #### addButtonLabel 
 Label for button to add new lines in expression builder
-#### contextRecordObjectName 
+#### contextObjectType 
 API name of context object, it determines fields user will be able to choose in "Field" picklist
-#### supportedContextTypes 
+#### supportedSystemTypes 
 Comma separated list of Object API Names, which will be used as context variables and user will also be able to choose those objects fields. Usually it is User, Profile or Organization.

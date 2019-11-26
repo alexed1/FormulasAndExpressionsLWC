@@ -93,7 +93,7 @@
             <extensionName>c:updateFieldConfigurator</extensionName>
             <fieldType>ComponentInstance</fieldType>
             <inputParameters>
-                <name>supportedContextTypes</name>
+                <name>supportedSystemTypes</name>
                 <value>
                     <stringValue>User, Profile, Organization</stringValue>
                 </value>

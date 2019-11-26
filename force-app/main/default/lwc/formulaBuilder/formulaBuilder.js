@@ -14,11 +14,11 @@ export default class FormulaBuilder extends LightningElement {
     @track contextTypes;
 
 
-    @api get objectName() {
+    @api get contextObjectType() {
         return this._objectName;
         }
 
-    set objectName(value) {
+    set contextObjectType(value) {
         this._objectName = value;
         if (!this.contextTypes) {
             this.contextTypes = [value];
@@ -26,11 +26,11 @@ export default class FormulaBuilder extends LightningElement {
     }
 
     @api //f.e. 'User,Organization,Profile'
-    get supportedContextTypes() {
+    get supportedSystemTypes() {
         return this.contextTypes.filter(curObject => curObject !== this._objectName).join(',');
     }
 
-    set supportedContextTypes(value) {
+    set supportedSystemTypes(value) {
         this.contextTypes = [...[this._objectName], ...this.splitValues(value)];
     }
 
@@ -48,11 +48,11 @@ export default class FormulaBuilder extends LightningElement {
     @api supportedOperators = ['+', '-', '/', '*', '==', '!=', '>', '<', '>=', '<=', '<>'];
 
     @api
-    get formulaValue() {
+    get formulaString() {
         return this.formula;
     }
 
-    set formulaValue(value) {
+    set formulaString(value) {
         this.formula = value;
     }
 
