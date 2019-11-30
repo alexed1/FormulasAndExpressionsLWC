@@ -6,3 +6,4 @@ force-app/main/.DS_Store
 /.vscode/
 /config/
 /IlluminatedCloud/
+force-app/main/default/profiles
