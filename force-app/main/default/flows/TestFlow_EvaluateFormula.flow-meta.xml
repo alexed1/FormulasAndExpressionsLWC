@@ -34,7 +34,7 @@
         <inputParameters>
             <name>formulaString</name>
             <value>
-                <elementReference>formula_input</elementReference>
+                <elementReference>formulaString</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
@@ -86,7 +86,7 @@
             </inputParameters>
             <isRequired>true</isRequired>
             <outputParameters>
-                <assignToReference>formula_input</assignToReference>
+                <assignToReference>formulaString</assignToReference>
                 <name>formulaString</name>
             </outputParameters>
         </fields>
@@ -133,14 +133,14 @@
     <startElementReference>screenBuildFormula</startElementReference>
     <status>Draft</status>
     <variables>
-        <name>formula_input</name>
+        <name>formulaResult</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
-        <isOutput>true</isOutput>
+        <isOutput>false</isOutput>
     </variables>
     <variables>
-        <name>formulaResult</name>
+        <name>formulaString</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>

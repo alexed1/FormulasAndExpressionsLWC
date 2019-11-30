@@ -11,9 +11,6 @@
             "c/expressionLine": [
                 "expressionLine/expressionLine.js"
             ],
-            "c/fieldPicker": [
-                "fieldPicker/fieldPicker.js"
-            ],
             "c/formulaBuilder": [
                 "formulaBuilder/formulaBuilder.js"
             ],
