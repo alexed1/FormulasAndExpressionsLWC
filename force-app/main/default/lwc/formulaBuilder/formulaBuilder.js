@@ -7,6 +7,7 @@ export default class FormulaBuilder extends LightningElement {
 
     @api functions;
     @api operators;
+    @api supportedSystemTypes;
 
     @track formula = '';
     @track _objectName;
@@ -20,20 +21,10 @@ export default class FormulaBuilder extends LightningElement {
 
     set contextObjectType(value) {
         this._objectName = value;
-        if (!this.contextTypes) {
-            this.contextTypes = [value];
-        }
+        if (value) {
+            this.contextTypes = [...[value], ...this.supportedSystemTypes ? this.splitValues(this.supportedSystemTypes) : []];
     }
-
-    @api //f.e. 'User,Organization,Profile'
-    get supportedSystemTypes() {
-        return this.contextTypes.filter(curObject => curObject !== this._objectName).join(',');
     }
-
-    set supportedSystemTypes(value) {
-        this.contextTypes = [...[this._objectName], ...this.splitValues(value)];
-    }
-
 
     @api supportedFunctions = [
         'AND', 'OR', 'NOT', 'XOR', 'IF', 'CASE', 'LEN', 'SUBSTRING', 'LEFT', 'RIGHT',
@@ -59,7 +50,7 @@ export default class FormulaBuilder extends LightningElement {
     @wire(describeSObjects, {types: '$contextTypes'})
     _describeSObjects(result) {
         if (result.error) {
-            console.log(result.error.body[0].message);
+            console.log(result.error.body.message);
             // this.errors.push(error.body[0].message);
         } else if (result.data) {
             this.contextTypes.forEach(objType => {
