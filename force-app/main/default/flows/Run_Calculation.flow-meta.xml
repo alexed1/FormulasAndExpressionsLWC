@@ -4,7 +4,7 @@
         <name>Evaluate_Formula</name>
         <label>Evaluate Formula</label>
         <locationX>461</locationX>
-        <locationY>51</locationY>
+        <locationY>48</locationY>
         <actionName>EvaluateFormula</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -29,6 +29,13 @@
         <name>availableCalculations</name>
         <dataType>String</dataType>
         <displayField>Name</displayField>
+        <filters>
+            <field>Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>ContactClean</stringValue>
+            </value>
+        </filters>
         <object>Calculation__c</object>
         <valueField>Name</valueField>
     </dynamicChoiceSets>
@@ -51,7 +58,7 @@
         <name>Get_Calculation</name>
         <label>Get Calculation</label>
         <locationX>306</locationX>
-        <locationY>51</locationY>
+        <locationY>49</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Evaluate_Formula</targetReference>
@@ -60,7 +67,7 @@
             <field>Name</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Dog Years</stringValue>
+                <elementReference>Pick_Calculation</elementReference>
             </value>
         </filters>
         <object>Calculation__c</object>
@@ -71,8 +78,8 @@
     <screens>
         <name>screenOutput</name>
         <label>Results</label>
-        <locationX>600</locationX>
-        <locationY>52</locationY>
+        <locationX>598</locationX>
+        <locationY>47</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>

@@ -1,30 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <actionCalls>
-        <name>Evaluate_Formula</name>
-        <label>Evaluate Formula</label>
-        <locationX>461</locationX>
-        <locationY>51</locationY>
-        <actionName>EvaluateFormula</actionName>
-        <actionType>apex</actionType>
-        <connector>
-            <targetReference>screenOutput</targetReference>
-        </connector>
-        <inputParameters>
-            <name>formulaString</name>
+    <assignments>
+        <name>Assign_Name</name>
+        <label>Assign Name</label>
+        <locationX>358</locationX>
+        <locationY>287</locationY>
+        <assignmentItems>
+            <assignToReference>curCalculation.Name</assignToReference>
+            <operator>Assign</operator>
             <value>
-                <elementReference>Get_Calculation.Formula__c</elementReference>
+                <elementReference>Pick_Calculation</elementReference>
             </value>
-        </inputParameters>
-        <outputParameters>
-            <assignToReference>numberOutput</assignToReference>
-            <name>numberResult</name>
-        </outputParameters>
-        <outputParameters>
-            <assignToReference>stringOutput</assignToReference>
-            <name>stringResult</name>
-        </outputParameters>
-    </actionCalls>
+        </assignmentItems>
+        <connector>
+            <targetReference>Get_Calculation</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Updated_Values</name>
+        <label>Assign Updated Values</label>
+        <locationX>601</locationX>
+        <locationY>50</locationY>
+        <assignmentItems>
+            <assignToReference>curCalculation.Name</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Name</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>curCalculation.Context_Data_String__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>curCalculation.Context_Data_String__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Calculation</targetReference>
+        </connector>
+    </assignments>
+    <choices>
+        <name>choiceAddNew</name>
+        <choiceText>Add New Calculation</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>add</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>choiceEditCalculation</name>
+        <choiceText>Edit Calculation</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>edit</stringValue>
+        </value>
+    </choices>
+    <decisions>
+        <name>ActionTaken</name>
+        <label>ActionTaken?</label>
+        <locationX>93</locationX>
+        <locationY>285</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Add_New_Calculation</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>radioActionChoice</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>choiceAddNew</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Calculation</targetReference>
+            </connector>
+            <label>Add New Calculation</label>
+        </rules>
+        <rules>
+            <name>Edit_Existing_Calculation</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>radioActionChoice</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>choiceEditCalculation</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Name</targetReference>
+            </connector>
+            <label>Edit Existing Calculation</label>
+        </rules>
+    </decisions>
     <dynamicChoiceSets>
         <name>availableCalculations</name>
         <dataType>String</dataType>
@@ -47,11 +114,34 @@
         </value>
     </processMetadataValues>
     <processType>Flow</processType>
+    <recordCreates>
+        <name>Create_Calculation</name>
+        <label>Create Calculation</label>
+        <locationX>217</locationX>
+        <locationY>527</locationY>
+        <assignRecordIdToReference>curCalculation.Id</assignRecordIdToReference>
+        <connector>
+            <targetReference>Get_Record_by_Id</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Context_Object_Type__c</field>
+            <value>
+                <elementReference>Context_Object_Type</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>newCalculationName</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Calculation__c</object>
+    </recordCreates>
     <recordLookups>
         <name>Get_Calculation</name>
-        <label>Get Calculation</label>
-        <locationX>306</locationX>
-        <locationY>51</locationY>
+        <label>Get Calculation by Name</label>
+        <locationX>495</locationX>
+        <locationY>287</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Edit_Calculation</targetReference>
@@ -60,38 +150,67 @@
             <field>Name</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Dog Years</stringValue>
+                <elementReference>curCalculation.Name</elementReference>
             </value>
         </filters>
         <object>Calculation__c</object>
+        <outputReference>curCalculation</outputReference>
         <queriedFields>Id</queriedFields>
         <queriedFields>Formula__c</queriedFields>
+        <queriedFields>Name</queriedFields>
+        <queriedFields>Context_Object_Type__c</queriedFields>
+        <queriedFields>Context_Data_String__c</queriedFields>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Record_by_Id</name>
+        <label>Get Calculation by Id</label>
+        <locationX>495</locationX>
+        <locationY>476</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Edit_Calculation</targetReference>
+        </connector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>curCalculation.Id</elementReference>
+            </value>
+        </filters>
+        <object>Calculation__c</object>
+        <outputReference>curCalculation</outputReference>
+        <queriedFields>Id</queriedFields>
+        <queriedFields>Formula__c</queriedFields>
+        <queriedFields>Context_Object_Type__c</queriedFields>
         <queriedFields>Name</queriedFields>
         <queriedFields>Context_Data_String__c</queriedFields>
     </recordLookups>
     <recordUpdates>
         <name>Update_Calculation</name>
         <label>Update Calculation</label>
-        <locationX>306</locationX>
-        <locationY>385</locationY>
-        <inputReference>Get_Calculation</inputReference>
+        <locationX>754</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Summary_Screen</targetReference>
+        </connector>
+        <inputReference>curCalculation</inputReference>
     </recordUpdates>
     <screens>
         <name>Edit_Calculation</name>
         <label>Edit Calculation</label>
-        <locationX>306</locationX>
-        <locationY>203</locationY>
+        <locationX>765</locationX>
+        <locationY>408</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <connector>
-            <targetReference>Update_Calculation</targetReference>
+            <targetReference>Assign_Updated_Values</targetReference>
         </connector>
         <fields>
             <name>Name</name>
             <dataType>String</dataType>
             <defaultValue>
-                <elementReference>Get_Calculation.Name</elementReference>
+                <elementReference>curCalculation.Name</elementReference>
             </defaultValue>
             <fieldText>Name</fieldText>
             <fieldType>InputField</fieldType>
@@ -104,7 +223,7 @@
             <inputParameters>
                 <name>formulaString</name>
                 <value>
-                    <elementReference>Get_Calculation.Formula__c</elementReference>
+                    <elementReference>curCalculation.Formula__c</elementReference>
                 </value>
             </inputParameters>
             <inputParameters>
@@ -113,43 +232,11 @@
                     <stringValue>User</stringValue>
                 </value>
             </inputParameters>
-            <inputParameters>
-                <name>contextObjectType</name>
-                <value>
-                    <stringValue>Calculation__c</stringValue>
-                </value>
-            </inputParameters>
             <isRequired>true</isRequired>
             <outputParameters>
-                <assignToReference>Get_Calculation.Formula__c</assignToReference>
+                <assignToReference>curCalculation.Formula__c</assignToReference>
                 <name>formulaString</name>
             </outputParameters>
-        </fields>
-        <fields>
-            <name>Context_Data_String</name>
-            <dataType>String</dataType>
-            <defaultValue>
-                <elementReference>Get_Calculation.Context_Data_String__c</elementReference>
-            </defaultValue>
-            <fieldText>Context Data String</fieldText>
-            <fieldType>InputField</fieldType>
-            <isRequired>false</isRequired>
-        </fields>
-        <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
-    </screens>
-    <screens>
-        <name>screenOutput</name>
-        <label>Results</label>
-        <locationX>600</locationX>
-        <locationY>52</locationY>
-        <allowBack>true</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>true</allowPause>
-        <fields>
-            <name>dispOutpu</name>
-            <fieldText>&lt;p&gt;Result is &lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(62, 62, 60);&quot;&gt;{!stringOutput} &lt;/span&gt;&lt;/p&gt;&lt;p&gt;{!numberOutput}&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -158,13 +245,22 @@
         <name>Select_Calculation</name>
         <label>Select Calculation</label>
         <locationX>188</locationX>
-        <locationY>50</locationY>
+        <locationY>49</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <connector>
-            <targetReference>Get_Calculation</targetReference>
+            <targetReference>ActionTaken</targetReference>
         </connector>
+        <fields>
+            <name>radioActionChoice</name>
+            <choiceReferences>choiceAddNew</choiceReferences>
+            <choiceReferences>choiceEditCalculation</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Select</fieldText>
+            <fieldType>RadioButtons</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
         <fields>
             <name>Pick_Calculation</name>
             <choiceReferences>availableCalculations</choiceReferences>
@@ -172,12 +268,80 @@
             <fieldText>Pick Calculation</fieldText>
             <fieldType>DropdownBox</fieldType>
             <isRequired>true</isRequired>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>radioActionChoice</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <elementReference>choiceEditCalculation</elementReference>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <fields>
+            <name>newCalculationName</name>
+            <dataType>String</dataType>
+            <fieldText>Name</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>radioActionChoice</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <elementReference>choiceAddNew</elementReference>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <fields>
+            <name>Context_Object_Type</name>
+            <dataType>String</dataType>
+            <fieldText>Context Object Type</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>radioActionChoice</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <elementReference>choiceAddNew</elementReference>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Summary_Screen</name>
+        <label>Summary Screen</label>
+        <locationX>882</locationX>
+        <locationY>50</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>dispText</name>
+            <fieldText>&lt;p&gt;Your Calculation has been saved as a Calculation record. To execute it, run the Run Calculations flow.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
     </screens>
     <startElementReference>Select_Calculation</startElementReference>
     <status>Draft</status>
+    <variables>
+        <name>curCalculation</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Calculation__c</objectType>
+    </variables>
     <variables>
         <name>numberOutput</name>
         <dataType>Number</dataType>

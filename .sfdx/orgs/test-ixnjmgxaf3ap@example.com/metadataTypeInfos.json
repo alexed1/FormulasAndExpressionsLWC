@@ -50,6 +50,29 @@
             },
             "hasVirtualSubtypes": false
         },
+        "NavigationMenu": {
+            "metadataName": "NavigationMenu",
+            "isAddressable": true,
+            "isSourceTracked": true,
+            "ext": "navigationMenu",
+            "hasContent": false,
+            "defaultDirectory": "navigationMenus",
+            "nameForMsgs": "Navigation Menu",
+            "nameForMsgsPlural": "Navigation Menus",
+            "contentIsBinary": false,
+            "hasStandardMembers": false,
+            "deleteSupported": true,
+            "decompositionConfig": {
+                "strategy": "nonDecomposed",
+                "workspaceStrategy": "nonDecomposed",
+                "commitStrategy": "fineGrainTracking",
+                "metadataName": "NavigationMenu",
+                "useSparseComposition": false,
+                "decompositions": [],
+                "contentStrategy": "nonDecomposedContent"
+            },
+            "hasVirtualSubtypes": false
+        },
         "StaticResource": {
             "metadataName": "StaticResource",
             "isAddressable": true,
@@ -135,6 +158,29 @@
                 "workspaceStrategy": "nonDecomposed",
                 "commitStrategy": "fineGrainTracking",
                 "metadataName": "Certificate",
+                "useSparseComposition": false,
+                "decompositions": [],
+                "contentStrategy": "nonDecomposedContent"
+            },
+            "hasVirtualSubtypes": false
+        },
+        "LightningMessageChannel": {
+            "metadataName": "LightningMessageChannel",
+            "isAddressable": true,
+            "isSourceTracked": true,
+            "ext": "messageChannel",
+            "hasContent": false,
+            "defaultDirectory": "messageChannels",
+            "nameForMsgs": "Lightning Message Channel",
+            "nameForMsgsPlural": "Lightning Message Channels",
+            "contentIsBinary": false,
+            "hasStandardMembers": false,
+            "deleteSupported": true,
+            "decompositionConfig": {
+                "strategy": "nonDecomposed",
+                "workspaceStrategy": "nonDecomposed",
+                "commitStrategy": "fineGrainTracking",
+                "metadataName": "LightningMessageChannel",
                 "useSparseComposition": false,
                 "decompositions": [],
                 "contentStrategy": "nonDecomposedContent"
@@ -4250,6 +4296,98 @@
                 "workspaceStrategy": "nonDecomposed",
                 "commitStrategy": "fineGrainTracking",
                 "metadataName": "EmbeddedServiceFlowConfig",
+                "useSparseComposition": false,
+                "decompositions": [],
+                "contentStrategy": "nonDecomposedContent"
+            },
+            "hasVirtualSubtypes": false
+        },
+        "PlatformEventChannelMember": {
+            "metadataName": "PlatformEventChannelMember",
+            "isAddressable": true,
+            "isSourceTracked": true,
+            "ext": "platformEventChannelMember",
+            "hasContent": false,
+            "defaultDirectory": "platformEventChannelMembers",
+            "nameForMsgs": "Platform Event Channel Member",
+            "nameForMsgsPlural": "Platform Event Channel Members",
+            "contentIsBinary": false,
+            "hasStandardMembers": false,
+            "deleteSupported": true,
+            "decompositionConfig": {
+                "strategy": "nonDecomposed",
+                "workspaceStrategy": "nonDecomposed",
+                "commitStrategy": "fineGrainTracking",
+                "metadataName": "PlatformEventChannelMember",
+                "useSparseComposition": false,
+                "decompositions": [],
+                "contentStrategy": "nonDecomposedContent"
+            },
+            "hasVirtualSubtypes": false
+        },
+        "CanvasMetadata": {
+            "metadataName": "CanvasMetadata",
+            "isAddressable": true,
+            "isSourceTracked": true,
+            "ext": "Canvas",
+            "hasContent": false,
+            "defaultDirectory": "Canvases",
+            "nameForMsgs": "Canvas Metadata",
+            "nameForMsgsPlural": "Canvas Metadatas",
+            "contentIsBinary": false,
+            "hasStandardMembers": false,
+            "deleteSupported": true,
+            "decompositionConfig": {
+                "strategy": "nonDecomposed",
+                "workspaceStrategy": "nonDecomposed",
+                "commitStrategy": "fineGrainTracking",
+                "metadataName": "CanvasMetadata",
+                "useSparseComposition": false,
+                "decompositions": [],
+                "contentStrategy": "nonDecomposedContent"
+            },
+            "hasVirtualSubtypes": false
+        },
+        "MobileApplicationDetail": {
+            "metadataName": "MobileApplicationDetail",
+            "isAddressable": true,
+            "isSourceTracked": true,
+            "ext": "MobileApplicationDetail",
+            "hasContent": false,
+            "defaultDirectory": "MobileApplicationDetails",
+            "nameForMsgs": "Mobile Application Detail",
+            "nameForMsgsPlural": "Mobile Application Details",
+            "contentIsBinary": false,
+            "hasStandardMembers": false,
+            "deleteSupported": true,
+            "decompositionConfig": {
+                "strategy": "nonDecomposed",
+                "workspaceStrategy": "nonDecomposed",
+                "commitStrategy": "fineGrainTracking",
+                "metadataName": "MobileApplicationDetail",
+                "useSparseComposition": false,
+                "decompositions": [],
+                "contentStrategy": "nonDecomposedContent"
+            },
+            "hasVirtualSubtypes": false
+        },
+        "LightningOnboardingConfig": {
+            "metadataName": "LightningOnboardingConfig",
+            "isAddressable": true,
+            "isSourceTracked": true,
+            "ext": "lightningOnboardingConfig",
+            "hasContent": false,
+            "defaultDirectory": "lightningOnboardingConfigs",
+            "nameForMsgs": "Lightning Onboarding Config",
+            "nameForMsgsPlural": "Lightning Onboarding Configs",
+            "contentIsBinary": false,
+            "hasStandardMembers": false,
+            "deleteSupported": true,
+            "decompositionConfig": {
+                "strategy": "nonDecomposed",
+                "workspaceStrategy": "nonDecomposed",
+                "commitStrategy": "fineGrainTracking",
+                "metadataName": "LightningOnboardingConfig",
                 "useSparseComposition": false,
                 "decompositions": [],
                 "contentStrategy": "nonDecomposedContent"

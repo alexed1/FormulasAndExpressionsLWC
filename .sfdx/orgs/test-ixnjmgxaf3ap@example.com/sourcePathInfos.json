@@ -1,8 +1,8 @@
 [
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app",
             "isDirectory": true,
             "size": 128,
             "modifiedTime": 1566578419247,
@@ -15,9 +15,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main",
             "isDirectory": true,
             "size": 128,
             "modifiedTime": 1566578419247,
@@ -30,9 +30,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default",
             "isDirectory": true,
             "size": 512,
             "modifiedTime": 1570390303241,
@@ -45,9 +45,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/aura",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/aura",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/aura",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/aura",
             "isDirectory": true,
             "size": 64,
             "modifiedTime": 1566518552900,
@@ -60,9 +60,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes",
             "isDirectory": true,
             "size": 896,
             "modifiedTime": 1572569410425,
@@ -75,9 +75,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/EvaluateFormula.cls",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/EvaluateFormula.cls",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/EvaluateFormula.cls",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/EvaluateFormula.cls",
             "isDirectory": false,
             "size": 1600,
             "modifiedTime": 1570387922482,
@@ -90,9 +90,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/EvaluateFormula.cls-meta.xml",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/EvaluateFormula.cls-meta.xml",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/EvaluateFormula.cls-meta.xml",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/EvaluateFormula.cls-meta.xml",
             "isDirectory": false,
             "size": 193,
             "modifiedTime": 1570312866766,
@@ -105,9 +105,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/ExpressionBuilder.cls",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/ExpressionBuilder.cls",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/ExpressionBuilder.cls",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/ExpressionBuilder.cls",
             "isDirectory": false,
             "size": 15595,
             "modifiedTime": 1571986168306,
@@ -120,9 +120,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/ExpressionBuilder.cls-meta.xml",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/ExpressionBuilder.cls-meta.xml",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/ExpressionBuilder.cls-meta.xml",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/ExpressionBuilder.cls-meta.xml",
             "isDirectory": false,
             "size": 195,
             "modifiedTime": 1569293106795,
@@ -135,9 +135,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/ExpressionBuilderTest.cls",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/ExpressionBuilderTest.cls",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/ExpressionBuilderTest.cls",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/ExpressionBuilderTest.cls",
             "isDirectory": false,
             "size": 4291,
             "modifiedTime": 1569293106795,
@@ -150,9 +150,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/ExpressionBuilderTest.cls-meta.xml",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/ExpressionBuilderTest.cls-meta.xml",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/ExpressionBuilderTest.cls-meta.xml",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/ExpressionBuilderTest.cls-meta.xml",
             "isDirectory": false,
             "size": 199,
             "modifiedTime": 1569293106795,
@@ -165,9 +165,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FieldPickerController.cls",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/FieldPickerController.cls",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FieldPickerController.cls",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/FieldPickerController.cls",
             "isDirectory": false,
             "size": 5240,
             "modifiedTime": 1572569410424,
@@ -179,9 +179,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FieldPickerController.cls-meta.xml",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/FieldPickerController.cls-meta.xml",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FieldPickerController.cls-meta.xml",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/FieldPickerController.cls-meta.xml",
             "isDirectory": false,
             "size": 174,
             "modifiedTime": 1567886041047,
@@ -194,9 +194,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaBuilderController.cls",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/FormulaBuilderController.cls",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaBuilderController.cls",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/FormulaBuilderController.cls",
             "isDirectory": false,
             "size": 565,
             "modifiedTime": 1567969311097,
@@ -209,9 +209,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaBuilderController.cls-meta.xml",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/FormulaBuilderController.cls-meta.xml",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaBuilderController.cls-meta.xml",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/FormulaBuilderController.cls-meta.xml",
             "isDirectory": false,
             "size": 202,
             "modifiedTime": 1567886041047,
@@ -224,9 +224,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaBuilderControllerTest.cls",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/FormulaBuilderControllerTest.cls",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaBuilderControllerTest.cls",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/FormulaBuilderControllerTest.cls",
             "isDirectory": false,
             "size": 340,
             "modifiedTime": 1567969311097,
@@ -239,9 +239,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaBuilderControllerTest.cls-meta.xml",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/FormulaBuilderControllerTest.cls-meta.xml",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaBuilderControllerTest.cls-meta.xml",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/FormulaBuilderControllerTest.cls-meta.xml",
             "isDirectory": false,
             "size": 206,
             "modifiedTime": 1567969311097,
@@ -254,9 +254,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaEvaluator.cls",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/FormulaEvaluator.cls",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaEvaluator.cls",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/FormulaEvaluator.cls",
             "isDirectory": false,
             "size": 19592,
             "modifiedTime": 1571986168307,
@@ -269,9 +269,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaEvaluator.cls-meta.xml",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/FormulaEvaluator.cls-meta.xml",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaEvaluator.cls-meta.xml",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/FormulaEvaluator.cls-meta.xml",
             "isDirectory": false,
             "size": 194,
             "modifiedTime": 1567886041047,
@@ -284,9 +284,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaEvaluatorTest.cls",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/FormulaEvaluatorTest.cls",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaEvaluatorTest.cls",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/FormulaEvaluatorTest.cls",
             "isDirectory": false,
             "size": 5761,
             "modifiedTime": 1571986168307,
@@ -299,9 +299,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaEvaluatorTest.cls-meta.xml",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/FormulaEvaluatorTest.cls-meta.xml",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/FormulaEvaluatorTest.cls-meta.xml",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/FormulaEvaluatorTest.cls-meta.xml",
             "isDirectory": false,
             "size": 198,
             "modifiedTime": 1567969311098,
@@ -314,9 +314,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/RegExps.cls",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/RegExps.cls",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/RegExps.cls",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/RegExps.cls",
             "isDirectory": false,
             "size": 75256,
             "modifiedTime": 1571986168308,
@@ -329,9 +329,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/RegExps.cls-meta.xml",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/RegExps.cls-meta.xml",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/RegExps.cls-meta.xml",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/RegExps.cls-meta.xml",
             "isDirectory": false,
             "size": 174,
             "modifiedTime": 1566492404664,
@@ -344,9 +344,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/SearchUtils.cls",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/SearchUtils.cls",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/SearchUtils.cls",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/SearchUtils.cls",
             "isDirectory": false,
             "size": 5158,
             "modifiedTime": 1572569410425,
@@ -358,9 +358,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/SearchUtils.cls-meta.xml",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/SearchUtils.cls-meta.xml",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/SearchUtils.cls-meta.xml",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/SearchUtils.cls-meta.xml",
             "isDirectory": false,
             "size": 174,
             "modifiedTime": 1567886041048,
@@ -373,9 +373,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/SearchUtilsTest.cls",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/SearchUtilsTest.cls",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/SearchUtilsTest.cls",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/SearchUtilsTest.cls",
             "isDirectory": false,
             "size": 2592,
             "modifiedTime": 1571986168309,
@@ -388,9 +388,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/SearchUtilsTest.cls-meta.xml",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/SearchUtilsTest.cls-meta.xml",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/SearchUtilsTest.cls-meta.xml",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/SearchUtilsTest.cls-meta.xml",
             "isDirectory": false,
             "size": 174,
             "modifiedTime": 1567886041049,
@@ -403,9 +403,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/UpdateFieldAction.cls",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/UpdateFieldAction.cls",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/UpdateFieldAction.cls",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/UpdateFieldAction.cls",
             "isDirectory": false,
             "size": 4066,
             "modifiedTime": 1572573948967,
@@ -417,9 +417,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/UpdateFieldAction.cls-meta.xml",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/UpdateFieldAction.cls-meta.xml",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/UpdateFieldAction.cls-meta.xml",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/UpdateFieldAction.cls-meta.xml",
             "isDirectory": false,
             "size": 195,
             "modifiedTime": 1567969311099,
@@ -432,9 +432,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/UpdateFieldActionTest.cls",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/UpdateFieldActionTest.cls",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/UpdateFieldActionTest.cls",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/UpdateFieldActionTest.cls",
             "isDirectory": false,
             "size": 1730,
             "modifiedTime": 1572574083857,
@@ -446,9 +446,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/UpdateFieldActionTest.cls-meta.xml",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/UpdateFieldActionTest.cls-meta.xml",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/classes/UpdateFieldActionTest.cls-meta.xml",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/classes/UpdateFieldActionTest.cls-meta.xml",
             "isDirectory": false,
             "size": 199,
             "modifiedTime": 1567969311099,
@@ -461,9 +461,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/contentassets",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/contentassets",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/contentassets",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/contentassets",
             "isDirectory": true,
             "size": 64,
             "modifiedTime": 1566518552900,
@@ -476,9 +476,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/flexipages",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/flexipages",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/flexipages",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/flexipages",
             "isDirectory": true,
             "size": 64,
             "modifiedTime": 1566518552901,
@@ -491,9 +491,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/flows",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/flows",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/flows",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/flows",
             "isDirectory": true,
             "size": 128,
             "modifiedTime": 1572569410425,
@@ -506,35 +506,35 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/flows/TestFlow_EvaluateFormula.flow-meta.xml",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/flows/TestFlow_EvaluateFormula.flow-meta.xml",
         {
-            "state": "u",
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/flows/TestFlow_EvaluateFormula.flow-meta.xml",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/flows/TestFlow_EvaluateFormula.flow-meta.xml",
             "isDirectory": false,
-            "isMetadataFile": true,
             "size": 4461,
             "modifiedTime": 1572580967266,
             "changeTime": 1572580967266,
-            "contentHash": "551cdf47183679db9102aa1dc81281bdab2e34c6"
+            "contentHash": "551cdf47183679db9102aa1dc81281bdab2e34c6",
+            "isMetadataFile": true,
+            "state": "u"
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/flows/TestUpdateField.flow-meta.xml",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/flows/TestUpdateField.flow-meta.xml",
         {
-            "state": "u",
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/flows/TestUpdateField.flow-meta.xml",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/flows/TestUpdateField.flow-meta.xml",
             "isDirectory": false,
-            "isMetadataFile": true,
             "size": 7502,
             "modifiedTime": 1572580967360,
             "changeTime": 1572580967360,
-            "contentHash": "ba9964117dcd505444a55022f2b2137e26df97c8"
+            "contentHash": "ba9964117dcd505444a55022f2b2137e26df97c8",
+            "isMetadataFile": true,
+            "state": "u"
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/labels",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/labels",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/labels",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/labels",
             "isDirectory": true,
             "size": 96,
             "modifiedTime": 1570386521860,
@@ -547,9 +547,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/labels/CustomLabels.labels-meta.xml",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/labels/CustomLabels.labels-meta.xml",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/labels/CustomLabels.labels-meta.xml",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/labels/CustomLabels.labels-meta.xml",
             "isDirectory": false,
             "size": 9408,
             "modifiedTime": 1570386521862,
@@ -562,9 +562,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/layouts",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/layouts",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/layouts",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/layouts",
             "isDirectory": true,
             "size": 64,
             "modifiedTime": 1566520546096,
@@ -577,9 +577,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc",
             "isDirectory": true,
             "size": 448,
             "modifiedTime": 1572569410426,
@@ -591,9 +591,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/buttonUtils",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/buttonUtils",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/buttonUtils",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/buttonUtils",
             "isDirectory": true,
             "size": 128,
             "modifiedTime": 1567886041049,
@@ -606,9 +606,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/buttonUtils/buttonUtils.js",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/buttonUtils/buttonUtils.js",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/buttonUtils/buttonUtils.js",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/buttonUtils/buttonUtils.js",
             "isDirectory": false,
             "size": 902,
             "modifiedTime": 1567886041049,
@@ -621,9 +621,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/buttonUtils/buttonUtils.js-meta.xml",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/buttonUtils/buttonUtils.js-meta.xml",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/buttonUtils/buttonUtils.js-meta.xml",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/buttonUtils/buttonUtils.js-meta.xml",
             "isDirectory": false,
             "size": 226,
             "modifiedTime": 1567886041049,
@@ -636,9 +636,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionBuilder",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/expressionBuilder",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionBuilder",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/expressionBuilder",
             "isDirectory": true,
             "size": 160,
             "modifiedTime": 1571986168310,
@@ -651,9 +651,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionBuilder/expressionBuilder.html",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/expressionBuilder/expressionBuilder.html",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionBuilder/expressionBuilder.html",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/expressionBuilder/expressionBuilder.html",
             "isDirectory": false,
             "size": 2753,
             "modifiedTime": 1569293106796,
@@ -666,9 +666,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionBuilder/expressionBuilder.js",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/expressionBuilder/expressionBuilder.js",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionBuilder/expressionBuilder.js",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/expressionBuilder/expressionBuilder.js",
             "isDirectory": false,
             "size": 4770,
             "modifiedTime": 1571986168311,
@@ -681,9 +681,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionBuilder/expressionBuilder.js-meta.xml",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/expressionBuilder/expressionBuilder.js-meta.xml",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionBuilder/expressionBuilder.js-meta.xml",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/expressionBuilder/expressionBuilder.js-meta.xml",
             "isDirectory": false,
             "size": 1038,
             "modifiedTime": 1570387212875,
@@ -696,9 +696,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionLine",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/expressionLine",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionLine",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/expressionLine",
             "isDirectory": true,
             "size": 160,
             "modifiedTime": 1569293106797,
@@ -711,9 +711,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionLine/expressionLine.html",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/expressionLine/expressionLine.html",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionLine/expressionLine.html",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/expressionLine/expressionLine.html",
             "isDirectory": false,
             "size": 3139,
             "modifiedTime": 1569293106797,
@@ -726,9 +726,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionLine/expressionLine.js",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/expressionLine/expressionLine.js",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionLine/expressionLine.js",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/expressionLine/expressionLine.js",
             "isDirectory": false,
             "size": 4100,
             "modifiedTime": 1569293106797,
@@ -741,9 +741,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionLine/expressionLine.js-meta.xml",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/expressionLine/expressionLine.js-meta.xml",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/expressionLine/expressionLine.js-meta.xml",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/expressionLine/expressionLine.js-meta.xml",
             "isDirectory": false,
             "size": 300,
             "modifiedTime": 1567886041050,
@@ -756,9 +756,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/fieldPicker",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/fieldPicker",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/fieldPicker",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/fieldPicker",
             "isDirectory": true,
             "size": 160,
             "modifiedTime": 1571986168311,
@@ -771,9 +771,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/fieldPicker/fieldPicker.html",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/fieldPicker/fieldPicker.html",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/fieldPicker/fieldPicker.html",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/fieldPicker/fieldPicker.html",
             "isDirectory": false,
             "size": 1216,
             "modifiedTime": 1571986168311,
@@ -786,9 +786,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/fieldPicker/fieldPicker.js",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/fieldPicker/fieldPicker.js",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/fieldPicker/fieldPicker.js",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/fieldPicker/fieldPicker.js",
             "isDirectory": false,
             "size": 6784,
             "modifiedTime": 1571986168311,
@@ -801,9 +801,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/fieldPicker/fieldPicker.js-meta.xml",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/fieldPicker/fieldPicker.js-meta.xml",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/fieldPicker/fieldPicker.js-meta.xml",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/fieldPicker/fieldPicker.js-meta.xml",
             "isDirectory": false,
             "size": 370,
             "modifiedTime": 1567886041051,
@@ -816,9 +816,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/formulaBuilder",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/formulaBuilder",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/formulaBuilder",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/formulaBuilder",
             "isDirectory": true,
             "size": 192,
             "modifiedTime": 1572569410426,
@@ -831,9 +831,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/formulaBuilder/formulaBuilder.css",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/formulaBuilder/formulaBuilder.css",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/formulaBuilder/formulaBuilder.css",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/formulaBuilder/formulaBuilder.css",
             "isDirectory": false,
             "size": 594,
             "modifiedTime": 1567969311101,
@@ -846,9 +846,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/formulaBuilder/formulaBuilder.html",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/formulaBuilder/formulaBuilder.html",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/formulaBuilder/formulaBuilder.html",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/formulaBuilder/formulaBuilder.html",
             "isDirectory": false,
             "size": 1370,
             "modifiedTime": 1572569410426,
@@ -860,9 +860,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/formulaBuilder/formulaBuilder.js",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/formulaBuilder/formulaBuilder.js",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/formulaBuilder/formulaBuilder.js",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/formulaBuilder/formulaBuilder.js",
             "isDirectory": false,
             "size": 4292,
             "modifiedTime": 1572569410426,
@@ -874,9 +874,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/formulaBuilder/formulaBuilder.js-meta.xml",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/formulaBuilder/formulaBuilder.js-meta.xml",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/formulaBuilder/formulaBuilder.js-meta.xml",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/formulaBuilder/formulaBuilder.js-meta.xml",
             "isDirectory": false,
             "size": 1384,
             "modifiedTime": 1572569410426,
@@ -888,9 +888,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/lwcLogger",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/lwcLogger",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/lwcLogger",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/lwcLogger",
             "isDirectory": true,
             "size": 128,
             "modifiedTime": 1567886041053,
@@ -903,9 +903,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/lwcLogger/lwcLogger.js",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/lwcLogger/lwcLogger.js",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/lwcLogger/lwcLogger.js",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/lwcLogger/lwcLogger.js",
             "isDirectory": false,
             "size": 1369,
             "modifiedTime": 1567886041053,
@@ -918,9 +918,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/lwcLogger/lwcLogger.js-meta.xml",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/lwcLogger/lwcLogger.js-meta.xml",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/lwcLogger/lwcLogger.js-meta.xml",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/lwcLogger/lwcLogger.js-meta.xml",
             "isDirectory": false,
             "size": 228,
             "modifiedTime": 1567886041053,
@@ -933,9 +933,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setOwner",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/setOwner",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setOwner",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/setOwner",
             "isDirectory": true,
             "size": 192,
             "modifiedTime": 1572569410428,
@@ -948,9 +948,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setOwner/setOwner.css",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/setOwner/setOwner.css",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setOwner/setOwner.css",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/setOwner/setOwner.css",
             "isDirectory": false,
             "size": 50,
             "modifiedTime": 1567886041053,
@@ -963,9 +963,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setOwner/setOwner.html",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/setOwner/setOwner.html",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setOwner/setOwner.html",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/setOwner/setOwner.html",
             "isDirectory": false,
             "size": 4417,
             "modifiedTime": 1567886041053,
@@ -978,9 +978,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setOwner/setOwner.js",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/setOwner/setOwner.js",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setOwner/setOwner.js",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/setOwner/setOwner.js",
             "isDirectory": false,
             "size": 4705,
             "modifiedTime": 1572569410428,
@@ -992,9 +992,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setOwner/setOwner.js-meta.xml",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/setOwner/setOwner.js-meta.xml",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setOwner/setOwner.js-meta.xml",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/setOwner/setOwner.js-meta.xml",
             "isDirectory": false,
             "size": 499,
             "modifiedTime": 1567886041054,
@@ -1007,9 +1007,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setPickList",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/setPickList",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setPickList",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/setPickList",
             "isDirectory": true,
             "size": 160,
             "modifiedTime": 1567969311102,
@@ -1022,9 +1022,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setPickList/setPickList.html",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/setPickList/setPickList.html",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setPickList/setPickList.html",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/setPickList/setPickList.html",
             "isDirectory": false,
             "size": 704,
             "modifiedTime": 1567886041054,
@@ -1037,9 +1037,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setPickList/setPickList.js",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/setPickList/setPickList.js",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setPickList/setPickList.js",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/setPickList/setPickList.js",
             "isDirectory": false,
             "size": 2588,
             "modifiedTime": 1567969311103,
@@ -1052,9 +1052,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setPickList/setPickList.js-meta.xml",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/setPickList/setPickList.js-meta.xml",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/setPickList/setPickList.js-meta.xml",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/setPickList/setPickList.js-meta.xml",
             "isDirectory": false,
             "size": 294,
             "modifiedTime": 1567886041055,
@@ -1067,9 +1067,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/updateFieldConfigurator",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/updateFieldConfigurator",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/updateFieldConfigurator",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/updateFieldConfigurator",
             "isDirectory": true,
             "size": 160,
             "modifiedTime": 1572569410430,
@@ -1082,9 +1082,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/updateFieldConfigurator/updateFieldConfigurator.html",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/updateFieldConfigurator/updateFieldConfigurator.html",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/updateFieldConfigurator/updateFieldConfigurator.html",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/updateFieldConfigurator/updateFieldConfigurator.html",
             "isDirectory": false,
             "size": 7720,
             "modifiedTime": 1572569676370,
@@ -1096,9 +1096,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/updateFieldConfigurator/updateFieldConfigurator.js",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/updateFieldConfigurator/updateFieldConfigurator.js",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/updateFieldConfigurator/updateFieldConfigurator.js",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/updateFieldConfigurator/updateFieldConfigurator.js",
             "isDirectory": false,
             "size": 4150,
             "modifiedTime": 1572569410430,
@@ -1110,9 +1110,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/updateFieldConfigurator/updateFieldConfigurator.js-meta.xml",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/updateFieldConfigurator/updateFieldConfigurator.js-meta.xml",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/updateFieldConfigurator/updateFieldConfigurator.js-meta.xml",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/updateFieldConfigurator/updateFieldConfigurator.js-meta.xml",
             "isDirectory": false,
             "size": 848,
             "modifiedTime": 1572569410430,
@@ -1124,9 +1124,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/permissionsets",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/permissionsets",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/permissionsets",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/permissionsets",
             "isDirectory": true,
             "size": 64,
             "modifiedTime": 1566518552901,
@@ -1139,9 +1139,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/profiles",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/profiles",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/profiles",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/profiles",
             "isDirectory": true,
             "size": 96,
             "modifiedTime": 1570390303248,
@@ -1154,9 +1154,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/profiles/Admin.profile-meta.xml",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/profiles/Admin.profile-meta.xml",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/profiles/Admin.profile-meta.xml",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/profiles/Admin.profile-meta.xml",
             "isDirectory": false,
             "size": 21031,
             "modifiedTime": 1570390303248,
@@ -1169,9 +1169,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/staticresources",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/staticresources",
             "isDirectory": true,
             "size": 128,
             "modifiedTime": 1567886041045,
@@ -1184,9 +1184,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/staticresources/SiteSamples",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/staticresources/SiteSamples",
             "isDirectory": true,
             "size": 128,
             "modifiedTime": 1566520123125,
@@ -1199,9 +1199,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/SiteStyles.css",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/staticresources/SiteSamples/SiteStyles.css",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/SiteStyles.css",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/staticresources/SiteSamples/SiteStyles.css",
             "isDirectory": false,
             "size": 402,
             "modifiedTime": 1566520123125,
@@ -1214,9 +1214,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/staticresources/SiteSamples/img",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/staticresources/SiteSamples/img",
             "isDirectory": true,
             "size": 320,
             "modifiedTime": 1566520123128,
@@ -1229,9 +1229,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/clock.png",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/staticresources/SiteSamples/img/clock.png",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/clock.png",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/staticresources/SiteSamples/img/clock.png",
             "isDirectory": false,
             "size": 4681,
             "modifiedTime": 1566520123125,
@@ -1244,9 +1244,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/construction.png",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/staticresources/SiteSamples/img/construction.png",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/construction.png",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/staticresources/SiteSamples/img/construction.png",
             "isDirectory": false,
             "size": 15051,
             "modifiedTime": 1566520123126,
@@ -1259,9 +1259,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/force_logo.png",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/staticresources/SiteSamples/img/force_logo.png",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/force_logo.png",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/staticresources/SiteSamples/img/force_logo.png",
             "isDirectory": false,
             "size": 1728,
             "modifiedTime": 1566520123126,
@@ -1274,9 +1274,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/maintenance.png",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/staticresources/SiteSamples/img/maintenance.png",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/maintenance.png",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/staticresources/SiteSamples/img/maintenance.png",
             "isDirectory": false,
             "size": 12247,
             "modifiedTime": 1566520123127,
@@ -1289,9 +1289,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/poweredby.png",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/staticresources/SiteSamples/img/poweredby.png",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/poweredby.png",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/staticresources/SiteSamples/img/poweredby.png",
             "isDirectory": false,
             "size": 984,
             "modifiedTime": 1566520123127,
@@ -1304,9 +1304,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/tools.png",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/staticresources/SiteSamples/img/tools.png",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/tools.png",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/staticresources/SiteSamples/img/tools.png",
             "isDirectory": false,
             "size": 2136,
             "modifiedTime": 1566520123128,
@@ -1319,9 +1319,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/unauthorized.png",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/staticresources/SiteSamples/img/unauthorized.png",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/unauthorized.png",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/staticresources/SiteSamples/img/unauthorized.png",
             "isDirectory": false,
             "size": 2076,
             "modifiedTime": 1566520123128,
@@ -1334,9 +1334,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/warning.png",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/staticresources/SiteSamples/img/warning.png",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples/img/warning.png",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/staticresources/SiteSamples/img/warning.png",
             "isDirectory": false,
             "size": 1767,
             "modifiedTime": 1566520123129,
@@ -1349,9 +1349,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples.resource-meta.xml",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/staticresources/SiteSamples.resource-meta.xml",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/staticresources/SiteSamples.resource-meta.xml",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/staticresources/SiteSamples.resource-meta.xml",
             "isDirectory": false,
             "size": 279,
             "modifiedTime": 1566520123102,
@@ -1364,9 +1364,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/tabs",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/tabs",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/tabs",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/tabs",
             "isDirectory": true,
             "size": 64,
             "modifiedTime": 1566520248501,
@@ -1379,9 +1379,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/triggers",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/triggers",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/triggers",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/triggers",
             "isDirectory": true,
             "size": 64,
             "modifiedTime": 1566518552901,
@@ -1394,9 +1394,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC",
             "isDirectory": true,
             "size": 416,
             "modifiedTime": 1572569407378,
@@ -1409,9 +1409,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/pickObjectAndFieldFSC",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/pickObjectAndFieldFSC",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/pickObjectAndFieldFSC",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/pickObjectAndFieldFSC",
             "isDirectory": true,
             "size": 192,
             "modifiedTime": 1572569410428,
@@ -1422,9 +1422,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/pickObjectAndFieldFSC/pickObjectAndFieldFSC.css",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/pickObjectAndFieldFSC/pickObjectAndFieldFSC.css",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/pickObjectAndFieldFSC/pickObjectAndFieldFSC.css",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/pickObjectAndFieldFSC/pickObjectAndFieldFSC.css",
             "isDirectory": false,
             "size": 94,
             "modifiedTime": 1572569410427,
@@ -1435,9 +1435,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/pickObjectAndFieldFSC/pickObjectAndFieldFSC.html",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/pickObjectAndFieldFSC/pickObjectAndFieldFSC.html",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/pickObjectAndFieldFSC/pickObjectAndFieldFSC.html",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/pickObjectAndFieldFSC/pickObjectAndFieldFSC.html",
             "isDirectory": false,
             "size": 1707,
             "modifiedTime": 1572569410427,
@@ -1448,9 +1448,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/pickObjectAndFieldFSC/pickObjectAndFieldFSC.js",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/pickObjectAndFieldFSC/pickObjectAndFieldFSC.js",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/pickObjectAndFieldFSC/pickObjectAndFieldFSC.js",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/pickObjectAndFieldFSC/pickObjectAndFieldFSC.js",
             "isDirectory": false,
             "size": 6231,
             "modifiedTime": 1572569410427,
@@ -1461,9 +1461,9 @@
         }
     ],
     [
-        "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/pickObjectAndFieldFSC/pickObjectAndFieldFSC.js-meta.xml",
+        "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/pickObjectAndFieldFSC/pickObjectAndFieldFSC.js-meta.xml",
         {
-            "sourcePath": "/Users/aedelstein/GDrive/dev/FlowFormulasAndUpdateField/force-app/main/default/lwc/pickObjectAndFieldFSC/pickObjectAndFieldFSC.js-meta.xml",
+            "sourcePath": "/Users/aedelstein/GDrive/dev/FormulasAndExpressionsLWC/force-app/main/default/lwc/pickObjectAndFieldFSC/pickObjectAndFieldFSC.js-meta.xml",
             "isDirectory": false,
             "size": 2368,
             "modifiedTime": 1572569410428,
