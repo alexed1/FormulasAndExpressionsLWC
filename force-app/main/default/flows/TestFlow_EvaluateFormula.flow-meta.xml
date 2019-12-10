@@ -16,6 +16,12 @@
                 <elementReference>Enter_Formula</elementReference>
             </value>
         </inputParameters>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>record_id</elementReference>
+            </value>
+        </inputParameters>
         <outputParameters>
             <assignToReference>formulaResult</assignToReference>
             <name>stringResult</name>
@@ -38,9 +44,9 @@
             </value>
         </inputParameters>
         <inputParameters>
-            <name>contextDataString</name>
+            <name>recordId</name>
             <value>
-                <stringValue>[{&quot;value&quot;:&quot;0015400000QJToqAAH&quot;,&quot;name&quot;:&quot;$Record&quot;}]</stringValue>
+                <elementReference>record_id</elementReference>
             </value>
         </inputParameters>
         <outputParameters>
@@ -145,5 +151,12 @@
         <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>record_id</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
     </variables>
 </Flow>

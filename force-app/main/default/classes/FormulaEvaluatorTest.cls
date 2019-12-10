@@ -53,6 +53,8 @@ public with sharing class FormulaEvaluatorTest {
         System.assertEquals('100', FormulaEvaluator.parseFormula('VALUE("100")', stringContext), 'Formula VALUE');
         System.assertEquals('Test Opportunity15000.05', FormulaEvaluator.parseFormula('CONCATENATE($Record.Name,TEXT($Record.Amount))', stringContext), 'Formula CONCATENATE');
         System.assertEquals('$Opportunity.Name$Opportunity.Amount', FormulaEvaluator.parseFormula('CONCATENATE("$Opportunity.Name","$Opportunity.Amount")', stringContext), 'Formula CONCATENATE "&');
+        System.assertEquals(String.valueOf(opp.CloseDate.toStartOfWeek().daysBetween(opp.CloseDate)), FormulaEvaluator.parseFormula('WEEKDAY($Record.CloseDate)', stringContext), 'Formula include WEEKDAY');
+        System.assertEquals('true',FormulaEvaluator.parseFormula('BEGINS($Record.Name, TEXT("Test"))', stringContext), 'Formula BEGINS');
     }
 
     public class ContextWrapper {

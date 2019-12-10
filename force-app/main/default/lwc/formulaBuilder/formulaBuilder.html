@@ -2,19 +2,19 @@
     <div class="container">
         <div class="flexContainer">
             <p>Insert</p>
-            <lightning-combobox name="field" 
-                            label="Field"
-                            variant="label-hidden"
-                            placeholder="Field"
-                            options={contextFields}
-                            onchange={selectField}>
+            <lightning-combobox name="field"
+                                label="Field"
+                                variant="label-hidden"
+                                placeholder="Field"
+                                options={contextFields}
+                                onchange={selectField}>
             </lightning-combobox>
-            <lightning-combobox name="function" 
+            <lightning-combobox name="function"
                                 label="Function"
                                 variant="label-hidden"
                                 placeholder="Function"
                                 options={functions}
-                                onchange={selectOperator}>
+                                onchange={selectFunction}>
             </lightning-combobox>
             <lightning-combobox name="recordDetail.htmloperator"
                                 label="Operator"
@@ -24,8 +24,14 @@
                                 onchange={selectOperator}>
             </lightning-combobox>
         </div>
-        <lightning-textarea onchange={changeFormula} value={formulaString} name="formula" variant="label-hidden" onblur={formulaChangedFlowEvent}></lightning-textarea>
-        <p>Use formula syntax: Enclose text and picklist value API names in double quotes : "the_text", include numbers without quotes : 25,
-            show percentages as decimals: 0.10, and express date calculations in the standard format: Today() + 7</p>
+        <div class="slds-form-element">
+            <div class="slds-form-element__control">
+                <textarea class="slds-textarea" onchange={changeFormula} onblur={formulaChangedFlowEvent}>
+                    {formulaString}
+                </textarea>
+            </div>
+        </div>
+        <p>Use formula syntax: Enclose text and picklist value API names in double quotes : "the_text", include numbers
+            without quotes : 25, show percentages as decimals: 0.10, and express date calculations in the standard format: Today() + 7</p>
     </div>
 </template>

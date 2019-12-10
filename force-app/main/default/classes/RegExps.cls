@@ -394,7 +394,7 @@ global class RegExps {
 
     public static void evaluateMathFunctions(ParserContext context) {
 
-        Pattern myPattern = pattern.compile('(ABS|ROUND|CEIL|FLOOR|SQRT|ACOS|ASIN|ATAN|COS|SIN|TAN|COSH|SINH|TANH|EXP|LOG|LOG10|RINT|SIGNUM|INTEGER)\\s*\\(\\s*' + EXP_OPERAND + '\\s*\\)');
+        Pattern myPattern = pattern.compile('(ABS|ROUND|CEILING|FLOOR|SQRT|ACOS|ASIN|ATAN|COS|SIN|TAN|COSH|SINH|TANH|EXP|LOG|LOG10|RINT|SIGNUM|INTEGER)\\s*\\(\\s*' + EXP_OPERAND + '\\s*\\)');
         Matcher m = myPattern.matcher(context.outputString);
 
         while (m.find()) {
@@ -415,7 +415,7 @@ global class RegExps {
                 val = Math.abs(val);
             } else if (func == 'ROUND') {
                 val = Math.round(val);
-            } else if (func == 'CEIL') {
+            } else if (func == 'CEILING') {
                 val = Math.ceil(val);
             } else if (func == 'FLOOR') {
                 val = Math.floor(val);
@@ -870,6 +870,8 @@ global class RegExps {
         final String TRIM_FN = '((TRIM)\\s*\\(\\s*(' + EXP_OPERAND + ')\\s*\\))';
         final String VALUE_FN = '((VALUE)\\s*\\(\\s*(' + EXP_OPERAND + ')\\s*\\))';
         final String CONCATENATE_FN = '((CONCATENATE)\\s+\\(\\s+' + EXP_OPERAND + '\\s+,\\s+' + EXP_OPERAND + '\\s+\\))';
+        final String ONEPARAM_FN = '((WEEKDAY)\\s*\\(\\s*(' + EXP_OPERAND + ')\\s*\\))';
+        final String TWOPARAMS_FN = '((BEGINS)\\s+\\(\\s+' + EXP_OPERAND + '\\s+,\\s+' + EXP_OPERAND + '\\s+\\))';
         Pattern myPattern = pattern.compile(LEN_FN + '|' +
                 SUBSTRING_FN + '|' +
                 LEFT_RIGHT_FN + '|' +
@@ -881,10 +883,14 @@ global class RegExps {
                 SUBSTITUTE_FN + '|' +
                 TRIM_FN + '|' +
                 VALUE_FN + '|' +
-                CONCATENATE_FN);
+                CONCATENATE_FN + '|' +
+                ONEPARAM_FN + '|' +
+                TWOPARAMS_FN);
         Matcher m = myPattern.matcher(context.outputString);
 
+
         while (m.find()) {
+
             if (m.group().startsWith('CONVERTID')) {
 
                 String ref = m.group(20);
@@ -1130,6 +1136,34 @@ global class RegExps {
                     res += val2;
                 }
                 context.replace(m.group(0), res);
+            } else if (m.group().startsWith('WEEKDAY')) {
+
+                String ref1 = m.group(52);
+                DateTime val = context.referencesDateTime.get(ref1);
+
+                Integer weekDay = 0;
+                try {
+                    weekDay = Date.valueOf(val).toStartOfWeek().daysBetween(Date.valueOf(val));
+                } catch (Exception ex) {
+                    throw new ExpressionParsingException('Unsupported parameter type on function DATETIME(): expected String or DateTime but received "'
+                            + getValueReferenceType(ref1) + '".');
+                }
+
+                context.replace(m.group(0), weekDay);
+
+            } else if (m.group().startsWith('BEGINS')) {
+
+                String ref1 = m.group(56);
+                String ref2 = m.group(57);
+
+                if (!ref1.contains('N') && !ref1.contains('S') && !ref2.contains('N') && !ref2.contains('S')) {
+                    throw new ExpressionParsingException('Cannot apply BEGINS(str, str) function: Expected String, String parameters but received "'
+                            + getValueReferenceType(ref1) + '","' + getValueReferenceType(ref2) + '".');
+                }
+
+                String val = context.referencesString.get(ref1);
+                String val2 = context.referencesString.get(ref2);
+                context.replace(m.group(0), val.startsWith(val2));
             }
         }
     }

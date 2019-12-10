@@ -297,6 +297,7 @@ public with sharing class FormulaEvaluator {
             context.isError = true;
             context.stackTrace = e.getStackTraceString() + ' ' + e.getMEssage();
             context.errorMessage = e.getMessage();
+            System.debug(context);
         }
         return context;
     }
