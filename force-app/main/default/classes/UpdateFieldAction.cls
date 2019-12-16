@@ -6,10 +6,10 @@ public with sharing class UpdateFieldAction {
         String formula = requests[0].formula;
 
         System.debug('requests is' + requests);
-        List<ContextWraper> contextWrapers = new List<ContextWraper>();
-        contextWrapers.add(new ContextWraper('$Record',  objectId));
+        List<ContextWrapper> contextWrappers = new List<ContextWrapper>();
+        contextWrappers.add(new ContextWrapper('$Record',  objectId));
 
-        String fieldValue = FormulaEvaluator.parseFormula( formula, JSON.serialize(contextWrapers));
+        String fieldValue = FormulaEvaluator.parseFormula( formula, JSON.serialize(contextWrappers));
         System.debug(fieldValue);
         String objectAPIName;
         String keyPrefix = objectId.substring(0,3);
@@ -97,11 +97,11 @@ public with sharing class UpdateFieldAction {
     
     }
 
-    public class ContextWraper {
+    public class ContextWrapper {
         public String name;
         public String value;
 
-        public ContextWraper(String name, String value) {
+        public ContextWrapper(String name, String value) {
             this.name = name;
             this.value = value;
         }

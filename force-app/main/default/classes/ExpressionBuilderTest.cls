@@ -21,7 +21,7 @@ public with sharing class ExpressionBuilderTest {
         System.assertEquals(expectResult, assembleResult);
 
         Map<String, Object> disassemblyResult = ExpressionBuilder.disassemblyFormulaString(assembleResult);
-        List<ExpressionBuilder.ExpressionLineWraper> data = (List<ExpressionBuilder.ExpressionLineWraper>)disassemblyResult.get('expressionLines');
+        List<ExpressionBuilder.ExpressionLineWrapper> data = (List<ExpressionBuilder.ExpressionLineWrapper>)disassemblyResult.get('expressionLines');
 
         System.assertEquals('CUSTOM', String.valueOf(disassemblyResult.get('logicType')));
         //Switching off custom logic asserts due to not stable work
@@ -37,7 +37,7 @@ public with sharing class ExpressionBuilderTest {
         System.assertEquals(expectResult, assembleResult);
 
         disassemblyResult = ExpressionBuilder.disassemblyFormulaString(assembleResult);
-        data = (List<ExpressionBuilder.ExpressionLineWraper>)disassemblyResult.get('expressionLines');
+        data = (List<ExpressionBuilder.ExpressionLineWrapper>)disassemblyResult.get('expressionLines');
 
         System.assertEquals('AND', String.valueOf(disassemblyResult.get('logicType')));
         System.assertEquals('', String.valueOf(disassemblyResult.get('customLogic')));
@@ -51,7 +51,7 @@ public with sharing class ExpressionBuilderTest {
         System.assertEquals(expectResult, assembleResult);
 
         disassemblyResult = ExpressionBuilder.disassemblyFormulaString(assembleResult);
-        data = (List<ExpressionBuilder.ExpressionLineWraper>)disassemblyResult.get('expressionLines');
+        data = (List<ExpressionBuilder.ExpressionLineWrapper>)disassemblyResult.get('expressionLines');
 
         System.assertEquals('OR', String.valueOf(disassemblyResult.get('logicType')));
         System.assertEquals('', String.valueOf(disassemblyResult.get('customLogic')));

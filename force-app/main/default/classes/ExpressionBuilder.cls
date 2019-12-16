@@ -2,7 +2,7 @@ public with sharing class ExpressionBuilder {
     @AuraEnabled
     public static String assembleFormulaString(String customLogic, String logicType, String expressionLines) {
 
-        List<ExpressionLineWraper> lines = (List<ExpressionLineWraper>) JSON.deserialize(expressionLines, List<ExpressionLineWraper>.class);
+        List<ExpressionLineWrapper> lines = (List<ExpressionLineWrapper>) JSON.deserialize(expressionLines, List<ExpressionLineWrapper>.class);
 
         String result = '';
         String resultEnd = '';
@@ -291,7 +291,7 @@ OR(AND(CONTAINS($Account.Name, TEXT("1")),CONTAINS($Account.Name, TEXT("2"))), A
             result.put('logicType', 'AND');
         }
 
-        result.put('expressionLines', convertSetToExpressionLineWraper(conditions));
+        result.put('expressionLines', convertSetToExpressionLineWrapper(conditions));
         return result;
     }
 
@@ -314,7 +314,7 @@ OR(AND(CONTAINS($Account.Name, TEXT("1")),CONTAINS($Account.Name, TEXT("2"))), A
         return result + resultEnd;
     }
 
-    public static String convertExpressionLines(ExpressionLineWraper expressionLine) {
+    public static String convertExpressionLines(ExpressionLineWrapper expressionLine) {
         String leftItem = '\\'+expressionLine.fieldName;
         String rightItem = expressionLine.parameter;
         String dataType = expressionLine.dataType.toUpperCase();
@@ -372,14 +372,14 @@ OR(AND(CONTAINS($Account.Name, TEXT("1")),CONTAINS($Account.Name, TEXT("2"))), A
 
     }
 
-    public static List<ExpressionLineWraper> convertSetToExpressionLineWraper(Set<String> lines) {
-        List<ExpressionLineWraper> result = new List<ExpressionLineWraper>();
+    public static List<ExpressionLineWrapper> convertSetToExpressionLineWrapper(Set<String> lines) {
+        List<ExpressionLineWrapper> result = new List<ExpressionLineWrapper>();
 
         for (String line : lines) {
             List<String> lineParameters = line.split(' ');
             if (lineParameters.size() == 3) {
                 List<String> fieldInfo = lineParameters[0].replaceAll('[$]', '').split('\\.');
-                result.add(new ExpressionLineWraper(fieldInfo[0], lineParameters[0], '', lineParameters[1], lineParameters[2]));
+                result.add(new ExpressionLineWrapper(fieldInfo[0], lineParameters[0], '', lineParameters[1], lineParameters[2]));
             }
         }
 
@@ -402,7 +402,7 @@ OR(AND(CONTAINS($Account.Name, TEXT("1")),CONTAINS($Account.Name, TEXT("2"))), A
         }
     }
 
-    public class ExpressionLineWraper {
+    public class ExpressionLineWrapper {
         @AuraEnabled
         public String objectType;
         @AuraEnabled
@@ -414,7 +414,7 @@ OR(AND(CONTAINS($Account.Name, TEXT("1")),CONTAINS($Account.Name, TEXT("2"))), A
         @AuraEnabled
         public String parameter;
 
-        public ExpressionLineWraper(String objectType, String fieldName, String dataType, String operator, String parameter) {
+        public ExpressionLineWrapper(String objectType, String fieldName, String dataType, String operator, String parameter) {
             this.objectType = objectType;
             this.fieldName = fieldName;
             this.dataType = dataType;
