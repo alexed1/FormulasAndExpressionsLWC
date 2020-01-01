@@ -79,7 +79,7 @@ global with sharing class FieldPickerController {
         }
 
     }
-
+    @TestVisible
     private static Map<String, String> allowedStandardObjects = new Map<String, String>{
             'Account' => 'Account',
             'AccountPartner' => 'Account Partner',
