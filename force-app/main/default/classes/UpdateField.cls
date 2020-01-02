@@ -1,6 +1,7 @@
-public with sharing class UpdateFieldAction {
-    @InvocableMethod(label='Update Field')
-    public static List<Response> updateField(List<Request> requests) {
+public with sharing class UpdateField {
+
+    @InvocableMethod(label='Update Field' configurationEditor='c:updateFieldCPE')
+    public static List<Response> execute (List<Request> requests) {
         String objectId = requests[0].objectId;
         String fieldName = requests[0].fieldName;
         String formula = requests[0].formula;

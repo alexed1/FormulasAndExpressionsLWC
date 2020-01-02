@@ -4,6 +4,11 @@ export default class updateFieldConfigurator extends LightningElement {
 
     @api supportedSystemTypes;
 
+    @api values;
+    @api property;
+    @api flowContext;
+    @api validate(){}
+
     @track _value;
     @track _objectType;
     @track _fieldName;

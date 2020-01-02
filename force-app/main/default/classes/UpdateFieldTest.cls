@@ -1,5 +1,5 @@
 @isTest
-public with sharing class UpdateFieldActionTest {
+public with sharing class UpdateFieldTest {
     @isTest
     static void UpdateFieldActionRequestTest() {
         Opportunity opp = new Opportunity();

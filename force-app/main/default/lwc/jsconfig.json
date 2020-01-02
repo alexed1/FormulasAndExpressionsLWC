@@ -26,8 +26,8 @@
             "c/setPickList": [
                 "setPickList/setPickList.js"
             ],
-            "c/updateFieldConfigurator": [
-                "updateFieldConfigurator/updateFieldConfigurator.js"
+            "c/updateFieldCPE": [
+                "updateFieldCPE/updateFieldCPE.js"
             ]
         },
         "experimentalDecorators": true
