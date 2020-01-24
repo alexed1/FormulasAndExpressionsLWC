@@ -4,6 +4,8 @@ global class RegExps {
     public static final String EXP_BOOLEAN = '(?i:TRUE|FALSE)';
     public static final String EXP_STRING = '"([^"|\"])*"';
     public static final String EXP_NUMBER = '[0-9]*\\.?[0-9]+';
+    public static final String EXP_NUMBER_NEGATIVE = '- [0-9]*\\.?[0-9]+';
+    public static final String EXP_NUMBER_NEGATIVE_FUNCTION = '(?<=\\( )- [0-9]*\\.?[0-9]+';
     public static final String EXP_DATE = '[0-9]{4}\\-[0-9]{2}\\-[0-9]{2}';
     public static final String EXP_DATETIME = EXP_DATE + '(T[0-9]{2}:[0-9]{2}:[0-9]{2})?';
     public static final String EXP_VALUE = '(' + EXP_NULL + '|' + EXP_STRING + '|' + EXP_NUMBER + '|' + EXP_DATE + '|' + EXP_DATETIME + '|' + EXP_BOOLEAN + ')';

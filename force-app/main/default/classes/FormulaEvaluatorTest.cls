@@ -21,7 +21,7 @@ public with sharing class FormulaEvaluatorTest {
         System.assertEquals('2', FormulaEvaluator.parseFormula('MAX(1,2)', stringContext));
         System.assertEquals('1', FormulaEvaluator.parseFormula('MIN(1,2)', stringContext));
         System.assertEquals('1', FormulaEvaluator.parseFormula('MOD(1,2)', stringContext));
-        System.assertEquals('1', FormulaEvaluator.parseFormula('ABS(1)', stringContext));
+        System.assertEquals('1', FormulaEvaluator.parseFormula('ABS(-1)', stringContext));
         System.assertEquals('1', FormulaEvaluator.parseFormula('FLOOR(1)', stringContext));
         System.assertEquals('1', FormulaEvaluator.parseFormula('SQRT(1)', stringContext));
         System.assertEquals('0', FormulaEvaluator.parseFormula('ACOS(1)', stringContext));
@@ -120,6 +120,9 @@ public with sharing class FormulaEvaluatorTest {
         System.assertEquals('100', FormulaEvaluator.parseFormula('VALUE("100")', stringContext), 'Formula VALUE');
         System.assertEquals('Test Opportunity15000.05', FormulaEvaluator.parseFormula('CONCATENATE($Record.Name,TEXT($Record.Amount))', stringContext), 'Formula CONCATENATE');
         System.assertEquals('$Opportunity.Name$Opportunity.Amount', FormulaEvaluator.parseFormula('CONCATENATE("$Opportunity.Name","$Opportunity.Amount")', stringContext), 'Formula CONCATENATE "&');
+        System.assertEquals('8.0500', FormulaEvaluator.parseFormula('ABS(-10.0500)-2', stringContext), 'Formula VALUE');
+        System.assertEquals('-0.4736', FormulaEvaluator.parseFormula('LOG(34.0000) - 4', stringContext), 'Formula VALUE');
+        System.assertEquals('7.5264', FormulaEvaluator.parseFormula('LOG(34.0000) + 4', stringContext), 'Formula VALUE');
     }
 
     public class ContextWrapper {
