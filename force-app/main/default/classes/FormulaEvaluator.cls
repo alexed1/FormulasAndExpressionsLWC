@@ -416,7 +416,7 @@ public with sharing class FormulaEvaluator {
             }
         }
 
-        String EXP_VALUES_NO_STRING = '(' + RegExps.EXP_NULL + '|' + RegExps.EXP_NUMBER + '|' + RegExps.EXP_BOOLEAN + ')';
+        String EXP_VALUES_NO_STRING = '(' + RegExps.EXP_NULL + '|' + RegExps.EXP_NUMBER_NEGATIVE_FUNCTION + '|' + RegExps.EXP_NUMBER + '|' + RegExps.EXP_BOOLEAN + ')';
 
         vList = new List<String>();
         myPattern = pattern.compile(EXP_VALUES_NO_STRING);
@@ -429,6 +429,8 @@ public with sharing class FormulaEvaluator {
         for (String str : vList) {
             if (Pattern.matches(RegExps.EXP_NULL, str)) {
                 context.replace(str);
+            } else if (Pattern.matches(RegExps.EXP_NUMBER_NEGATIVE, str)) {
+                context.replace(str, Decimal.valueOf(str.replace(' ', '')));
             } else if (Pattern.matches(RegExps.EXP_NUMBER, str)) {
                 context.replace(str, Decimal.valueOf(str));
             } else if (Pattern.matches(RegExps.EXP_BOOLEAN, str)) {
