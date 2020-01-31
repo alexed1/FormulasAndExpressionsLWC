@@ -80,22 +80,7 @@
         <connector>
             <targetReference>Evaluate_Formula2</targetReference>
         </connector>
-        <fields>
-            <name>formulaBuilder1</name>
-            <extensionName>c:formulaBuilder</extensionName>
-            <fieldType>ComponentInstance</fieldType>
-            <inputParameters>
-                <name>contextObjectType</name>
-                <value>
-                    <stringValue>Account</stringValue>
-                </value>
-            </inputParameters>
-            <isRequired>true</isRequired>
-            <outputParameters>
-                <assignToReference>formulaString</assignToReference>
-                <name>formulaString</name>
-            </outputParameters>
-        </fields>
+        
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
     </screens>

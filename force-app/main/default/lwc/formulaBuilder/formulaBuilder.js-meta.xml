@@ -13,7 +13,7 @@
             <property name="formulaString" type="String"></property>
             <property name="contextObjectType" type="String"></property>
             <property name="supportedSystemTypes" type="String"></property>
-            <property name="contextDataString" type="String"></property>
+            
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>

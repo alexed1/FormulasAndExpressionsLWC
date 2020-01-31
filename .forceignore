@@ -1,5 +1,9 @@
 **/jsconfig.json
-
+**profiles
+**objects
+**layouts
+**tabs
+force-app/main/default/classes/UpdateField*
 **/.eslintrc.json
 
 .DS_Store
