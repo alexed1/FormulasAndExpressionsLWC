@@ -7,3 +7,4 @@ force-app/main/.DS_Store
 /config/
 /IlluminatedCloud/
 force-app/main/default/profiles
+/.sfdx/
